@@ -1,0 +1,34 @@
+name: Validate UGF Data
+
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'src/validator.py'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'src/validator.py'
+      - '.github/workflows/validate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+
+      - name: Install dependencies
+        run: pip install PyYAML
+
+      - name: Run UGF Validator
+        working-directory: ./src
+        run: python validator.py

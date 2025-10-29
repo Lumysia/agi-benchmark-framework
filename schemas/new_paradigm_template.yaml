@@ -1,0 +1,135 @@
+# === 1. Benchmark Identification ===
+# Just the basic "who is this" info.
+benchmark_info:
+  # Obvious: "MMLU", "ARC-AGI-2", "MLGym"
+  name: "Example Benchmark (e.g., MLGym)"
+  
+  # Which version of the benchmark are we scoring?
+  version: "1.0"
+  
+  # This is our key idea: separating the paradigms.
+  # Valid options: "Static", "Process-Oriented", "Continual-Learning", "Hybrid"
+  paradigm: "Process-Oriented"
+  
+  # Simple one-sentence summary.
+  description: "A benchmark for evaluating LLM agents on realistic AI research tasks."
+  
+  # Link to the paper or website so we can find it again.
+  reference: "https of://openai.com/research/mlgym"
+
+# === 2. Evaluation Engineering ===
+# This is how we score the quality of the benchmark itself.
+# Basically, is it a reliable "scientific instrument" or a
+# disposable dataset? Inspired by that AGI-ProB report.
+evaluation_engineering:
+  
+  # --- Design Phase ---
+  # Did they think this through?
+  design:
+    # Does this test actually measure what it claims to?
+    # e.g., for MLGym: "Tests complex agentic workflows, not just coding."
+    construct_validity: "High. Tasks are complex and require multi-step agentic behavior."
+    
+    # How are the problems made? By hand? By AI?
+    task_generation: "Procedural / AI-Generated"
+    
+    # Is it easy to "game" or cheat this benchmark?
+    # e.g., "Dynamic tasks, so models can't just memorize the answers."
+    adversarial_design: "Tasks are dynamic, preventing static memorization."
+
+  # --- Data & Implementation Phase ---
+  # How usable is this thing in practice?
+  implementation:
+    # Do they even version their data?
+    # (e.g., "Git-LFS", "DVC", "None")
+    data_versioning: "Git"
+    
+    # How do we run it? Is it easy or a nightmare?
+    # (e.g., "Docker", "Conda env file", "None")
+    reproducibility: "Docker container provided"
+    
+    # Can we actually find the evaluation scripts?
+    script_availability: "Public GitHub repository with setup scripts."
+
+  # --- Contamination & Maintenance Phase ---
+  # Is this benchmark still alive? Is it contaminated?
+  maintenance:
+    # (e.g., "Active", "Archived", "Retired")
+    status: "Active"
+    
+    # This is the big one. Is the test data in the training data?
+    # (e.g., "Audited", "Known Contamination", "High-Risk", "Unknown")
+    contamination_status: "Audited - No Contamination (data is synthetic/private)"
+    
+    # Is there a GitHub issues page or just an email to nowhere?
+    feedback_channel: "GitHub Issues"
+
+
+# === 3. Capability Assessment ===
+# This is the core of our UGF: *what* is this benchmark
+# actually measuring? We split this into our three pillars.
+capability_assessment:
+  
+  # --- 3.1 Static Knowledge ---
+  # "What a model knows."
+  static_knowledge:
+    # Does this benchmark even test static knowledge? (e.g., MLGym = false)
+    evaluates: false
+    capability_measured: null
+    task_format: null
+
+  # --- 3.2 Process Orientation ---
+  # "How a model works."
+  process_orientation:
+    # Does this test measure a process instead of a single answer?
+    evaluates: true
+    # e.g., "Multi-step reasoning", "Tool use", "SWE-Bench style workflow"
+    capability_measured: "Execution of a complex, multi-step research workflow."
+    
+    # If it's a workflow, what are the stages?
+    # This is how we'll describe frameworks like MLGym.
+    workflow_stages:
+      - stage_id: 1
+        name: "Task Decomposition"
+        description: "Agent must break down the high-level goal into sub-tasks."
+        metrics: ["subtask_accuracy", "planning_time"]
+        
+      - stage_id: 2
+        name: "Information Retrieval & Tool Use"
+        description: "Agent must select and use tools (e.g., search, code interpreter)."
+        metrics: ["tool_selection_f1", "retrieval_precision"]
+        
+      - stage_id: 3
+        name: "Synthesis & Final Answer"
+        description: "Agent must synthesize findings into a final report/solution."
+        metrics: ["final_accuracy", "hallucination_rate"]
+
+  # --- 3.3 Learning Adaptability ---
+  # "How a model learns."
+  learning_adaptability:
+    # Does this benchmark test learning over time?
+    evaluates: true # <--- This would be 'true' for a continual learning benchmark
+    
+    # e.g., "Continual learning", "Catastrophic forgetting"
+    capability_measured: "Continual learning on a sequence of new tasks."
+    
+    # What kind of learning?
+    learning_type: "Task-Incremental"
+    
+    # These are the key metrics from the proposal.
+    metrics:
+      - name: "Backward Transfer (BWT)"
+        id: "BWT"
+        # This is the main one for catastrophic forgetting.
+        description: "Measures performance on old tasks after learning new ones."
+        unit: "Percentage (%)"
+        
+      - name: "Forward Transfer (FWT)"
+        id: "FWT"
+        description: "Measures how learning previous tasks improves performance on future tasks."
+        unit: "Percentage (%)"
+        
+      - name: "Average Accuracy (ACC)"
+        id: "ACC"
+        description: "The average accuracy across all tasks learned so far."
+        unit: "Percentage (%)"

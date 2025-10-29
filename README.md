@@ -18,7 +18,7 @@ This repository is configured for Dev Containers, allowing you to start a pre-co
 2.  Select the **Codespaces** tab.
 3.  Click **Create codespace on main**.
 
-The environment will build automatically. All dependencies (like PyYAML) will be pre-installed, and you can immediately proceed to the **Usage** section.
+The environment will build automatically. All dependencies (like PyYAML) will be pre-installed, and you can immediately proceed to the [**Usage**](#usage) section.
 
 ### Local Setup
 
@@ -38,6 +38,10 @@ pip3 install -r requirements.txt
 # Run the validator
 cd src
 python3 validator.py
+
+# Run the analysis
+cd src
+python3 analysis.py
 ```
 
 If the validator runs without errors, all benchmark files in the `/data/` directory are correct.

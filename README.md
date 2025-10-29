@@ -6,7 +6,7 @@ A unified framework (UGF) for AGI benchmarking, integrating principles of Evalua
 
 This repository implements the Unified AGI Framework (UGF), a metadata schema designed to catalog, compare, and analyze AGI benchmarks.
 
-## Usage
+## Setup
 
 You can set up your environment in these ways:
 
@@ -30,7 +30,11 @@ python3 -m venv env && source env/bin/activate
 
 # Install dependencies
 pip3 install -r requirements.txt
+```
 
+## Usage
+
+```bash
 # Run the validator
 cd src
 python3 validator.py

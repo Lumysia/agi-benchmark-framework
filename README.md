@@ -8,12 +8,28 @@ This repository implements the Unified AGI Framework (UGF), a metadata schema de
 
 ## Usage
 
+You can set up your environment in these ways:
+
+### GitHub Codespaces
+
+This repository is configured for Dev Containers, allowing you to start a pre-configured environment in one click.
+
+1.  Click the **Code** button on this repository's main page.
+2.  Select the **Codespaces** tab.
+3.  Click **Create codespace on main**.
+
+The environment will build automatically. All dependencies (like PyYAML) will be pre-installed, and you can immediately proceed to the **Usage** section.
+
+### Local Setup
+
+If you prefer to work locally:
+
 ```bash
 # Create and activate a virtual environment
 python3 -m venv env && source env/bin/activate
 
 # Install dependencies
-pip install PyYAML
+pip3 install -r requirements.txt
 
 # Run the validator
 cd src

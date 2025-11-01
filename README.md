@@ -48,6 +48,10 @@ cd src
 python3 visualize_benchmark_barcharts.py
 python3 visualize_benchmark_interactive.py
 
+# Run manual data collector
+cd src
+python3 model_data_collector.py
+
 # Run the analysis
 cd src
 python3 analysis.py

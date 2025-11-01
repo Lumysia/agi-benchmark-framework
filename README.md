@@ -43,6 +43,11 @@ python3 validator.py
 cd src
 python3 calculate_evaluation_scores.py
 
+# Run visualize benchmark generators
+cd src
+python3 visualize_benchmark_barcharts.py
+python3 visualize_benchmark_interactive.py
+
 # Run the analysis
 cd src
 python3 analysis.py

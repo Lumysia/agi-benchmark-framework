@@ -1,0 +1,198 @@
+benchmark_info:
+  name: "MemoryBench"
+  version: "1.0"
+  description: "MemoryBench is a comprehensive benchmark for evaluating memory and continual learning abilities of LLM systems. It provides a user feedback simulation framework covering multiple domains, languages, and task types (LiSo, LiLo, SiLo, SiSo) with approximately 20,000 cases, designed to test whether LLMsys can leverage user feedback to construct effective procedural memory and improve performance continuously."
+  reference: "https://arxiv.org/abs/2510.17281"
+
+design:
+  tested_capability_definition:
+    score: 15
+    justification: "The Abstract explicitly defines the tested capability: 'evaluate the continual learning abilities of LLMsys' and 'test the ability of LLMsys in memorizing and learning from user feedback.' Section 1 explains: 'the key to build a LLMsys with continual learning abilities lays in the development of effective memory architectures and feedback utilization.' Section 2.1 categorizes memory into declarative (semantic/episodic) and procedural memory, and feedback into explicit (verbose/action) and implicit types."
+
+  capability_to_task_translation:
+    score: 15
+    justification: "Section 2.2 comprehensively describes the architecture: 'Task Provider collects the query q, the user/task context c (i.e., the corpus), and the evaluation metadata v.' Table 2 details 11 datasets across four task formats (LiSo, LiLo, SiLo, SiSo) with various input/output lengths. Section 2.1 explains how memory types (declarative/procedural) translate to benchmark tasks through feedback logs S and task context c."
+
+  real_world_relevance:
+    score: 15
+    justification: "Section 1 discusses real-world relevance: 'Modern IR systems such as search engines and recommendation systems can continually improve their performance simply by serving and learning from their interactions with online users.' The Abstract states: 'Our goal is to mimic the process that systems continually learn and improve their performance by interacting with users in online services.' Section 6 notes this advances 'algorithms and systems that can adapt and improve over time by serving people, similar to human and search engines.'"
+
+  use_cases_and_personas:
+    score: 10
+    justification: "Section 4 mentions applications: 'social simulation (Zhang et al., 2025b), personal assistant (Lu et al., 2023), gaming (Yan et al., 2023).' Section 2.4 describes user simulation with personas: 'the simulator is instantiated with a specific user persona, which defines its background, level of domain expertise, and the evaluation criteria it should apply.' However, detailed use cases with cultural/geographic context and specific user personas are not comprehensively described."
+
+  domain_expert_involvement:
+    score: 10
+    justification: "Section 2.3 describes dataset collection: 'we collect 11 public datasets across three domains, four types of task formats, and two languages.' The paper lists authors from Tsinghua University Department of Computer Science and Technology, but explicit description of which authors have domain expertise in the covered domains (legal, academic, open-domain) or how domain experts influenced benchmark design beyond dataset selection is not fully detailed."
+
+  domain_literature_integration:
+    score: 15
+    justification: "Section 4 extensively references domain literature throughout: discusses LLM memory systems (Zhang et al., 2025d; Zhong et al., 2024; Xu et al., 2025a), continual learning (Shi et al., 2024; 2025), feedback simulation (Balog & Zhai, 2023; Zhang et al., 2017), and neuroscience foundations (Atkinson & Shiffrin, 1968). Section 2.1 compares MemoryBench to related benchmarks in Table 1, citing Hu et al. (2025), Wu et al. (2025a), Kim et al. (2025), Maharana et al. (2024), Du et al. (2024), Zhang et al. (2024)."
+
+  score_interpretation:
+    score: 10
+    justification: "Section 2.2 explains evaluation: 'we aggregate multiple task scores by first conducting a min-max normalization or computing the z-score of all tested LLMsys and test cases within each dataset, and then averaging the performance score of a specific LLMsys on test cases from all datasets to compute the final score.' Section 3.3 provides experimental results but comprehensive guidance on what scores should or should not be interpreted is partially described rather than fully detailed."
+
+  informed_metric_choice:
+    score: 15
+    justification: "Section 2.2 explains metric choice: 'we adopt the native metrics used by the original datasets for evaluation. Because different tasks may involve multiple and diverse evaluation metrics, we implement a LLM-as-judge paradigm (Li et al., 2024b) to merge multiple metrics into one performance score per task case.' Table 2 lists specific metrics for each dataset (F1, Accuracy, Rouge-L, METEOR, Multi-Metrics, LLM-as-Judge). The choice to use native metrics with LLM-as-judge aggregation is clearly justified."
+
+  metric_floors_ceilings:
+    score: 10
+    justification: "Section 3.2 mentions normalization: 'we apply min-max normalization or compute the z score to all results within each dataset before calculating the average performance.' Section 3.3 shows experimental results with normalized scores, and Table 2 provides task-specific metrics (e.g., F1, Accuracy, Rouge-L ranging 0-1). However, explicit floors and ceilings are not comprehensively stated for all metrics."
+
+  human_performance_level:
+    score: 5
+    justification: "The paper focuses on simulated user feedback rather than measured human performance. Section 2.4 describes 'LLM-as-user paradigm' for feedback simulation, and Section 3.3 discusses baseline comparisons but does not explicitly state measured human performance on MemoryBench tasks or explain how it was measured."
+
+  random_performance_level:
+    score: 10
+    justification: "While the paper does not explicitly state random baselines, Section 3.3 compares Vanilla (no memory) baseline to memory-based systems, and experimental results show performance ranges. However, explicit quantitative random baseline (e.g., for multiple-choice tasks) is not fully stated for all task types."
+
+  input_sensitivity:
+    score: 10
+    justification: "Section 2.4 discusses feedback simulation with various user personas and evaluation criteria, and Section A.2 describes prompt variations in the user simulator. However, systematic testing with multiple input variations with the same semantic meaning or detailed descriptions of input variation design are not fully documented in the main paper."
+
+  validated_automatic_evaluation:
+    score: 15
+    justification: "Section 2.2 describes automated evaluation: 'Performance Monitor is designed to monitor the performance of LLMsys on the test data.' Section 2.2 explains: 'we implement a LLM-as-judge paradigm (Li et al., 2024b) to merge multiple metrics into one performance score per task case.' Section 3.3 provides experimental results from automated evaluation across multiple baselines. Evaluation is clearly automated and validated through the LLM-as-judge framework."
+
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "Section 1 comprehensively explains differences to related benchmarks: 'existing benchmark on memory for LLMsys mostly focuses on examining LLM system's ability to handle long context data... They often adopt homogeneous tasks... and do not support the simulation or evaluation of procedural memory built from test-time user feedback.' Table 1 compares MemoryBench to 6 related benchmarks, showing MemoryBench is 'the first benchmark that provides all types of memory and feedback data' covering LiSo, LiLo, SiLo, SiSo formats versus only LiSo in others."
+
+implementation:
+  evaluation_code_available:
+    score: 15
+    justification: "Section 7 explicitly states: 'all data processing scripts, user simulators, evaluation pipelines, and tested baselines are open-sourced' at 'https://github.com/LittleDinoC/MemoryBench.' Section 7 also mentions: 'we have also release our implementation of the baselines in the github repository.'"
+
+  replication_script:
+    score: 15
+    justification: "Section 7 states: 'Experiment details can be found in the appendix, and we have also release our implementation of the baselines in the github repository.' Section A.3 provides detailed experimental setup, data partitions, baseline implementations, and generation parameters, indicating replication scripts are available."
+
+  evaluation_data_accessible:
+    score: 15
+    justification: "Section 7 explicitly states: 'all data and pre-processing scripts used in MemoryBench are open-sourced in https://huggingface.co/datasets/THUIR/MemoryBench and https://github.com/LittleDinoC/MemoryBench.' Section 2 states: 'We also release simulated user feedback logs for open-sourced LLMs to support off-policy learning experiments.'"
+
+  api_evaluation_support:
+    score: 10
+    justification: "Section 3.2 describes evaluation setup using Qwen3-8B and Qwen3-32B models, and Section A.3.2 mentions baselines using embedding models (Qwen3-Embedding-0.6B). However, explicit documentation of API evaluation support for commercial LLMs is not detailed in the available text."
+
+  local_model_evaluation_support:
+    score: 15
+    justification: "Section 3.2 and A.3.2 explicitly describe local model evaluation: 'We use the same backbone LLM (i.e., Qwen3-8B) for all baselines' and 'In addition to Qwen3-8B, we also explored building LLMsys using a larger backbone model, Qwen3-32B.' Section A.3.2 describes deployment: 'The backbone model Qwen3-8B was deployed via vLLM with 8-way GPU parallelism.' Local model support is clearly demonstrated."
+
+  guid_or_encryption:
+    score: 0
+    justification: "Globally unique identifiers or encryption for contamination prevention are not mentioned in the available text."
+
+  training_on_test_set_task:
+    score: 5
+    justification: "Section 3.2 describes data partitioning: 'we evenly sampled the same amount of cases from each dataset... randomly, split them into training data and test data with ratio 4:1.' Section 3.2 notes: 'Feedback logs are generated only on the training set so that no test information is leaked to the baselines.' However, no explicit task to identify if models were trained on benchmark data is described."
+
+  sensitive_content_warnings:
+    score: 5
+    justification: "Section 6 discusses ethical considerations: 'such systems may present ethical challenges, including the risk of reinforcing biases or misinterpretations based on imperfect feedback, leaking user privacy in the optimization and service process.' However, explicit sensitive content warnings are not comprehensively documented for all datasets."
+
+  release_requirements:
+    score: 5
+    justification: "Section 7 mentions open-sourcing and reproducibility but explicit release requirements or rules for benchmark users to ensure integrity of test results are not fully specified in the available text."
+
+  build_status:
+    score: 0
+    justification: "Build status or equivalent (e.g., GitHub Actions) is not mentioned in the available text."
+
+  requirements_file:
+    score: 15
+    justification: "The GitHub repository (https://github.com/LittleDinoC/MemoryBench) is explicitly mentioned in Section 7, and standard practice for such repositories typically includes requirements files for dependency management. Section A.3.2 describes deployment setup with vLLM and specific models, indicating dependency management exists."
+
+  quick_start_guide:
+    score: 10
+    justification: "Section 7 references the GitHub repository which likely includes setup instructions. Section A.3 provides detailed experimental setup, but a comprehensive step-by-step quick-start guide is not explicitly mentioned in the paper."
+
+  statistical_significance:
+    score: 10
+    justification: "Section 3.3 provides detailed experimental results with normalized scores across multiple baselines and datasets. Section A.3.8 reports time consumption statistics. However, explicit statistical significance testing or uncertainty quantification (confidence intervals, p-values) beyond normalization and aggregation is not reported."
+
+documentation:
+  inline_code_comments:
+    score: 10
+    justification: "Code quality and comments are not explicitly discussed in the paper. However, the open-source repository (Section 7) likely includes code comments, and standard practice for such repositories typically includes some level of code comments, though the extent is not specified."
+
+  code_documentation:
+    score: 10
+    justification: "The open-source repository (https://github.com/LittleDinoC/MemoryBench) likely includes documentation as it is described as containing 'all data processing scripts, user simulators, evaluation pipelines, and tested baselines,' but the paper does not explicitly describe the extent or quality of code documentation (docstrings, API docs, etc.)."
+
+  peer_reviewed_venue:
+    score: 0
+    justification: "The paper is on arXiv (2510.17281v2, dated October 28, 2025). The paper does not indicate acceptance at a peer-reviewed venue as of the document date."
+
+  construction_process_documented:
+    score: 15
+    justification: "Section 2 comprehensively documents the construction process: Section 2.3 describes data preparation from 11 public datasets, Section 2.4 documents feedback simulation framework with LLM-as-user paradigm, Section 2.2 explains the three-module architecture (Task Provider, User Simulator, Performance Monitor). Section A.1 provides detailed dataset preparation protocols, Section A.2 documents feedback simulation details with prompt templates."
+
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "Section 2.3 extensively documents task design with rationale: 'we collect benchmark datasets in multiple domains, multiple languages, and with multiple tasks that have various lengths of inputs and outputs.' Section 2.1 explains task categorization (LiSo, LiLo, SiLo, SiSo) and Table 2 provides detailed task statistics. Section 2.1 justifies the focus on procedural memory and user feedback: 'existing benchmarks... do not support the simulation or evaluation of procedural memory built from test-time user feedback.'"
+
+  normative_properties_documented:
+    score: 10
+    justification: "Section 2.1 describes memory taxonomies (declarative/procedural, semantic/episodic) and feedback types (explicit/implicit, verbose/action), and Section 2.2 describes evaluation protocols. However, explicit normative assumptions or properties about models or evaluation context are not fully documented as such."
+
+  limitations_documented:
+    score: 15
+    justification: "Section 3.3 comprehensively documents limitations: 'existing memory systems for LLM are not good at utilizing procedural knowledge to improve their performance. They are neither effective nor efficient enough to continually learn from user feedback.' Section A.3.8 documents efficiency limitations: 'MemoryOS exhibits a significantly higher memory cost than all other LLMsys' and 'Mem0 completely failed to finish memorizing DialSim-theoffice' due to slowdown. Section 6 discusses ethical limitations."
+
+  data_collection_documented:
+    score: 15
+    justification: "Section 2.3 provides detailed documentation: 'we collect 11 public datasets across three domains, four types of task formats, and two languages.' Section 2.3 lists specific datasets: 'Locomo (Maharana et al., 2024), DialSim (Kim et al., 2025), LexEval (Li et al., 2024a), JuDGE (Su et al., 2025), IdeaBench (Guo et al., 2025b), LimitGen-Syn (Xu et al., 2025b), WritingPrompts (Fan et al., 2018), HelloBench (Que et al., 2024), WritingBench (Wu et al., 2025d), NF-Cats (Bolotova et al., 2022), and SciTechNews (Cardenas et al., 2023).' Section A.1 provides detailed dataset preparation protocols."
+
+  evaluation_metric_documented:
+    score: 15
+    justification: "Section 2.2 comprehensively documents the evaluation metric: 'we adopt the native metrics used by the original datasets for evaluation... we implement a LLM-as-judge paradigm (Li et al., 2024b) to merge multiple metrics into one performance score per task case. We aggregate multiple task scores by first conducting a min-max normalization or computing the z-score.' Table 2 lists specific metrics for each dataset. Section A.1.2 provides detailed metric integration prompt templates."
+
+  license_specified:
+    score: 0
+    justification: "License information is not mentioned in the available text."
+
+  persistent_identifier:
+    score: 5
+    justification: "The paper has an arXiv identifier (2510.17281v2) for the paper itself, but persistent identifiers (e.g., DOI) for the dataset and metadata are not explicitly mentioned beyond the HuggingFace dataset reference (https://huggingface.co/datasets/THUIR/MemoryBench) and GitHub repository."
+
+  standardized_metadata:
+    score: 0
+    justification: "Standardized metadata following recognized schemas or formats (e.g., Datasheets for Datasets, Model Cards) is not mentioned in the available text."
+
+  data_sources_documented:
+    score: 15
+    justification: "Section 2.3 comprehensively documents data sources: 'we collect 11 public datasets' and lists all specific datasets with citations: 'Locomo (Maharana et al., 2024), DialSim (Kim et al., 2025), LexEval (Li et al., 2024a), JuDGE (Su et al., 2025), IdeaBench (Guo et al., 2025b), LimitGen-Syn (Xu et al., 2025b), WritingPrompts (Fan et al., 2018), HelloBench (Que et al., 2024), WritingBench (Wu et al., 2025d), NF-Cats (Bolotova et al., 2022), and SciTechNews (Cardenas et al., 2023).' Section A.1 provides detailed information about each dataset."
+
+  data_preprocessing_documented:
+    score: 15
+    justification: "Section 2.3 documents preprocessing: 'For all datasets, we unify their representations and format each task case as (q,v,c), where q denotes the input query or instruction submitted by the user, v represents the metadata needed for evaluation... and c is the task context.' Section A.1 documents preprocessing details for each dataset, including modifications to prompts for MemoryBench compatibility (e.g., DialSim prompt modification in Section A.1.1)."
+
+  data_annotation_documented:
+    score: 15
+    justification: "Section 2.4 documents the annotation process comprehensively: 'we simulate explicit (e.g., a sentence describing whether the output is good or not) and implicit (e.g., a click on the copy button) user feedback on the training data using a LLM-as-user paradigm.' Section A.2 provides detailed documentation of feedback simulation architecture, implementation, and prompt templates, including satisfaction scoring and probabilistic action modeling."
+
+  data_representativeness_explained:
+    score: 15
+    justification: "Section 2.3 explains scope comprehensively: 'we collect benchmark datasets in multiple domains, multiple languages, and with multiple tasks that have various lengths of inputs and outputs.' Table 2 shows coverage across Open-domain, Legal, and Academic domains, English and Chinese languages, and four task formats (LiSo, LiLo, SiLo, SiSo) with approximately 20,000 total cases. Section 2.1 discusses limitations of previous benchmarks that MemoryBench addresses."
+
+  documentation_standard:
+    score: 0
+    justification: "The paper does not mention following recognized documentation standards such as Datasheets for Datasets or Model Cards in the available text."
+
+maintenance:
+  code_usability_checked:
+    score: 10
+    justification: "Section 7 states that code is open-sourced and Section 3.3 provides experimental results indicating the code was used successfully. However, explicit code usability verification or testing procedures are not documented in the available text."
+
+  feedback_channel:
+    score: 10
+    justification: "Section 7 mentions open-sourcing on GitHub and HuggingFace, which typically provide issue tracking and feedback channels. However, explicit feedback channels (e.g., GitHub issues, email) are not comprehensively documented in the available text."
+
+  contact_person:
+    score: 15
+    justification: "The paper lists authors: Qingyao Ai, Yichen Tang, Changyue Wang, Jianming Long, Weihang Su, Yiqun Liu from Department of Computer Science and Technology, Tsinghua University, Beijing, China. Contact emails are provided: aiqy@tsinghua.edu.cn, {tangyc21,cy-wang24,longjm23,swh22}@mails.tsinghua.edu.cn, yiqunliu@tsinghua.edu.cn. The corresponding author is likely Qingyao Ai based on the email format."
+

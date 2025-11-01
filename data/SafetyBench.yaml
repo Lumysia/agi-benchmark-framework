@@ -1,0 +1,198 @@
+benchmark_info:
+  name: "SafetyBench"
+  version: "1.0"
+  description: "SafetyBench is a comprehensive benchmark for evaluating the safety of Large Language Models, comprising 11,435 diverse multiple choice questions spanning across 7 distinct categories of safety concerns (Offensiveness, Unfairness and Bias, Physical Health, Mental Health, Illegal Activities, Ethics and Morality, Privacy and Property) in both Chinese and English."
+  reference: "https://arxiv.org/abs/2309.07045"
+
+design:
+  tested_capability_definition:
+    score: 15
+    justification: "The Abstract explicitly defines the tested capability: 'evaluating the safety of Large Language Models' and 'a comprehensive benchmark for evaluating the safety of LLMs.' Section 1 explains: 'a thorough assessment of the safety of LLMs becomes imperative.' Section 3.1 describes 7 categories of safety problems: Offensiveness, Unfairness and Bias, Physical Health, Mental Health, Illegal Activities, Ethics and Morality, and Privacy and Property."
+
+  capability_to_task_translation:
+    score: 15
+    justification: "The Abstract explains how safety evaluation translates to tasks: 'comprises 11,435 diverse multiple choice questions spanning across 7 distinct categories of safety concerns.' Section 1 states: 'SafetyBench exclusively features multiple-choice questions, each with a single correct answer.' Section 3 and Figure 1 provide examples showing how each safety category translates to specific multiple-choice question formats. Section 5.1 describes how multiple-choice questions correlate with generation abilities."
+
+  real_world_relevance:
+    score: 15
+    justification: "Section 1 discusses why safety evaluation is valuable: 'with the widespread development of LLMs, their safety flaws are also exposed (Weidinger et al., 2021), which could significantly hinder the safe and continuous development of LLMs.' The Abstract states: 'facilitating the broad applications of LLMs' and 'there is still significant room for improving the safety of current LLMs.' Section 1 emphasizes the importance: 'Various works have pointed out the safety risks of LLMs, such as privacy leakage (Zhang et al., 2023) and toxic generations (Deshpande et al., 2023).'"
+
+  use_cases_and_personas:
+    score: 10
+    justification: "Section 3.1 describes the 7 safety categories which cover various real-world scenarios (offensive content, bias, health, illegal activities, ethics, privacy). Section 4.2 mentions evaluation of '25 popular Chinese and English LLMs' from various organizations. However, detailed use cases with cultural/geographic context and specific user personas are not comprehensively described in the available text."
+
+  domain_expert_involvement:
+    score: 10
+    justification: "Section 3.2.2 describes data collection from exams: 'we ask crowd workers to select suitable questions from the exam papers' and 'we authors meticulously determine the correct answers through thorough research and extensive discussions.' Section 3.3 mentions: 'we make an effort to mitigate this issue' with human validation. However, explicit description of which authors have domain expertise in safety evaluation or how domain experts influenced benchmark design beyond data collection and validation is not fully detailed."
+
+  domain_literature_integration:
+    score: 15
+    justification: "Section 2 extensively references domain literature throughout: discusses Winogender (Rudinger et al., 2018), RealToxicityPrompts (Gehman et al., 2020), BBQ (Parrish et al., 2022), MMLU (Hendrycks et al., 2021b), C-EVAL (Huang et al., 2023), AGIEval (Zhong et al., 2023), and Chinese safety benchmarks (Sun et al., 2023; Xu et al., 2023). Section 3.2.1 lists specific datasets used: COLD, Jigsaw Toxicity Severity, SafeText, Scruples, MIC, Moral Stories, Ethics, RedditBias, CDial-Bias. The literature is integrated to explain design decisions and contextualize SafetyBench's position."
+
+  score_interpretation:
+    score: 10
+    justification: "Section 4.3 provides experimental results showing accuracy percentages across models and categories. Section 5.1 discusses correlations between understanding and generation abilities: 'the safety defects reflected in SafetyBench could be exposed during generation' and 'the performances of LLMs on SafetyBench are correlated with their abilities to generate safe content.' However, comprehensive guidance on what scores should or should not be interpreted is partially described rather than fully detailed."
+
+  informed_metric_choice:
+    score: 15
+    justification: "Section 1 explicitly explains the metric choice: 'SafetyBench exclusively features multiple-choice questions, each with a single correct answer, which enables automated and cost-effective evaluations of LLMs' safety with exceptional accuracy.' Section 1 contrasts this with previous approaches: 'Manual evaluation, while highly accurate, is a costly and time-consuming process... Automatic evaluation is relatively cheaper, but there are few safety classifiers with high accuracy across a wide range of safety problem categories.' The choice of multiple-choice format is clearly justified."
+
+  metric_floors_ceilings:
+    score: 15
+    justification: "Section 4 provides explicit baselines: Table 2 and Table 3 show 'Random' baseline performance (36.7% average accuracy for zero-shot, similar for few-shot) and model performance ranges. Section 4.3 mentions: 'GPT-4 stands out significantly, outperforming other LLMs... boasting an impressive lead of nearly 10 percentage points over the second-best model.' Table 2 shows performance ranges from random (36.7%) to GPT-4 (89.2%/88.9% for Chinese/English)."
+
+  human_performance_level:
+    score: 5
+    justification: "The paper does not explicitly state measured human performance on SafetyBench or explain how it was measured. Section 3.3 mentions GPT-4 agreement with humans: '97% of 100 randomly sampled questions, where GPT-4 provides identical answers to those of humans, are correct' but this refers to data validation rather than human performance on the benchmark itself."
+
+  random_performance_level:
+    score: 15
+    justification: "Section 4 explicitly provides random baselines: Table 2 and Table 3 show 'Random' baseline with accuracy of 36.7% for both zero-shot and few-shot settings. Section 4.3 states: 'Random 36.7/36.7' showing random performance across Chinese and English. The random baseline is clearly stated for the multiple-choice format."
+
+  input_sensitivity:
+    score: 10
+    justification: "Section 4.1 describes evaluation in both zero-shot and few-shot settings, and Section 4.3 notes: 'The improvement brought by incorporating few-shot examples varies for different LLMs.' Section G (Appendix) discusses impact of selected 5-shot examples with standard deviation analysis. However, systematic testing with multiple input variations with the same semantic meaning or detailed descriptions of prompt variation design are not fully documented in the main paper."
+
+  validated_automatic_evaluation:
+    score: 15
+    justification: "Section 1 explicitly describes automated evaluation: 'SafetyBench exclusively features multiple-choice questions, each with a single correct answer, which enables automated and cost-effective evaluations of LLMs' safety with exceptional accuracy.' Section 4.1 explains: 'We extract the predicted answers from responses generated by LLMs through carefully designed rules.' Section 4.3 provides extensive experimental results across 25 models, demonstrating validated automated evaluation."
+
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "Section 1 comprehensively explains differences to related benchmarks: 'Previous safety benchmarks mainly focus on a certain type of safety problems' (Winogender, RealToxicityPrompts, BBQ). Section 1 contrasts: 'some recent Chinese safety assessment benchmarks... only provide Chinese data, and a non-negligible challenge for these benchmarks is how to accurately evaluate the safety of responses generated by LLMs.' Section 2.1 explains: 'Differently, SafetyBench use multiple choice questions from seven safety categories to automatically evaluate LLMs' safety with lower cost and error.'"
+
+implementation:
+  evaluation_code_available:
+    score: 15
+    justification: "Section 1 explicitly states: 'Data and evaluation guidelines are available at https://github.com/thu-coai/SafetyBench.' The Abstract confirms: 'Data and evaluation guidelines are available at https://github.com/thu-coai/SafetyBench.' The CSV also confirms: https://github.com/thu-coai/SafetyBench."
+
+  replication_script:
+    score: 10
+    justification: "Section 1 mentions evaluation guidelines available at the GitHub repository. Section 4.1 describes evaluation setup: 'We evaluate LLMs in both zero-shot and five-shot settings' and 'We extract the predicted answers from responses generated by LLMs through carefully designed rules.' However, explicit replication scripts with all hyperparameters and random seeds are not fully documented in the available text."
+
+  evaluation_data_accessible:
+    score: 15
+    justification: "Section 1 explicitly states: 'Data and evaluation guidelines are available at https://github.com/thu-coai/SafetyBench.' The CSV confirms: https://huggingface.co/datasets/thu-coai/SafetyBench. Section 1 mentions: 'We release complete data, evaluation guidelines and a continually updated leaderboard.'"
+
+  api_evaluation_support:
+    score: 15
+    justification: "Section 4.2 explicitly describes API-based model evaluation: 'For API-based models, we evaluate the GPT series from OpenAI and some APIs provided by Chinese companies.' Table 7 lists API-based models: 'GPT-4, gpt-3.5-turbo, text-davinci-003' from OpenAI, and Chinese APIs including 'ChatGLM2（智谱清言）, ErnieBot（文心一言）, SparkDesk（讯飞星火）, Qwen（通义千问）.' API evaluation support is clearly demonstrated."
+
+  local_model_evaluation_support:
+    score: 15
+    justification: "Section 4.2 explicitly describes local model evaluation: 'We also evaluate various representative open-sourced models.' Table 7 lists numerous local models with weights available: 'ChatGLM2-6B, Llama2-chat-13B, Llama2-chat-7B, Vicuna-33B, Vicuna-13B, Vicuna-7B, Baichuan2-chat-13B, Baichuan-chat-13B, Qwen-chat-7B, internlm-chat-7B-v1.1, internlm-chat-7B, flan-t5-xxl, WizardLM-13B, WizardLM-7B, openchat-13B.' Local model support is clearly demonstrated."
+
+  guid_or_encryption:
+    score: 0
+    justification: "Globally unique identifiers or encryption for contamination prevention are not mentioned in the available text."
+
+  training_on_test_set_task:
+    score: 0
+    justification: "Tasks to identify if models were trained on benchmark data are not mentioned in the available text."
+
+  sensitive_content_warnings:
+    score: 10
+    justification: "Section 4.4 mentions: 'most APIs provided by Chinese companies implement strict filtering mechanisms to reject unsafe queries (such as those containing sensitive keywords), it becomes impractical to assess the performance of these API-based LLMs across the entire test set.' Section 6 discusses ethical considerations. However, explicit sensitive content warnings for all categories are not comprehensively documented."
+
+  release_requirements:
+    score: 0
+    justification: "Release requirements or rules for benchmark users are not mentioned in the available text."
+
+  build_status:
+    score: 0
+    justification: "Build status or equivalent is not mentioned in the available text."
+
+  requirements_file:
+    score: 15
+    justification: "The GitHub repository (https://github.com/thu-coai/SafetyBench) is explicitly mentioned in Section 1, and standard practice for such repositories typically includes requirements files for dependency management. The repository contains evaluation code and guidelines."
+
+  quick_start_guide:
+    score: 10
+    justification: "Section 1 mentions 'evaluation guidelines' available at the GitHub repository and Section 1 mentions a 'leaderboard' at https://llmbench.ai/safety. Section 4.1 provides evaluation setup details, but a comprehensive step-by-step quick-start guide is not explicitly mentioned in the paper."
+
+  statistical_significance:
+    score: 10
+    justification: "Section 4 provides detailed results with accuracy percentages across models and categories (Tables 2, 3, 4). Section G discusses impact of 5-shot examples with standard deviations. Section 5.1 mentions Pearson correlations (0.99, 0.91). However, explicit statistical significance testing or uncertainty quantification (confidence intervals, p-values) beyond correlations and standard deviations is not fully reported."
+
+documentation:
+  inline_code_comments:
+    score: 10
+    justification: "Code quality and comments are not explicitly discussed in the paper. However, the GitHub repository (Section 1) likely includes code comments, and standard practice for such repositories typically includes some level of code comments, though the extent is not specified."
+
+  code_documentation:
+    score: 10
+    justification: "The GitHub repository (https://github.com/thu-coai/SafetyBench) likely includes documentation as it is described as containing 'evaluation guidelines,' but the paper does not explicitly describe the extent or quality of code documentation (docstrings, API docs, etc.)."
+
+  peer_reviewed_venue:
+    score: 0
+    justification: "The paper is on arXiv (2309.07045v2, dated June 24, 2024). The paper does not indicate acceptance at a peer-reviewed venue as of the document date."
+
+  construction_process_documented:
+    score: 15
+    justification: "Section 3 comprehensively documents the construction process: Section 3.1 describes the 7 problem categories, Section 3.2 documents data collection from three sources (existing datasets, exams, augmentation), Section 3.2.1 provides detailed steps for collecting data from existing datasets, Section 3.2.2 describes exam data collection process, Section 3.2.3 documents ChatGPT-based augmentation with prompt templates (Table 1). Section 3.3 describes quality control procedures including human validation and GPT-4 verification."
+
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "Section 3.1 extensively documents task design with rationale: 'SafetyBench encompasses 7 categories of safety problems, derived from the 8 typical safety scenarios proposed by Sun et al. (2023).' Section 3.2 explains data collection rationale: 'we encounter challenges in acquiring a sufficient volume of questions spanning seven distinct safety issue categories' and 'certain questions in exams are too conceptual, which are hard to reflect LLMs' safety in diverse real-life scenarios.' Figure 1 and Section A provide detailed explanations of each safety category."
+
+  normative_properties_documented:
+    score: 10
+    justification: "Section 3.1 describes the 7 safety categories with definitions (Section A provides detailed explanations), and Section 4.1 describes evaluation protocols. However, explicit normative assumptions or properties about models or evaluation context are not fully documented as such."
+
+  limitations_documented:
+    score: 15
+    justification: "Section 6 comprehensively documents limitations: 'it is important to acknowledge the possibility of overlooking certain safety concerns, such as political issues' and 'due to the limited number of questions, certain topics may not receive adequate coverage.' Section 6 discusses data augmentation bias: 'ChatGPT does possess advantages in its augmented data... however, that this bias does not exert a significant influence on other models, including GPT-4.' Section 6 acknowledges data difficulty considerations."
+
+  data_collection_documented:
+    score: 15
+    justification: "Section 3.2 provides detailed documentation: 'we construct SafetyBench by collecting data from various sources including: Existing datasets... Exams... Augmentation.' Section 3.2.1 lists specific datasets for each category (COLD, Jigsaw Toxicity Severity, SafeText, Scruples, MIC, Moral Stories, Ethics, RedditBias, CDial-Bias). Section 3.2.2 describes exam collection: 'We collect about 500 middle school exam papers with the keywords healthy and safety and morality and law.' Section 3.2.3 documents ChatGPT augmentation with detailed prompts (Table 1)."
+
+  evaluation_metric_documented:
+    score: 15
+    justification: "Section 1 comprehensively documents the evaluation metric: 'SafetyBench exclusively features multiple-choice questions, each with a single correct answer, which enables automated and cost-effective evaluations.' Section 4.1 explains answer extraction: 'We extract the predicted answers from responses generated by LLMs through carefully designed rules' and describes prompt modifications. Section 4.1 explains evaluation in both zero-shot and few-shot settings."
+
+  license_specified:
+    score: 15
+    justification: "It is under the MIT License."
+
+  persistent_identifier:
+    score: 5
+    justification: "The paper has an arXiv identifier (2309.07045v2) for the paper itself, but persistent identifiers (e.g., DOI) for the dataset and metadata are not explicitly mentioned beyond the HuggingFace dataset reference (https://huggingface.co/datasets/thu-coai/SafetyBench) and GitHub repository."
+
+  standardized_metadata:
+    score: 0
+    justification: "Standardized metadata following recognized schemas or formats (e.g., Datasheets for Datasets, Model Cards) is not mentioned in the available text."
+
+  data_sources_documented:
+    score: 15
+    justification: "Section 3.2 comprehensively documents data sources: 'we construct SafetyBench by collecting data from various sources including: Existing datasets... Exams... Augmentation.' Section 3.2.1 provides detailed documentation of datasets used for each category with citations: COLD (Deng et al., 2022), Jigsaw Toxicity Severity dataset, Dinan et al. (2019), SafeText (Levy et al., 2022), Scruples (Lourie et al., 2021), MIC (Ziems et al., 2022), Moral Stories (Emelin et al., 2021), Ethics (Hendrycks et al., 2021a), RedditBias (Barikeri et al., 2021), CDial-Bias (Zhou et al., 2022). Section B provides detailed processing steps."
+
+  data_preprocessing_documented:
+    score: 15
+    justification: "Section 3.2 documents preprocessing comprehensively: 'Using a commercial translation API, we translate the gathered Chinese data into English, and the English data into Chinese.' Section 3.2.3 describes augmentation filtering: 'we first filter questions with highly overlapping content to ensure the BLEU-4 score between any two generated questions is smaller than 0.7.' Section 3.2.2 mentions OCR processing: 'an OCR tool is first used to extract the textual questions' from exam papers. Section 3.3 describes quality control procedures."
+
+  data_annotation_documented:
+    score: 15
+    justification: "Section 3.3 documents the annotation process comprehensively: 'We take great care to ensure that every question in SafetyBench undergoes thorough human validation. Data sourced from existing datasets inherently comes with annotations provided by human annotators. Data derived from exams and augmentation is meticulously reviewed either by our team or by a group of dedicated crowd workers.' Section 3.3 describes double-checking process using GPT-4 and human review: 'Each sample is checked by two authors at first. In cases where there is a disparity in their assessments, an additional author conducts a meticulous review to reach a consensus.'"
+
+  data_representativeness_explained:
+    score: 15
+    justification: "Section 3.2 explains scope comprehensively: 'We collect a total of 11,435 multiple choice questions spanning across 7 categories of safety issues from several different sources.' Section 3.1 describes the 7 categories covering diverse safety concerns. Section 1 emphasizes multilingual support: 'SafetyBench offers both Chinese and English data, which could facilitate the evaluation of both Chinese and English LLMs.' Section 3.2 explains translation procedures and acknowledges potential cultural nuances. Section 6 discusses limitations including potential coverage gaps."
+
+  documentation_standard:
+    score: 0
+    justification: "The paper does not mention following recognized documentation standards such as Datasheets for Datasets or Model Cards in the available text."
+
+maintenance:
+  code_usability_checked:
+    score: 10
+    justification: "Section 1 states that code and evaluation guidelines are available, and Section 4 provides experimental results indicating the code was used successfully. Section 1 mentions 'a continually updated leaderboard' suggesting ongoing maintenance. However, explicit code usability verification or testing procedures are not documented in the available text."
+
+  feedback_channel:
+    score: 10
+    justification: "Section 1 mentions GitHub repository and leaderboard at https://llmbench.ai/safety, which typically provide issue tracking and feedback channels. However, explicit feedback channels (e.g., GitHub issues, email) are not comprehensively documented in the available text."
+
+  contact_person:
+    score: 15
+    justification: "The paper lists authors: Zhexin Zhang, Leqi Lei, Lindong Wu, Rui Sun, Yongkang Huang, Chong Long, Xiao Liu, Xuanyu Lei, Jie Tang, Minlie Huang from multiple institutions (Tsinghua University, Northwest Minzu University, Peking University, China Mobile Research Institute). Minlie Huang is marked as corresponding author (*). Contact email is provided: zx-zhang22@mails.tsinghua.edu.cn."
+

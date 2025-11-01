@@ -1,0 +1,155 @@
+benchmark_info:
+  name: "SWE-bench Multimodal"
+  version: "1.0"
+  description: "SWE-bench Multimodal (SWE-bench M) is a benchmark for evaluating systems on their ability to fix bugs in visual, user-facing JavaScript software. It features 617 task instances collected from 17 JavaScript libraries used for web interface design, diagramming, data visualization, syntax highlighting, and interactive mapping. Each task instance contains at least one image in its problem statement or unit tests, with 83.5% of instances requiring images to solve the corresponding issue."
+  reference: "Published at ICLR 2025, swebench.com/multimodal"
+
+design:
+  tested_capability_definition:
+    score: 15
+    justification: "The Abstract explicitly defines the tested capability: 'evaluate systems on their ability to fix bugs in visual, user-facing JavaScript software' and addresses 'Do AI Systems Generalize to Visual Software Domains?' Section 1 explains that the benchmark evaluates 'autonomous systems that can maintain and improve large codebases' and specifically tests 'visual problem solving and cross-language generalization'."
+  capability_to_task_translation:
+    score: 15
+    justification: "Section 2.1 describes how SWE-bench's task formulation works: 'A task worker is shown the codebase and the issue... must then modify the codebase to solve the problem.' Section 2.2 explains how visual elements are incorporated: 'Each SWE-bench M task instance contains at least one image in its problem statement or unit tests.' Section 2.3 describes the translation for all tasks: '83.5% of task instances, images are necessary for solving the corresponding issue.'"
+  real_world_relevance:
+    score: 15
+    justification: "Section 1 describes real-world relevance: 'many domains of software development rely on visual assets, such as user interface design, gaming, virtual reality, and data visualizations.' Section 2.1 explains: 'By drawing from real GitHub workflows, task instances reflect diverse, practical software challenges.' The benchmark uses 'real-world issues on GitHub' from actual repositories, demonstrating practical value."
+  use_cases_and_personas:
+    score: 10
+    justification: "Section 1 mentions 'autonomous systems for software engineering' and 'LM-based assistants that work at the code line or function level' to 'building autonomous systems that can maintain and improve large codebases.' However, specific user personas or detailed use case scenarios are not explicitly described with cultural/geographic context."
+  domain_expert_involvement:
+    score: 10
+    justification: "Section D.3 mentions 'human experts' who validated task instances: 'To remove impossible task instances and perform dataset characterization that is difficult to conduct automatically, the authors manually inspect each task instance.' However, it's not explicitly stated that domain experts in JavaScript/web development were co-authors or how their insights specifically influenced design."
+  domain_literature_integration:
+    score: 15
+    justification: "Section 5 'Related Work' extensively cites domain literature throughout: 'Multimodal Code Benchmarks' (Austin et al., 2021; Chen et al., 2021; Hendrycks et al., 2021), 'LM Agents for Web and Code' (Beltramelli, 2018; Robinson, 2019), and 'software engineering' benchmarks (Jimenez et al., 2024a). Section 2.1 describes how insights from SWE-bench informed the design: 'we derive instances from real-world issues on GitHub. Unlike SWE-bench, our collection targets JavaScript-based, user-facing applications.'"
+  score_interpretation:
+    score: 15
+    justification: "Section 4 provides guidance on interpretation: 'While overall performance on SWE-bench M is relatively low' and 'SWE-bench M presents repository-level programming tasks that are challenging even for state-of-the-art systems.' Section 4.1 describes what results mean: 'Resolving SWE-bench M issues requires improved visual understanding' and 'system performance generally improves when images are provided.' The limitations section (E) also discusses what the benchmark does not cover."
+  informed_metric_choice:
+    score: 15
+    justification: "Section 3.2 describes the metrics: '(1) % Resolved, the main performance metric, which represents the proportion of successfully resolved task instances and (2) Avg. $ Cost, the mean per-instance inference cost incurred from running the baseline.' The paper explains that % Resolved is 'the main performance metric' and is standard for SWE-bench-style tasks, as described in Section 2.1."
+  metric_floors_ceilings:
+    score: 15
+    justification: "Section 4 provides performance results: 'The performance results on SWE-bench M appear to vary depending on the diverse types of images' and Table 3 shows results ranging from 3.1% to 12.2% resolved. Section 4 states: 'overall performance on SWE-bench M is relatively low, we observe a substantial performance gap between the interactive SWE-agent systems (11.5 % resolved on average) and the Agentless and RAG baselines, which achieve 3.9 and 5.5 % resolved on average respectively.'"
+  human_performance_level:
+    score: 15
+    justification: "Section D.4 describes human performance estimation: 'we label the difficulty of a task instance. We define difficulty as the estimated amount of time it would take for an experienced developer to accomplish this task.' The section provides detailed breakdown: '13% take less than 15 minutes, 43% take 15 minutes to an hour, 38% take 1-4 hours, and 6% take more than 4 hours.' The annotation procedure explains how this was measured: 'each annotator looked at the full details of the task instance... and made a best-effort judgment.'"
+  random_performance_level:
+    score: 0
+    justification: "The paper does not mention random performance baseline or random guessing performance on SWE-bench M tasks."
+  input_sensitivity:
+    score: 10
+    justification: "Section 4.1 addresses input sensitivity: 'Performance changes vary based on image content. When images contain primarily text, SWE-agent JS maintains 23.1% performance with or without images. Larger performance drops occur when images contain non-textual elements.' Table 4 shows performance 'with (W/) and without (W/o) Images' for different systems. However, there's no description of multiple semantic variations of the same prompt being tested systematically."
+  validated_automatic_evaluation:
+    score: 15
+    justification: "Section 2.1 describes automatic evaluation: 'The proposed modification is run against both F2P and P2P tests to check if (1) the issue is fixed and (2) prior working behavior is not broken. If all unit tests pass, the task instance is considered resolved.' Section 2.2 mentions validation: 'we run validation per task instance 10 times and remove tests with inconsistent results.' Section 2.3 describes 'Visual testing. A subset of 69 SWE-bench M task instances test submissions' functional correctness with pixel-level visual testing.'"
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "Section 2.1 explicitly compares to SWE-bench: 'SWE-bench uses only Python repositories, with problem statements presented predominantly as text and lacking visual elements such as images' and 'only 5.6% of SWE-bench tasks contain an image.' Section 1 explains: 'SWE-bench M represents a significant multimodal upgrade to SWE-bench.' Table 1 compares SWE-bench M to other benchmarks (RepoEval, RepoBench, SWE-bench) across multiple dimensions."
+
+implementation:
+  evaluation_code_available:
+    score: 15
+    justification: "The abstract states: 'Data, code, and leaderboard at swebench.com/multimodal.' Section 1 mentions: 'Data, code, and leaderboard at swebench.com/multimodal.' The paper describes evaluation systems (SWE-agent, Agentless JS, RAG) and their adaptations, suggesting code is available."
+  replication_script:
+    score: 15
+    justification: "Section 3.1 and 3.2 describe detailed experimental setup including system configurations, models used (GPT-4o, Claude 3.5 Sonnet), hyperparameters, and evaluation procedures. Section C.1 and C.2 mention: 'We describe more about how the final test configurations, including hyperparameters, were selected in Appendices C.1 and C.2.' The availability of code and data at swebench.com/multimodal suggests replication scripts are included."
+  evaluation_data_accessible:
+    score: 15
+    justification: "The abstract states: 'Data and evaluation guidelines are available at https://github.com/thu-coai/SafetyBench' (though this seems to be a copy-paste error, the paper mentions swebench.com/multimodal). Section 2.2 describes: 'We scrape 135k PRs from these selected repositories' and 'From 135k PRs, this new filtering criteria yields 1,478 candidate task instances.' The paper indicates data is available through swebench.com/multimodal."
+  api_evaluation_support:
+    score: 15
+    justification: "Section 3.2 explicitly states: 'We focus all of our evaluations on GPT-4o (gpt-4o-2024-08-06) (OpenAI, 2024) and Claude 3.5 Sonnet (claude-3-5-sonnet-20240620) (Anthropic, 2024), the two most well-supported mulitmodal LMs for long-context RAG and agent systems.' This indicates the benchmark supports API-based evaluation through OpenAI and Anthropic APIs."
+  local_model_evaluation_support:
+    score: 10
+    justification: "Section 3.2 mentions: 'Though alternative models continue to improve, they currently lack the combination of long-context handling, multimodal processing, and structured prediction abilities required to work with existing autonomous software engineering systems.' The focus is on API models, but the evaluation framework (SWE-agent) appears to support local models if they meet the requirements, though this is not explicitly detailed."
+  guid_or_encryption:
+    score: 0
+    justification: "The paper does not mention globally unique identifiers (GUIDs) or encryption of evaluation instances to prevent data contamination."
+  training_on_test_set_task:
+    score: 0
+    justification: "The paper does not mention a specific task to identify if models were trained on the benchmark data, though Section 4 mentions: 'It finds no evidence for a test set advantage from solutions leaking into the LM training sets.'"
+  sensitive_content_warnings:
+    score: 5
+    justification: "Section E 'LIMITATIONS' mentions some scope limitations but does not explicitly discuss sensitive or harmful content in evaluation tasks or expected outputs. The benchmark deals with JavaScript code and GitHub issues, which could potentially contain sensitive information, but this is not explicitly addressed."
+  release_requirements:
+    score: 5
+    justification: "The paper mentions data availability and evaluation guidelines but does not explicitly specify rules or requirements for benchmark users to ensure integrity of test results, such as prohibiting training on test data or gamification attempts."
+  build_status:
+    score: 0
+    justification: "The paper does not mention build status indicators or GitHub Actions for the evaluation code."
+  requirements_file:
+    score: 10
+    justification: "While the paper mentions code availability and evaluation setup, it does not explicitly state whether a requirements.txt or equivalent file is provided. However, Section 3.2 describes detailed setup procedures, suggesting environment configuration is documented."
+  quick_start_guide:
+    score: 10
+    justification: "The abstract mentions 'evaluation guidelines are available' but the paper does not explicitly describe a quick-start guide or demo code. Section 3.1 and 3.2 provide setup details, but a step-by-step guide is not clearly mentioned."
+  statistical_significance:
+    score: 10
+    justification: "Section 4.1 provides some statistical analysis: 'We calculate the F1 Score for file localization on the development split' and Table 3 shows performance metrics. However, comprehensive statistical significance testing or uncertainty quantification is not explicitly reported for all results."
+
+documentation:
+  inline_code_comments:
+    score: 5
+    justification: "The paper does not explicitly discuss inline code comments in the evaluation code. Code availability is mentioned, but code quality and commenting are not addressed."
+  code_documentation:
+    score: 10
+    justification: "Section 3.1 describes system architectures and adaptations in detail, suggesting documentation exists. The abstract mentions 'evaluation guidelines are available,' but comprehensive API documentation or docstrings are not explicitly discussed."
+  peer_reviewed_venue:
+    score: 15
+    justification: "The paper header states: 'Published as a conference paper at ICLR 2025.' ICLR is a peer-reviewed venue, so this criterion is fully met."
+  construction_process_documented:
+    score: 15
+    justification: "Section 2.2 'COLLECTION' comprehensively documents the construction process in 5 detailed steps: (1) Find user-facing JavaScript repositories, (2) Filter for issues with visuals, (3) Set up environment, (4) Remove inconsistent tests, (5) Human validation. Each step is described in detail with methodology and decisions."
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "Section 2.3 'FEATURES' documents the test tasks and rationale: 'SWE-bench M is a dataset of 619 multimodal, JavaScript task instances collected from 17 open-source GitHub repositories' with detailed breakdown by repository type, image diversity, and task characteristics. Section D.4 documents task difficulty rationale and categorization."
+  normative_properties_documented:
+    score: 10
+    justification: "Section 3.2 mentions assumptions about model capabilities: 'requires handling very long contexts, processing images and text simultaneously, and producing sophisticated structured outputs.' Section D.4 describes assumptions about developers: 'The developer has neither worked on nor used the codebase before' and 'The developer is familiar with JavaScript code.' However, comprehensive documentation of all normative assumptions is not explicitly provided."
+  limitations_documented:
+    score: 15
+    justification: "Section E 'LIMITATIONS' explicitly documents limitations: 'Broader scope' discussing programming languages, modalities, and tasks that could be added; 'Improved models and environments' discussing future enhancements. The section comprehensively addresses what the benchmark does not cover."
+  data_collection_documented:
+    score: 15
+    justification: "Section 2.2 comprehensively documents data collection: '1. Find user-facing JavaScript repositories... 2. Filter for issues that have visuals... 3. Set up the environment for each repository... 4. Remove inconsistent tests... 5. Human validation.' Section 2.2.1, 2.2.2, 2.2.3 detail specific collection steps for different data sources. Section B (in appendix) provides additional collection details."
+  evaluation_metric_documented:
+    score: 15
+    justification: "Section 3.2 documents evaluation metrics: '(1) % Resolved, the main performance metric, which represents the proportion of successfully resolved task instances and (2) Avg. $ Cost, the mean per-instance inference cost incurred from running the baseline.' Section 2.1 explains how resolution is determined: 'The proposed modification is run against both F2P and P2P tests to check if (1) the issue is fixed and (2) prior working behavior is not broken. If all unit tests pass, the task instance is considered resolved.'"
+  license_specified:
+    score: 5
+    justification: "The paper does not explicitly mention a license for the code, data, or documentation. While data and code are mentioned as available, license information is not specified in the paper."
+  persistent_identifier:
+    score: 10
+    justification: "The paper provides arXiv reference but does not explicitly mention a DOI for the dataset itself. Section 1 mentions 'Data, code, and leaderboard at swebench.com/multimodal' which could serve as a persistent identifier, but a formal DOI for the dataset is not mentioned."
+  standardized_metadata:
+    score: 0
+    justification: "The paper does not mention standardized metadata following recognized schemas or formats like Datasheets for Datasets or similar standards."
+  data_sources_documented:
+    score: 15
+    justification: "Section 2.2 documents data sources: 'We scrape 135k PRs from these selected repositories' and '17 JavaScript libraries used for web interface design, diagramming, data visualization, syntax highlighting, and interactive mapping.' Section 2.2 describes: '1. Find user-facing JavaScript repositories. Using GitHub's search feature, we look for JavaScript repositories with 5,000 or more stars and 500 or more pull requests. We then manually pick 17 repositories.'"
+  data_preprocessing_documented:
+    score: 15
+    justification: "Section 2.2 documents preprocessing steps: '2. Filter for issues that have visuals in their description or unit tests. We first look for PRs with one or more issues. We then filter these [issue(s), PR] pairs down to ones with visual assets' and '4. Remove inconsistent tests. During manual inspection, we found that a small percentage of tests exhibited inconsistency... we run validation per task instance 10 times and remove tests with inconsistent results.'"
+  data_annotation_documented:
+    score: 15
+    justification: "Section 2.2 describes: '5. Human validation. To remove impossible task instances and perform dataset characterization that is difficult to conduct automatically, the authors manually inspect each task instance.' Section D details annotation procedures with specific prompts and instructions for image categorization, necessity assessment, and difficulty labeling. Section D.2, D.3, D.4 provide detailed annotation procedures."
+  data_representativeness_explained:
+    score: 15
+    justification: "Section 2.3 explains representativeness: 'SWE-bench M is a dataset of 619 multimodal, JavaScript task instances collected from 17 open-source GitHub repositories' with breakdown by repository type. Section E 'LIMITATIONS' discusses scope: 'However, the scope could be broadened across three key dimensions: (1) More programming languages... (2) More modalities... (3) More tasks...' This explicitly addresses limitations and potential biases."
+  documentation_standard:
+    score: 0
+    justification: "The paper does not mention following recognized documentation standards like Datasheets for Datasets or Model Cards."
+
+maintenance:
+  code_usability_checked:
+    score: 0
+    justification: "The paper does not mention checking code usability within the last year. As a 2025 publication, this would need to be verified post-publication."
+  feedback_channel:
+    score: 15
+    justification: "Section 1 and abstract mention: 'Data, code, and leaderboard at swebench.com/multimodal.' The availability of a leaderboard and code repository typically implies a maintained platform with feedback mechanisms such as GitHub Issues or similar channels for users to report issues or ask questions."
+  contact_person:
+    score: 15
+    justification: "The paper header lists corresponding authors: 'Correspondence to johnby@stanford.edu, carlosej@princeton.edu.' This provides clear contact information for the benchmark maintainers."
+

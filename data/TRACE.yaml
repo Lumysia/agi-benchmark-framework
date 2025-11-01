@@ -1,0 +1,154 @@
+benchmark_info:
+  name: "TRACE"
+  version: "1.0"
+  description: "TRACE is a comprehensive benchmark designed to evaluate continual learning in aligned Large Language Models. It consists of 8 distinct datasets spanning challenging tasks including domain-specific tasks (ScienceQA, FOMC, MeetingBank), multilingual capabilities (C-STANCE, 20Minuten), code generation (CodeXGLUE), and mathematical reasoning (NumGLUE), with all datasets standardized into a unified format for automatic evaluation."
+  reference: "https://arxiv.org/abs/2310.06762"
+
+design:
+  tested_capability_definition:
+    score: 15
+    justification: "The Abstract explicitly defines the tested capability: 'continual learning in LLMs' and 'evaluate continual learning in aligned Large Language Models.' Section 1 explains that continual learning aims to 'develop learning algorithms that can accumulate knowledge on non-stationary data' and addresses 'To what degree do Aligned LLMs exhibit catastrophic forgetting when subjected to incremental training?'"
+  capability_to_task_translation:
+    score: 15
+    justification: "Section 4.1 describes how each task type maps to specific capabilities: 'Domain-Specific. These tasks require specific knowledge...', 'Multi-lingual. The cross-lingual ability...', 'Code completion. Code completion is another challenging task to evaluate long context modeling ability...', 'Mathematical reasoning. Mathematical problems are always used to evaluate the reasoning ability of models.' The paper provides detailed descriptions for all 8 tasks."
+  real_world_relevance:
+    score: 15
+    justification: "Section 1 extensively describes real-world relevance: 'as the demands for language models grow, there's a pressing need to enhance their abilities in areas such as domain-specific knowledge, multilingual proficiency, complex task-solving, and tool usage. Yet, retraining and realigning them from scratch to meet these demands is impractical due to prohibitive training costs and the challenge of acquiring high-quality data. Therefore, incrementally training existing Aligned LLMs through continual learning is crucial.'"
+  use_cases_and_personas:
+    score: 10
+    justification: "Section 4.3.1 mentions evaluation of 'aligned models from diverse training backgrounds and strategies' and discusses various model types (LLaMa-2, Baichuan, Vicuna) used for continual learning. However, user personas and specific interaction contexts are not explicitly described, though the benchmark is designed for LLM developers and researchers."
+  domain_expert_involvement:
+    score: 10
+    justification: "Section 5 mentions 'Domain experts created prompts for each task' and 'Three samples per task were manually annotated' for the RCL method, indicating domain expert involvement in prompt design and validation. However, it's not explicitly stated whether domain experts were co-authors or extensively involved in benchmark design."
+  domain_literature_integration:
+    score: 15
+    justification: "Section 2 'Related Work' extensively cites domain literature on continual learning (Wang et al., 2023a; Lopez-Paz & Ranzato, 2017), CL benchmarks in NLP (Zhang et al., 2015; Razdaibiedina et al., 2023; Scialom et al., 2022), and Chain-of-Thought (Wei et al., 2022). Section 4.1 describes how insights from this literature informed the benchmark design, including the selection of novel, challenging tasks."
+  score_interpretation:
+    score: 15
+    justification: "Section 4.2 describes three unique metrics (General Ability Delta, Instruction Following Delta, Safety Delta) and explains both what they measure and what they indicate: 'These measure the changes in LLM's general capability, instruction adherence, and response safety post-continual learning.' Section 4.4 provides extensive analysis of what the scores mean, including warnings about catastrophic forgetting and capability preservation."
+  informed_metric_choice:
+    score: 15
+    justification: "Section 4.2 provides detailed explanations for all metrics: Overall Performance (OP), Backward Transfer (BWT), General Ability Delta, Instruction Following Delta, and Safety Delta. Each metric is described with formulas and justifications. Section 4.3.3 explains evaluation metrics: 'we measure the performance of LLMs in continual learning tasks using Overall Performance and Backward Transfer Score.'"
+  metric_floors_ceilings:
+    score: 10
+    justification: "Section 4.4.2 presents baseline performance measurements for models before continual learning (e.g., 'LLaMA-2-7B-Chat 46.56' on MMLU), which can serve as reference points. However, explicit floors (random performance) and ceilings are not uniformly provided for all metrics, though some baseline comparisons are shown in tables."
+  human_performance_level:
+    score: 0
+    justification: "Human performance levels are not explicitly stated or measured for the benchmark tasks. The paper focuses on model-to-model comparisons rather than human baselines."
+  random_performance_level:
+    score: 0
+    justification: "Random performance baselines are not explicitly stated for the benchmark tasks, though the paper presents baseline model performance before training."
+  input_sensitivity:
+    score: 0
+    justification: "Input sensitivity is not mentioned or addressed in the paper. The benchmark uses fixed prompts for each task type (shown in Appendix .6) but does not test variations."
+  validated_automatic_evaluation:
+    score: 15
+    justification: "Section 4 states: 'all datasets have been standardized into a unified format, allowing for effortless automatic evaluation of LLMs.' Section 4.3.4 mentions evaluation uses standard metrics like accuracy, F1, EM scores. Section .7 describes automated GPT-4-based evaluation for instruction-following and safety with validation: 'To improve the accuracy and interpretability of the evaluation, GPT-4 is required to elaborate on the reasons for its judgments.'"
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "Section 2.2 extensively explains differences: 'Existing continual learning benchmarks (Zhang et al., 2015; Scialom et al., 2022; Razdaibiedina et al., 2023) are not suitable for evaluating the state-of-the-art LLMs. Firstly, many of these benchmarks predominantly consist of simplistic natural language understanding datasets... Secondly, prior benchmarks have primarily focused on metrics that assess the performance of the models on target sequential tasks. Yet, for aligned models, aspects like generalization to new tasks, the ability to follow human instructions, and safety preservation are of paramount importance.'"
+
+implementation:
+  evaluation_code_available:
+    score: 15
+    justification: "Section 1 states: 'The dataset, code can be found at https://github.com/BeyonderXX/TRACE'. The paper provides a GitHub repository with code for evaluation."
+  replication_script:
+    score: 15
+    justification: "Section 4.3.4 states: 'The detailed settings can be found in Appendix .1' and provides comprehensive implementation details. The GitHub repository contains the code and data needed to replicate results. Section 4.3 describes all baseline methods, datasets, and metrics used."
+  evaluation_data_accessible:
+    score: 15
+    justification: "Section 1 states the dataset is available at the GitHub repository. Section 4.1 describes that datasets are standardized and accessible: 'As these datasets have varying sizes, we create a balanced version by randomly sampling 5000 training examples and 2000 testing examples from the original datasets.'"
+  api_evaluation_support:
+    score: 10
+    justification: "Section 4.3.2 mentions evaluation using API-based models: 'For instruction-following capability, we use Self-instruct dataset' and Section .7 describes using 'OpenAI's GPT-4-0613 API' for evaluation. However, it's not explicitly stated that the benchmark supports evaluation via API calls for general use."
+  local_model_evaluation_support:
+    score: 15
+    justification: "Section 4.3.1 evaluates both API-based models (through inference) and local models (LLaMa-2-7B-Chat, LLaMa-2-13B-Chat, Vicuna models). The code implementation supports local model evaluation as demonstrated by the experiments."
+  guid_or_encryption:
+    score: 0
+    justification: "No mention of GUID (Globally Unique Identifier) or canary strings, or encryption of evaluation data files to prevent contamination."
+  training_on_test_set_task:
+    score: 0
+    justification: "No task included to identify if the model was trained on the benchmark data. The paper discusses contamination concerns in Section 2.2 but does not implement a detection mechanism."
+  sensitive_content_warnings:
+    score: 5
+    justification: "The benchmark includes safety evaluation (Safety Delta) and uses CoNa dataset which addresses 'instructions associated with hateful speech generation' (Section 4.3.2), but there's no explicit statement in the paper about whether tasks or outputs contain sensitive/harmful content."
+  release_requirements:
+    score: 0
+    justification: "Release requirements or terms of use for benchmark users are not specified in the paper."
+  build_status:
+    score: 0
+    justification: "Build status or continuous integration is not mentioned in the paper."
+  requirements_file:
+    score: 10
+    justification: "The GitHub repository likely contains requirements, but this is not explicitly mentioned in the paper. Implementation details are referenced in Appendix .1 but not detailed in the main text."
+  quick_start_guide:
+    score: 10
+    justification: "The GitHub repository may contain a README with setup instructions, but a quick-start guide is not explicitly described in the paper. Section 4.3.4 mentions implementation details in Appendix but doesn't describe user-facing documentation."
+  statistical_significance:
+    score: 10
+    justification: "Section 4.5.2 and Table 8 show some standard deviations (e.g., '78.3±0.4') for certain experiments, and Figure 3 shows performance variations. However, comprehensive statistical significance testing is not consistently reported across all results."
+
+documentation:
+  inline_code_comments:
+    score: 5
+    justification: "Code comments are not mentioned in the paper. The code is available at GitHub but documentation quality of the code itself is not addressed."
+  code_documentation:
+    score: 5
+    justification: "Code documentation is not explicitly mentioned. The GitHub repository likely has some documentation, but this is not described in the paper."
+  peer_reviewed_venue:
+    score: 0
+    justification: "The paper is marked as 'Preprint' (arXiv:2310.06762v1) and does not indicate acceptance at a peer-reviewed venue."
+  construction_process_documented:
+    score: 15
+    justification: "Section 4.1 'DATA CREATION' comprehensively documents the construction process: 'There are three principles for the creation of TRACE...' and provides detailed descriptions for each of the 8 datasets, including data sources, sampling procedures, and task selections."
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "Section 4.1 documents each task and rationale: 'Domain-Specific. These tasks require specific knowledge...', 'Multi-lingual. The cross-lingual ability of large language models is limited...', 'Code completion. Code completion is another challenging task...', 'Mathematical reasoning. Mathematical problems are always used to evaluate the reasoning ability of models.' Each task's purpose is explained."
+  normative_properties_documented:
+    score: 10
+    justification: "Section 4.3.1 describes assumptions about models: 'To evaluate the resilience of safety alignment models from diverse training backgrounds and strategies, we select five aligned models from three organizations.' However, explicit normative assumptions about models or evaluation context are not comprehensively documented."
+  limitations_documented:
+    score: 15
+    justification: "Section 6 'DISCUSSION' extensively documents limitations: '1. High Training Cost: LLMs require significant data for both pre-training and alignment...', '2. Large Number of Parameters: The huge parameter size of LLMs demands advanced hardware for training...', '3. One-for-All Deployment of LLMs: LLMs are designed for a wide range of tasks, meaning tailoring parameters for specific tasks might limit their ability to generalize to new tasks.'"
+  data_collection_documented:
+    score: 15
+    justification: "Section 4.1 comprehensively documents data collection: 'We select three datasets, ScienceQA (Lu et al., 2022), FOMC (Shah et al., 2023) and MeetingBank (Hu et al., 2023)...' For each dataset, the paper describes the source and selection rationale. Section 4.1 also describes the standardization process: 'we create a balanced version by randomly sampling 5000 training examples and 2000 testing examples.'"
+  evaluation_metric_documented:
+    score: 15
+    justification: "Section 4.2 provides comprehensive documentation of all evaluation metrics with formulas: Overall Performance (OP), Backward Transfer (BWT), General Ability Delta (formula in Equation 4), Instruction Following Delta (formula in Equation 5), and Safety Delta (formula in Equation 6). Section 4.3.3 further explains metric calculations."
+  license_specified:
+    score: 0
+    justification: "License information is not specified in the paper. The benchmark is not found in the Evidently CSV file, so license cannot be determined from that source either."
+  persistent_identifier:
+    score: 10
+    justification: "The paper provides an arXiv identifier (arXiv:2310.06762v1) for the paper itself, but no DOI or persistent identifier is mentioned for the dataset specifically."
+  standardized_metadata:
+    score: 5
+    justification: "The datasets are 'standardized into a unified format' (Section 4.1) but it's not explicitly stated that this follows a recognized metadata standard like Schema.org or Dublin Core."
+  data_sources_documented:
+    score: 15
+    justification: "Section 4.1 comprehensively documents data sources: 'We select three datasets, ScienceQA (Lu et al., 2022), FOMC (Shah et al., 2023) and MeetingBank (Hu et al., 2023)' for domain-specific tasks, 'C-STANCE(Zhao et al., 2023) and 20Minuten(Rios et al., 2021)' for multilingual, 'CodeXGLUE(Lu et al., 2021)' for code, and 'NumGLUE(Mishra et al., 2022)' for math. Each source is cited."
+  data_preprocessing_documented:
+    score: 15
+    justification: "Section 4.1 documents preprocessing: 'As these datasets have varying sizes, we create a balanced version by randomly sampling 5000 training examples and 2000 testing examples from the original datasets. As shown in Table 4, we get 40,000 training examples and 16,000 testing examples in total.' For code tasks, it mentions: 'Since the golden labels of the testing dataset are not available by Lu et al. (2021), we randomly divide each Python code in Py150 into two parts.'"
+  data_annotation_documented:
+    score: 10
+    justification: "Section 5 mentions annotation for the RCL method: 'Three samples per task were manually annotated. GPT-4, using these prompts, generated reasoning paths for every entry. Reasoning was verified against ground truth and underwent human checks.' However, annotation processes for the main benchmark datasets are not extensively documented, as they use existing datasets."
+  data_representativeness_explained:
+    score: 10
+    justification: "Section 4.1 explains the selection criteria: 'There are three principles for the creation of TRACE. First, the datasets should be novel enough that most LLMs have not been trained on them. Second, they should be challenging for large language models. Third, a variety of tasks should be covered in our benchmark.' However, limitations or potential biases in data representativeness are not extensively discussed."
+  documentation_standard:
+    score: 0
+    justification: "The documentation does not explicitly follow recognized standards like Datasheets for Datasets or Model Cards."
+
+maintenance:
+  code_usability_checked:
+    score: 0
+    justification: "There is no mention of code usability being checked or verified within the last year. The paper is from October 2023, and no maintenance updates are documented."
+  feedback_channel:
+    score: 10
+    justification: "The GitHub repository (https://github.com/BeyonderXX/TRACE) likely provides an issue tracker for feedback, but this is not explicitly mentioned in the paper."
+  contact_person:
+    score: 15
+    justification: "The paper provides contact information: '{xiao wang20,qz,tgui}@fudan.edu.cn' (Section 1) and lists corresponding authors with email addresses, allowing users to reach out with questions."

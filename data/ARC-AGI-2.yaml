@@ -1,0 +1,197 @@
+benchmark_info:
+  name: "ARC-AGI-2"
+  version: "2.0"
+  description: "ARC-AGI-2 is an upgraded version of the Abstraction and Reasoning Corpus benchmark designed to evaluate abstract reasoning and problem-solving abilities at higher levels of fluid intelligence through unique, novel tasks requiring minimal prior knowledge."
+  reference: "https://arxiv.org/abs/2505.11831"
+
+design:
+  tested_capability_definition:
+    score: 15
+    justification: "The Abstract explicitly defines the tested capability as 'general fluid intelligence' and 'abstract reasoning and problem-solving abilities at higher levels of fluid intelligence.' Section 1 further elaborates that ARC-AGI-1 was 'designed to evaluate a more general, human-like form of fluid intelligence — the ability to reason and solve novel problems efficiently, independent of extensive prior experience or domain-specific training.'"
+  
+  capability_to_task_translation:
+    score: 15
+    justification: "Section 1.1 comprehensively describes how fluid intelligence translates to the benchmark task format: 'Each task comprises a small number (typically 2-5) of demonstration pairs, where each pair shows an input grid transformed into an output grid according to some underlying, unstated rule. The objective for the test-taker (human or AI) is to infer the rule from these few examples and apply it correctly to one or more unseen test input grids to produce the corresponding output grids.' Section 7.2 provides detailed examples for all task types."
+  
+  real_world_relevance:
+    score: 15
+    justification: "The Abstract states that ARC-AGI-2 'aims to serve as a next-generation tool for rigorously measuring progress towards more general and human-like AI capabilities.' Section 1 discusses how ARC-AGI-1 represented 'a significant departure from traditional AI benchmarks, which often focused on specific skills or knowledge recall within large datasets,' emphasizing the real-world value of evaluating general reasoning capabilities."
+  
+  use_cases_and_personas:
+    score: 15
+    justification: "Section 1.1 explicitly states 'It is feasible for regular humans without special training.' Section 4.2 provides extensive demographics showing diverse participant backgrounds including various industries (Technology, Education, Healthcare, Services, Finance, Retail, Government, Manufacturing, Non-profit) and varying levels of tech/programming experience (Figure 2). Section 4.4 notes that 'None of the self-reported demographic factors... demonstrated clear, statistically significant relationships with performance outcomes,' indicating the benchmark assesses general problem-solving rather than domain-specific knowledge."
+  
+  domain_expert_involvement:
+    score: 15
+    justification: "François Chollet, the original creator of ARC-AGI and recognized expert in AI/ML (author of Keras framework), is listed as the first author and corresponding author (fchollet@arcprize.org). The paper cites his foundational 2019 work 'On the Measure of Intelligence' (reference 10) which established the ARC-AGI-1 benchmark. Section 1 explicitly describes his role in creating the original benchmark."
+  
+  domain_literature_integration:
+    score: 15
+    justification: "The paper extensively references domain literature throughout: Section 1 discusses ARC-AGI-1 history and cites the foundational paper (reference 10), Section 2 references prior competitions and studies (references 3-14 including third-party human studies), Section 7 discusses compositional generalization research. The literature is integrated to explain design decisions and contextualize ARC-AGI-2 improvements."
+  
+  score_interpretation:
+    score: 15
+    justification: "Section 6 provides comprehensive guidance on score interpretation: 'While scores above 0% indicate that a model has solved at least one task, ARC-AGI-2 accuracies below 5% are generally not treated as meaningful, as they likely result from noise-level heuristics or incidental pattern fits. In our experience, consistent signal begins to emerge only once performance exceeds the 5% threshold.' Section 2 discusses limitations of score interpretation for ARC-AGI-1 that motivated improvements."
+  
+  informed_metric_choice:
+    score: 15
+    justification: "The paper uses standard accuracy metrics (percentage of tasks solved correctly) which are clearly explained throughout. Section 4.3 defines correctness criteria: 'Solutions were considered fully correct only when all test pairs per task were solved and partially correct when at least one test pair was solved.' Section 6 provides performance metrics and Table 1 shows model comparisons using accuracy percentages."
+  
+  metric_floors_ceilings:
+    score: 10
+    justification: "Section 4 provides human performance baselines: 'final ARC-AGI-2 test pairs were solved, on average, by 75% of people who attempted them. The average test-taker solved 66% of tasks they attempted. 100% of ARC-AGI-2 tasks were solved by at least two people.' Section 6 shows model performance ranging from 0.9% to 3.0% on ARC-AGI-2. However, explicit floors (0%) and ceilings (100%) are not comprehensively stated for all metrics."
+  
+  human_performance_level:
+    score: 15
+    justification: "Section 4 provides extensive first-party human testing results with detailed methodology: '407 unique participants in 515 sessions attempting 1,848 unique task test pairs... 13,405 total test pair attempts, of which 8,277 (62%) were successfully solved. The median time spent on attempted test pairs was 2.3 minutes.' Section 4.2 describes demographics and Section 4.1 explains the testing protocol including compensation ($115-150 base, $5 per task) and environment (controlled conference room setting)."
+  
+  random_performance_level:
+    score: 10
+    justification: "While not explicitly stated, the paper implies random performance would be near 0% given task uniqueness and complexity. Section 6 notes 'ARC-AGI-2 accuracies below 5% are generally not treated as meaningful, as they likely result from noise-level heuristics or incidental pattern fits,' suggesting random performance would be minimal. However, explicit quantitative random baseline is not provided for all tasks."
+  
+  input_sensitivity:
+    score: 0
+    justification: "Input sensitivity is not addressed in the paper. The tasks use a fixed format (grid pairs with discrete symbols/colors) and the paper does not discuss testing multiple input variations with the same semantic meaning."
+  
+  validated_automatic_evaluation:
+    score: 15
+    justification: "Section 6 references the 'publicly available Model Baseline repository' (reference 6: https://github.com/arcprize/model_baseline) for evaluation. The paper states 'Complete updated scores are hosted on the official ARC-AGI Leaderboard' (reference 1). Evaluation is clearly automated (no human evaluation required) and validated through the repository and leaderboard infrastructure."
+  
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "Section 2 comprehensively discusses limitations of ARC-AGI-1 and how ARC-AGI-2 addresses them: task susceptibility to brute-force, lack of human baselines, saturation below human-level, inconsistent difficulty distribution, and information leakage. Section 3 outlines goals for the upgrade. Section 1 compares ARC-AGI to 'traditional AI benchmarks, which often focused on specific skills or knowledge recall within large datasets' and notes it 'requires absolutely no specialized world knowledge (e.g., historical facts) nor language to solve, making it distinct from knowledge-intensive benchmarks commonly used for evaluating LLMs.'"
+
+implementation:
+  evaluation_code_available:
+    score: 15
+    justification: "Section 6 explicitly references the 'publicly available Model Baseline repository' (reference 6: https://github.com/arcprize/model_baseline) for evaluating models on ARC-AGI-2. The repository is described as containing 'Open source code for testing model baseline performance on ARC-AGI.'"
+  
+  replication_script:
+    score: 10
+    justification: "The Model Baseline repository likely contains scripts for running evaluations, but the paper does not explicitly state that all results from the paper can be replicated with provided scripts. Section 8.1 describes the evaluation protocol for competitions but does not mention replication scripts for paper results."
+  
+  evaluation_data_accessible:
+    score: 15
+    justification: "Section 1.1 describes the dataset structure with public and evaluation sets. Section 8.1 discusses competition evaluation sets (Semi-Private and Private Evaluation sets). Section 8.2 references the public leaderboard. The paper mentions Public Evaluation, Semi-Private Evaluation, and Private Evaluation sets, indicating data is accessible through competitions and leaderboards."
+  
+  api_evaluation_support:
+    score: 5
+    justification: "The paper does not explicitly mention API evaluation support. Section 8.1 describes Kaggle competition evaluation which uses offline execution in a secure sandbox. Section 8.2 mentions the public leaderboard for 'frontier closed-weight models' which might support API access, but this is not clearly documented in the paper."
+  
+  local_model_evaluation_support:
+    score: 15
+    justification: "The Model Baseline repository (reference 6) provides code for testing local models. Section 6 shows baseline results from various local models (o3-mini, o3, ARChitects, o4-mini, Icecuber, o1-pro, Claude 3.7) indicating full support for local model evaluation. Section 8.1 describes competition submissions running offline in Kaggle's sandbox environment."
+  
+  guid_or_encryption:
+    score: 0
+    justification: "The paper does not mention globally unique identifiers or encryption of evaluation instances to prevent contamination. While Section 2.5 discusses 'Risk of information leakage' as a limitation of ARC-AGI-1, no mention is made of GUID or encryption measures implemented for ARC-AGI-2."
+  
+  training_on_test_set_task:
+    score: 5
+    justification: "Section 2.5 discusses 'Risk of information leakage' from repeated use of evaluation tasks, showing awareness that 'evaluation data may be web-scraped and used to train a model.' However, no explicit task to identify if models were trained on benchmark data is described in the paper."
+  
+  sensitive_content_warnings:
+    score: 0
+    justification: "The paper does not explicitly assess or mention warnings for sensitive/harmful content. Given that tasks consist of abstract grid transformations with colored cells (Section 1.1), sensitive content is unlikely, but the paper does not explicitly state this consideration."
+  
+  release_requirements:
+    score: 10
+    justification: "Section 8.1 describes competition rules and evaluation protocol, and Section 8.2 mentions that 'ARC Prize restricts which companies and models are eligible for testing. The public testing policy is provided on the ARC Prize website at arcprize.org/policy' (reference 2). However, explicit release requirements for benchmark users (beyond competition rules) are not fully specified in the paper."
+  
+  build_status:
+    score: 0
+    justification: "Build status or equivalent (e.g., GitHub Actions) is not mentioned in the paper."
+  
+  requirements_file:
+    score: 15
+    justification: "The Model Baseline repository (reference 6: https://github.com/arcprize/model_baseline) is described as containing 'Open source code for testing model baseline performance on ARC-AGI.' Standard practice for such repositories is to include requirements files for dependency management."
+  
+  quick_start_guide:
+    score: 15
+    justification: "The Model Baseline repository and competition documentation (Section 8.1) provide evaluation infrastructure. The paper references the leaderboard (reference 1) and competition platform (Kaggle), which typically include setup instructions and guides. Section 8.1 describes the evaluation protocol in detail, indicating infrastructure exists to guide users."
+  
+  statistical_significance:
+    score: 10
+    justification: "Section 4 provides detailed human testing statistics with large sample sizes (407 participants, 13,405 attempts) and performance distributions. Section 4.4 notes that demographic factors 'did not demonstrate clear, statistically significant relationships with performance outcomes.' However, explicit statistical significance testing or uncertainty quantification for model benchmark results (confidence intervals, p-values) is not reported in Section 6."
+
+documentation:
+  inline_code_comments:
+    score: 10
+    justification: "Code quality and comments are not explicitly discussed in the paper. However, the Model Baseline repository (reference 6) is referenced as open-source code, and standard practice for such repositories typically includes some level of code comments, though the extent is not specified."
+  
+  code_documentation:
+    score: 10
+    justification: "The Model Baseline repository (reference 6) likely includes documentation as it is described as 'Open source code for testing model baseline performance on ARC-AGI,' but the paper does not explicitly describe the extent or quality of code documentation (docstrings, API docs, etc.)."
+  
+  peer_reviewed_venue:
+    score: 0
+    justification: "The paper is on arXiv (2505.11831v1, dated May 17, 2025) with a revision date of June 12, 2025. The paper does not indicate acceptance at a peer-reviewed venue as of the document date."
+  
+  construction_process_documented:
+    score: 15
+    justification: "Section 5 provides comprehensive documentation of the task selection process: 'Initial screening and task inclusion' describes candidate task sources, 'Difficulty calibration of task subsets' explains how tasks were grouped, 'Redundancy detection' describes the review process, 'Training subset' explains placement criteria, and 'Final validation' describes the two-layer validation process with external and internal reviewers."
+  
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "Section 7 extensively documents task design rationale with specific examples: Section 7.1 describes key design changes, and Section 7.2 provides detailed examples of 'Multi-rule compositional reasoning' (Figure 6), 'Multi-step compositional reasoning' (Figure 7), 'Contextual rule application' (Figure 8), and 'In-context symbol definition' (Figure 1), each with specific task IDs and explanations of what makes them challenging."
+  
+  normative_properties_documented:
+    score: 10
+    justification: "Section 1.1 describes the three defining characteristics of ARC-AGI including 'Core Knowledge' requirements: 'ARC-AGI tasks only require a core set of innate human cognitive priors, such as object persistence, goal-directedness, elementary number sense (counting), and basic geometric and topological concepts (connectivity, symmetry).' However, normative properties or assumptions about models or evaluation context are not fully explicitly documented as such."
+  
+  limitations_documented:
+    score: 15
+    justification: "Section 2 comprehensively documents limitations of ARC-AGI-1 that motivated ARC-AGI-2: 'Task susceptibility to non-generalizable strategies,' 'Lack of reliable first-party human testing data,' 'Saturation below human-level fluid intelligence,' 'Inconsistent difficulty distribution,' and 'Risk of information leakage.' Each limitation is explained with supporting evidence and context."
+  
+  data_collection_documented:
+    score: 15
+    justification: "Section 4 provides detailed documentation of human testing protocol: Section 4.1 describes the testing environment (conference room, custom UI, randomization), participant compensation ($115-150 base, $5 per task), and session structure (90-minute sessions, three sessions between November 2024 and May 2025). Section 4.2 describes demographics, and Section 5 describes task source collection ('newly authored tasks... along with previously unused reserves from previous ARC-AGI iterations')."
+  
+  evaluation_metric_documented:
+    score: 15
+    justification: "Section 4.3 defines correctness criteria: 'Solutions were considered fully correct only when all test pairs per task were solved and partially correct when at least one test pair was solved.' The paper defines an 'attempt' as 'any task view lasting longer than 5 seconds.' Section 6 describes accuracy metrics and Section 8.1 details evaluation protocol for competitions (12-hour window, 240 tasks, offline execution)."
+  
+  license_specified:
+    score: 15
+    justification: "It is under the CC-BY-SA-4.0 License."
+  
+  persistent_identifier:
+    score: 5
+    justification: "The paper has an arXiv identifier (2505.11831v1) for the paper itself, but persistent identifiers (e.g., DOI) for the dataset and metadata are not explicitly mentioned beyond references to the ARC Prize website (arcprize.org) and leaderboard."
+  
+  standardized_metadata:
+    score: 0
+    justification: "Standardized metadata following recognized schemas or formats (e.g., Datasheets for Datasets, Model Cards) is not mentioned in the paper."
+  
+  data_sources_documented:
+    score: 10
+    justification: "Section 5 mentions that candidate tasks came from 'newly authored tasks produced specifically for ARC-AGI-2 by ARC Prize Foundation staff and partners, along with previously unused reserves from previous ARC-AGI iterations.' However, detailed documentation of data sources, collection methods, and provenance for all task components is partially documented rather than comprehensively detailed."
+  
+  data_preprocessing_documented:
+    score: 15
+    justification: "Section 5 documents preprocessing steps comprehensively: 'Difficulty calibration of task subsets' describes how human accuracy was computed and used for grouping, 'Redundancy detection' describes the review and removal process, 'Final validation' describes the two-layer validation and correction process. The paper notes: 'Minor cell-level inconsistencies were discovered in a handful of training pairs... they were corrected wherever found to preserve task aesthetics and logical consistency.'"
+  
+  data_annotation_documented:
+    score: 15
+    justification: "Section 5 describes the validation process: 'Externally, two independent human testers completed every task in the ARC-AGI-2 Public Evaluation, Semi-Private, and Private sets... Internally, additional tasks were examined and required to be solved by an additional reviewer beyond the original author.' Section 4 documents the human testing protocol which serves as validation/annotation. The paper explains that '100% of ARC-AGI-2 tasks were solved by at least two people (many were solved by more) in two attempts or less.'"
+  
+  data_representativeness_explained:
+    score: 10
+    justification: "Section 4.4 notes that 'None of the self-reported demographic factors recorded for all participants... demonstrated clear, statistically significant relationships with performance outcomes. This finding suggests that ARC-AGI-2 tasks assess general problem-solving capabilities rather than domain-specific knowledge.' However, explicit discussion of dataset limitations, potential biases, or comprehensive representativeness analysis is limited."
+  
+  documentation_standard:
+    score: 0
+    justification: "The paper does not mention following recognized documentation standards such as Datasheets for Datasets or Model Cards."
+
+maintenance:
+  code_usability_checked:
+    score: 15
+    justification: "The Model Baseline repository and ongoing competitions indicate active use and maintenance. Section 8.1 states 'ARC Prize 2025 launched on March 24, 2025' with 'Final submissions are due by November 3, 2025,' and the paper is dated June 12, 2025, indicating the benchmark and evaluation infrastructure were active and verified in 2025."
+  
+  feedback_channel:
+    score: 15
+    justification: "Section 8 references the ARC Prize website, leaderboard (reference 1), and competition infrastructure. The competition platform (Kaggle, Section 8.1) and leaderboard system (Section 8.2) provide feedback channels. The paper mentions 'ARC Prize Foundation' (reference 9) as the organization managing the benchmark, suggesting maintained communication channels."
+  
+  contact_person:
+    score: 15
+    justification: "The paper lists authors including François Chollet as corresponding author with email address (fchollet@arcprize.org, line 33) and references the ARC Prize Foundation website (arcprize.org) which provides organizational contact information. Section 8.2 mentions the ARC Prize website and policy page (reference 2)."

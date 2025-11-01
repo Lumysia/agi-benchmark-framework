@@ -39,6 +39,10 @@ pip3 install -r requirements.txt
 cd src
 python3 validator.py
 
+# Run the better bench score calculator
+cd src
+python3 calculate_evaluation_scores.py
+
 # Run the analysis
 cd src
 python3 analysis.py

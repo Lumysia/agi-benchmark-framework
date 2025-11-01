@@ -1,135 +1,673 @@
 # === 1. Benchmark Identification ===
-# Just the basic "who is this" info.
+# Basic information about the benchmark being evaluated
 benchmark_info:
-  # Obvious: "MMLU", "ARC-AGI-2", "MLGym"
-  name: "Example Benchmark (e.g., MLGym)"
-  
+  # The name of the benchmark (e.g., "AgentBench", "MMLU", "ARC-AGI-2")
+  name: "Example Benchmark Name"
+
   # Which version of the benchmark are we scoring?
   version: "1.0"
-  
-  # This is our key idea: separating the paradigms.
-  # Valid options: "Static", "Process-Oriented", "Continual-Learning", "Hybrid"
-  paradigm: "Process-Oriented"
-  
-  # Simple one-sentence summary.
-  description: "A benchmark for evaluating LLM agents on realistic AI research tasks."
-  
-  # Link to the paper or website so we can find it again.
-  reference: "https of://openai.com/research/mlgym"
 
-# === 2. Evaluation Engineering ===
-# This is how we score the quality of the benchmark itself.
-# Basically, is it a reliable "scientific instrument" or a
-# disposable dataset? Inspired by that AGI-ProB report.
-evaluation_engineering:
-  
-  # --- Design Phase ---
-  # Did they think this through?
-  design:
-    # Does this test actually measure what it claims to?
-    # e.g., for MLGym: "Tests complex agentic workflows, not just coding."
-    construct_validity: "High. Tasks are complex and require multi-step agentic behavior."
-    
-    # How are the problems made? By hand? By AI?
-    task_generation: "Procedural / AI-Generated"
-    
-    # Is it easy to "game" or cheat this benchmark?
-    # e.g., "Dynamic tasks, so models can't just memorize the answers."
-    adversarial_design: "Tasks are dynamic, preventing static memorization."
+  # Simple one-sentence summary of the benchmark
+  description: "A brief description of what this benchmark evaluates."
 
-  # --- Data & Implementation Phase ---
-  # How usable is this thing in practice?
-  implementation:
-    # Do they even version their data?
-    # (e.g., "Git-LFS", "DVC", "None")
-    data_versioning: "Git"
-    
-    # How do we run it? Is it easy or a nightmare?
-    # (e.g., "Docker", "Conda env file", "None")
-    reproducibility: "Docker container provided"
-    
-    # Can we actually find the evaluation scripts?
-    script_availability: "Public GitHub repository with setup scripts."
+  # Link to the paper, repository, or website
+  reference: "https://example.com/benchmark"
 
-  # --- Contamination & Maintenance Phase ---
-  # Is this benchmark still alive? Is it contaminated?
-  maintenance:
-    # (e.g., "Active", "Archived", "Retired")
-    status: "Active"
-    
-    # This is the big one. Is the test data in the training data?
-    # (e.g., "Audited", "Known Contamination", "High-Risk", "Unknown")
-    contamination_status: "Audited - No Contamination (data is synthetic/private)"
-    
-    # Is there a GitHub issues page or just an email to nowhere?
-    feedback_channel: "GitHub Issues"
+# === 2. Design Criteria ===
+# These criteria evaluate the design quality and scientific rigor of the benchmark
+design:
+  # Criterion: Definition of tested capability or characteristic
+  # Explanation: The benchmark developers mention and define what underlying capability or
+  # characteristic of a model is supposed to be tested with the benchmark.
+  # Justification: Defining the objective of the benchmark is necessary for clarity in its design.
+  # It also helps users determine if the benchmark aligns with their specific application needs.
+  # Scoring:
+  # 0 (not mentioned)
+  # 5 (mentioned, need acknowledged but not defined)
+  # 10 (mentioned but not defined)
+  # 15 (mentioned and defined)
+  tested_capability_definition:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
 
+  # Criterion: Description of how tested capability or concept translates to benchmark task
+  # Explanation: The benchmark developers describe how the tested capability or characteristic
+  # translates to the task implemented in the benchmark.
+  # Justification: Clearly explaining this translation ensures that the benchmark tasks accurately
+  # reflect the intended tested capabilities, providing valid assessment results.
+  # Scoring:
+  # 0 (no description)
+  # 5 (acknowledged as issue but not described)
+  # 10 (described for some tasks)
+  # 15 (described for all tasks)
+  capability_to_task_translation:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
 
-# === 3. Capability Assessment ===
-# This is the core of our UGF: *what* is this benchmark
-# actually measuring? We split this into our three pillars.
-capability_assessment:
-  
-  # --- 3.1 Static Knowledge ---
-  # "What a model knows."
-  static_knowledge:
-    # Does this benchmark even test static knowledge? (e.g., MLGym = false)
-    evaluates: false
-    capability_measured: null
-    task_format: null
+  # Criterion: Description of how knowing about the tested concept is helpful in the real world
+  # Explanation: The developers describe why it is useful to know about the tested capability
+  # in the real world.
+  # Justification: This description helps users understand the practical value of the benchmark,
+  # demonstrating how the tested capability impacts real-world applications.
+  # Scoring:
+  # 0 (no description)
+  # 5 (acknowledged as issue but not described)
+  # 10 (limited description)
+  # 15 (full description)
+  real_world_relevance:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
 
-  # --- 3.2 Process Orientation ---
-  # "How a model works."
-  process_orientation:
-    # Does this test measure a process instead of a single answer?
-    evaluates: true
-    # e.g., "Multi-step reasoning", "Tool use", "SWE-Bench style workflow"
-    capability_measured: "Execution of a complex, multi-step research workflow."
-    
-    # If it's a workflow, what are the stages?
-    # This is how we'll describe frameworks like MLGym.
-    workflow_stages:
-      - stage_id: 1
-        name: "Task Decomposition"
-        description: "Agent must break down the high-level goal into sub-tasks."
-        metrics: ["subtask_accuracy", "planning_time"]
-        
-      - stage_id: 2
-        name: "Information Retrieval & Tool Use"
-        description: "Agent must select and use tools (e.g., search, code interpreter)."
-        metrics: ["tool_selection_f1", "retrieval_precision"]
-        
-      - stage_id: 3
-        name: "Synthesis & Final Answer"
-        description: "Agent must synthesize findings into a final report/solution."
-        metrics: ["final_accuracy", "hallucination_rate"]
+  # Criterion: Description of use cases and user personas for the benchmark
+  # Explanation: A use case involves specifying a scenario in which the AI system will be
+  # evaluated, including cultural and geographic context and types of interactions between
+  # humans and models. User personas represent different types of users that might interact
+  # with the AI system.
+  # Justification: Use cases set the context and scope. User personas outline understanding
+  # of different types of interactions, ensuring the benchmark is closely related to
+  # real-world applications.
+  # Scoring:
+  # 0 (no description)
+  # 5 (acknowledged but not described)
+  # 10 (partial description)
+  # 15 (full description with context)
+  # n/a (for non-interactive systems)
+  use_cases_and_personas:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
 
-  # --- 3.3 Learning Adaptability ---
-  # "How a model learns."
-  learning_adaptability:
-    # Does this benchmark test learning over time?
-    evaluates: true # <--- This would be 'true' for a continual learning benchmark
-    
-    # e.g., "Continual learning", "Catastrophic forgetting"
-    capability_measured: "Continual learning on a sequence of new tasks."
-    
-    # What kind of learning?
-    learning_type: "Task-Incremental"
-    
-    # These are the key metrics from the proposal.
-    metrics:
-      - name: "Backward Transfer (BWT)"
-        id: "BWT"
-        # This is the main one for catastrophic forgetting.
-        description: "Measures performance on old tasks after learning new ones."
-        unit: "Percentage (%)"
-        
-      - name: "Forward Transfer (FWT)"
-        id: "FWT"
-        description: "Measures how learning previous tasks improves performance on future tasks."
-        unit: "Percentage (%)"
-        
-      - name: "Average Accuracy (ACC)"
-        id: "ACC"
-        description: "The average accuracy across all tasks learned so far."
-        unit: "Percentage (%)"
+  # Criterion: Involvement of domain experts
+  # Explanation: Domain expert(s) who have a professional background or research experience
+  # in the concept to be tested are either co-authors of the paper, or were involved in the
+  # benchmark design process.
+  # Justification: Involving domain experts ensures that the benchmark design is informed by
+  # deep, specialized knowledge, increasing its validity and relevance.
+  # Scoring:
+  # 0 (no experts)
+  # 5 (mentioned but no details)
+  # 10 (mentioned but not how insights influenced design)
+  # 15 (co-author with background or specified how experts influenced design)
+  domain_expert_involvement:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Integration of domain literature
+  # Explanation: The developers cite domain literature in the background section and describe
+  # how insights from this literature informed the design of their benchmark.
+  # Justification: By consulting domain-specific literature, benchmark developers can ensure
+  # that tasks and evaluation criteria are representative and aligned with current knowledge.
+  # Scoring:
+  # 0 (no references)
+  # 5 (need mentioned but not addressed)
+  # 10 (referenced but not described how it informed design)
+  # 15 (referenced throughout and described how it informed design)
+  domain_literature_integration:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Description of how benchmark score should or shouldn't be interpreted/used
+  # Explanation: The benchmark developers provide information about what benchmark users can
+  # and cannot take away from the benchmark score.
+  # Justification: Clarifying interpretation prevents misuse and misinterpretation, ensuring
+  # users draw accurate conclusions about model performance.
+  # Scoring:
+  # 0 (no comment)
+  # 5 (acknowledged but no guidance)
+  # 10 (describes should or shouldn't, but not both)
+  # 15 (describes both should and shouldn't)
+  score_interpretation:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Informed choice of performance metric(s)
+  # Explanation: The developers describe how the performance metric should be interpretable,
+  # meaningful, and standard for the task. If non-standard, they describe their rationale.
+  # Justification: The metric should be easily understood to build opinion about model
+  # capabilities. If non-standard, explanation is necessary to clarify relevance.
+  # Scoring:
+  # 0 (not mentioned or not explained)
+  # 5 (acknowledged but not justified)
+  # 10 (explained for some metrics)
+  # 15 (explained for all metrics)
+  informed_metric_choice:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Includes floors and ceilings for metric
+  # Explanation: The benchmark provides clear floors and ceilings for the metric(s) it uses.
+  # Justification: Establishing floors and ceilings ensures users have a reference point for
+  # understanding model performance and helps determine if benchmark is saturated.
+  # Scoring:
+  # 0 (none provided)
+  # 5 (shown in figure but not mentioned)
+  # 10 (provided for some metrics)
+  # 15 (provided for all metrics)
+  metric_floors_ceilings:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Includes human performance level
+  # Explanation: The benchmark explicitly states human performance measured on the benchmark
+  # task, explains how it was measured, and notes if average or expert group. If not possible,
+  # explains why.
+  # Justification: Including human performance allows readers to put model's performance into
+  # perspective and allows for better interpretability.
+  # Scoring:
+  # 0 (not stated and not explained why)
+  # 5 (mentioned in passing but no measurement)
+  # 10 (stated but no explanation of how obtained)
+  # 15 (stated and explains how obtained)
+  # n/a (cannot be completed by humans)
+  human_performance_level:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Includes random performance level
+  # Explanation: The developers explicitly state the random performance measured on the benchmark.
+  # Justification: Establishing a baseline through random guessing/generation/selection helps
+  # users understand the extent to which model's performance stems from capabilities rather
+  # than chance or benchmark design.
+  # Scoring:
+  # 0 (not stated and not explained why)
+  # 5 (mentioned but no quantitative value)
+  # 10 (stated for some tasks)
+  # 15 (stated for all tasks)
+  # n/a (not possible to measure)
+  random_performance_level:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Addresses input sensitivity
+  # Explanation: The benchmark contains multiple input variations with the same semantic meaning
+  # intended to elicit the same response. Developers describe details such as how many variations
+  # were tested per prompt and how variations were designed.
+  # Justification: Addressing input sensitivity ensures model performance is consistent across
+  # semantically equivalent inputs, validating robustness. This serves the goal of approximating
+  # intrinsic model capabilities rather than measuring artifacts.
+  # Scoring:
+  # 0 (not mentioned)
+  # 5 (mentioned but no experiments)
+  # 10 (includes some variations but lacks thorough descriptions)
+  # 15 (contains multiple variations with detailed descriptions)
+  input_sensitivity:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Validated automatic evaluation available
+  # Explanation: Evaluating a model against the benchmark does not require human evaluation
+  # and the quality of automated evaluation is validated (if applicable, e.g., FM-based evaluations).
+  # Justification: Requiring human feedback limits scalability and potentially introduces biases.
+  # It may require IRB and is more costly, creating barriers to entry.
+  # Scoring:
+  # 0 (relies entirely on human evaluation)
+  # 5 (mentions benefits but no/limited automatic)
+  # 10 (includes automatic but no validation)
+  # 15 (includes automatic and describes validation)
+  validated_automatic_evaluation:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Explanation of differences to related benchmarks
+  # Explanation: The benchmark developers explain how their benchmark fills a gap compared to
+  # existing benchmarks or how it expands on existing benchmarks or their tested concepts.
+  # Justification: This demonstrates added value and relevance, justifying necessity by addressing
+  # gaps in existing benchmarks. Allows users to understand differences and determine which to use.
+  # Scoring:
+  # 0 (no explanation)
+  # 5 (briefly mentions but no explanation)
+  # 10 (explains for some related benchmarks)
+  # 15 (explains for all mentioned related benchmarks)
+  differences_to_related_benchmarks:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+# === 3. Implementation Criteria ===
+# These criteria evaluate the practical implementation and usability of the benchmark
+implementation:
+  # Criterion: Availability of evaluation code
+  # Explanation: The benchmark developers make the code available for others to evaluate their
+  # own models against the benchmark, e.g., as part of a GitHub repository.
+  # Justification: Without access to the benchmarking procedure, the benchmark cannot be
+  # scrutinized by external parties to verify reliability, nor utilized for independent evaluations.
+  # Scoring:
+  # 0 (not publicly available)
+  # 5 (mentioned but no access)
+  # 10 (available for some metrics)
+  # 15 (available for all metrics)
+  evaluation_code_available:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Script to replicate results is explicitly included
+  # Explanation: The benchmark developers give access to input, output, and evaluation code,
+  # as well as all other necessary information (e.g., hyperparameters or random seed) that they
+  # used to create initial benchmarking results presented in the paper.
+  # Justification: Providing access allows for transparency and reproducibility of reported results,
+  # fostering trust and contributing to overcome reproducibility crisis in AI/ML research.
+  # Scoring:
+  # 0 (not available)
+  # 5 (issue mentioned but not addressed)
+  # 10 (script available for some results)
+  # 15 (script available for all results)
+  replication_script:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Accessibility of evaluation data, prompts, or dynamic environment
+  # Explanation: The benchmark developers make evaluation data, prompts, or data/environment
+  # generation mechanism accessible. These don't have to be public (if contamination is a concern),
+  # but some access for evaluation purposes needs to be possible.
+  # Justification: Without any accessibility of evaluation data, prompts, or environment generation
+  # mechanism, a benchmark cannot be used.
+  # Scoring:
+  # 0 (no access provided)
+  # 5 (existence mentioned but no concrete access)
+  # 10 (partial access allowing limited evaluation)
+  # 15 (full access enabling comprehensive evaluation)
+  evaluation_data_accessible:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Supports evaluation of models via API calls
+  # Explanation: The benchmark developers allow benchmark evaluation of models via API access, if applicable.
+  # Justification: In NLP, for example, closed-source models such as GPT-4 are often only accessible
+  # via API. Without API evaluation support, they cannot be evaluated, which is problematic if such
+  # models are state-of-the-art in the field.
+  # Scoring:
+  # 0 (does not support)
+  # 5 (mentions possibility but no implementation)
+  # 10 (supports one API)
+  # 15 (supports two or more APIs)
+  api_evaluation_support:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Supports evaluation of local models
+  # Explanation: The benchmark developers implement code to support evaluation of local models
+  # without API access.
+  # Justification: Some model developers only host their models locally. A benchmark should support
+  # evaluation of those to allow for a wide variety of models to be evaluated.
+  # Scoring:
+  # 0 (requires users to write own code)
+  # 5 (mentions should be possible but no code)
+  # 10 (minimal support requiring significant user effort)
+  # 15 (full support with user-friendly code)
+  local_model_evaluation_support:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Inclusion of a globally unique identifier or encryption of evaluation instances
+  # Explanation: Benchmark developers include a globally unique identifier (GUID) or canary string
+  # in main public evaluation code and all public evaluation prompt or data files. Alternatively,
+  # they encrypt test data files and make the key public.
+  # Justification: Including a GUID can support identification of data contamination in models,
+  # either by allowing model developers to filter out evaluation data or by allowing benchmark
+  # developers to identify which model developers trained on their data.
+  # Scoring:
+  # 0 (not included)
+  # 5 (acknowledges risk but does not address)
+  # 10 (partially implemented but not consistently)
+  # 15 (consistently included across all relevant files)
+  guid_or_encryption:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Inclusion of 'training_on_test_set' task
+  # Explanation: The benchmark includes a task to identify if the model was trained on the benchmark data.
+  # Justification: Public benchmarks face challenges that evaluation data may be web-scraped and used
+  # to train a model. A 'training_on_test_set' task can serve as a post-hoc diagnosis of whether
+  # benchmark data was used in model training.
+  # Scoring:
+  # 0 (not included)
+  # 5 (mentions possibility but no way to check)
+  # 10 (partial or limited implementation)
+  # 15 (comprehensive implementation)
+  training_on_test_set_task:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Assess need for warnings for sensitive/harmful content
+  # Explanation: Benchmark developers explicitly mention in the paper if evaluation tasks or expected
+  # output may contain sensitive or harmful content. If they do not anticipate sensitive/harmful content,
+  # they should explicitly state that.
+  # Justification: By explicitly stating presence of sensitive/harmful content and issuing appropriate
+  # warnings, developers help users make informed decisions. Even if developers don't expect sensitive
+  # content, stating that showcases they actually thought about the possibility.
+  # Scoring:
+  # 0 (not mentioned)
+  # 5 (mentions general possibility but no clear statements)
+  # 10 (explicitly states for either tasks or output)
+  # 15 (explicitly states for both tasks and output)
+  sensitive_content_warnings:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Release requirements specified
+  # Explanation: Benchmark developers specify rules for benchmark users to ensure integrity of test
+  # results. While not all developers can enforce requirements, they should at least specify them.
+  # Justification: Written terms of use can help set expectations and provide foundation to address
+  # subsequent contamination or intentional gamification attempts.
+  # Scoring:
+  # 0 (not specified)
+  # 5 (briefly mentions but no specific details)
+  # 10 (states dos and don'ts but not as requirements)
+  # 15 (provides set of release requirements)
+  release_requirements:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Includes build status or equivalent
+  # Explanation: A build status is a feature, typically implemented as a GitHub Action, that indicates
+  # whether the most recent build of the benchmark was successful. It should be implemented for the
+  # benchmark's evaluation code.
+  # Justification: A passing build status signifies that main evaluation code was usable at latest commit.
+  # Including build status can help ensure reliability and usability, allowing users to quickly determine
+  # if code is functioning as intended.
+  # Scoring:
+  # 0 (neither references nor implements)
+  # 5 (mentions need but no implementation)
+  # 10 (partially implements in less accessible manner)
+  # 15 (fully implements with clear display)
+  build_status:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Requirements file available
+  # Explanation: A requirements or environment file, or equivalent is available.
+  # Justification: Ease of use is key for benchmark adoption. Providing a requirements file allows for
+  # quick installation of relevant packages at correct versions within a virtual environment.
+  # Scoring:
+  # 0 (not provided)
+  # 5 (mentioned but not provided)
+  # 10 (provided but may be missing dependencies/versions)
+  # 15 (complete and accurate with all dependencies)
+  requirements_file:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Quick-start guide or demo code available
+  # Explanation: The benchmark developers make a quick start guide or demo available that walks
+  # step-by-step through how the benchmark can be used.
+  # Justification: Ease of use is key for benchmark adoption. Providing a quick-start guide takes away
+  # guesswork and allows users to directly set up and use the benchmark without spending extra time on setup.
+  # Scoring:
+  # 0 (not provided)
+  # 5 (mentioned but not provided)
+  # 10 (provided but may be missing steps/details)
+  # 15 (comprehensive step-by-step guide)
+  quick_start_guide:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Statistical significance or uncertainty quantification of benchmark results is reported
+  # Explanation: The benchmark reports statistical significance or uncertainty quantification of results.
+  # Justification: Reporting statistical significance helps users understand the reliability and
+  # robustness of reported results, accounting for variance and uncertainty in measurements.
+  # Scoring:
+  # 0 (not reported)
+  # 5 (mentioned but not provided)
+  # 10 (partial reporting)
+  # 15 (comprehensive reporting)
+  statistical_significance:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+# === 4. Documentation Criteria ===
+# These criteria evaluate the quality and completeness of benchmark documentation
+documentation:
+  # Criterion: In-line code comments are used
+  # Explanation: The evaluation code includes in-line comments explaining functionality.
+  # Justification: In-line comments improve code readability and help users understand implementation
+  # details, making the benchmark more accessible and maintainable.
+  # Scoring:
+  # 0 (no comments)
+  # 5 (minimal comments)
+  # 10 (comments in most but not all files/functions)
+  # 15 (thorough comments throughout)
+  inline_code_comments:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Code documentation is available
+  # Explanation: Code documentation (e.g., docstrings, API docs) is provided for the evaluation code.
+  # Justification: Code documentation helps users understand how to use and extend the benchmark code,
+  # improving usability and adoption.
+  # Scoring:
+  # 0 (no documentation)
+  # 5 (minimal documentation)
+  # 10 (documentation for some files/functions)
+  # 15 (comprehensive documentation for all files/functions)
+  code_documentation:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Accompanying paper is accepted at peer-reviewed venue
+  # Explanation: The benchmark paper has been accepted at a peer-reviewed venue.
+  # Justification: Peer review ensures quality and rigor of the benchmark methodology and results.
+  # Scoring:
+  # 0 (not accepted)
+  # 15 (accepted at peer-reviewed venue)
+  peer_reviewed_venue:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Benchmark construction process is documented
+  # Explanation: The benchmark developers document how the benchmark was constructed, including
+  # methodology and design decisions.
+  # Justification: Documenting the construction process provides transparency and allows others to
+  # understand and potentially reproduce or extend the benchmark.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  construction_process_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Test tasks & rationale are documented
+  # Explanation: The benchmark developers document the test tasks and the rationale for including them.
+  # Justification: Documenting tasks and rationale helps users understand what is being tested and why,
+  # improving interpretability of results.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  test_tasks_rationale_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Assumptions of normative properties are documented
+  # Explanation: The benchmark developers document any normative assumptions or properties assumed
+  # about models or evaluation context.
+  # Justification: Documenting normative assumptions helps users understand the scope and limitations
+  # of the benchmark, ensuring appropriate use.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  normative_properties_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Limitations are documented
+  # Explanation: The benchmark developers explicitly document limitations of the benchmark.
+  # Justification: Documenting limitations helps users understand boundaries and potential weaknesses,
+  # preventing misuse and encouraging improvement.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented or indirectly discussed)
+  # 15 (comprehensively documented)
+  limitations_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Data collection process, test environment design, or prompt design process is documented
+  # Explanation: The benchmark developers document how data was collected, test environments designed,
+  # or prompts were created.
+  # Justification: Documenting these processes provides transparency and allows for reproducibility
+  # and understanding of potential biases.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  data_collection_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Evaluation metric is documented
+  # Explanation: The benchmark developers comprehensively document how evaluation metrics are calculated.
+  # Justification: Documenting metrics is essential for reproducibility and correct interpretation of results.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  evaluation_metric_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Applicable license is specified
+  # Explanation: The benchmark specifies an applicable license for code, data, and documentation.
+  # Justification: Specifying licenses clarifies usage rights and restrictions, enabling appropriate use
+  # and legal compliance.
+  # Scoring:
+  # 0 (not specified)
+  # 15 (specified)
+  license_specified:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Globally unique, persistent identifier for dataset and metadata is provided
+  # Explanation: The benchmark provides a globally unique, persistent identifier (e.g., DOI) for the
+  # dataset and metadata.
+  # Justification: Persistent identifiers enable citation, tracking, and long-term access to benchmark
+  # resources, supporting reproducibility and scholarly communication.
+  # Scoring:
+  # 0 (not provided)
+  # 5 (partial, e.g., DOI for paper only)
+  # 10 (provided for some components)
+  # 15 (provided for dataset and metadata)
+  persistent_identifier:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Standardized metadata is included
+  # Explanation: The benchmark includes standardized metadata following recognized schemas or formats.
+  # Justification: Standardized metadata improves interoperability, discoverability, and enables automated
+  # processing and integration with other systems.
+  # Scoring:
+  # 0 (not included)
+  # 15 (included following recognized standard)
+  standardized_metadata:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Data sources and how the data was collected is documented
+  # Explanation: The benchmark developers document the sources of data and the process by which it
+  # was collected.
+  # Justification: Documenting data sources and collection process provides transparency, enables
+  # assessment of data quality and potential biases, and supports reproducibility.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  data_sources_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Data preprocessing steps taken are documented
+  # Explanation: The benchmark developers document all preprocessing steps applied to the data.
+  # Justification: Documenting preprocessing is essential for reproducibility and understanding how
+  # data transformations may affect results.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented)
+  # 15 (comprehensively documented)
+  data_preprocessing_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Data annotation process is documented (if applicable)
+  # Explanation: If data was annotated, the benchmark developers document the annotation process,
+  # including instructions given to annotators.
+  # Justification: Documenting annotation process provides transparency about data quality, potential
+  # biases, and reproducibility of annotation procedure.
+  # Scoring:
+  # 0 (not documented)
+  # 5 (briefly mentioned)
+  # 10 (partially documented, e.g., mentions annotators but not instructions)
+  # 15 (comprehensively documented including annotator instructions)
+  data_annotation_documented:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Representativeness of the data is explained (if applicable)
+  # Explanation: The benchmark developers explain how representative the data is and discuss potential
+  # limitations or biases.
+  # Justification: Explaining representativeness helps users understand the scope and limitations of
+  # the benchmark, enabling appropriate interpretation of results.
+  # Scoring:
+  # 0 (not explained)
+  # 5 (briefly mentioned)
+  # 10 (partially explained, missing discussion of limitations/biases)
+  # 15 (comprehensively explained including limitations and biases)
+  data_representativeness_explained:
+    score: null 
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Documentation follows recognized standard
+  # Explanation: The benchmark documentation follows a recognized standard or format (e.g., Datasheets
+  # for Datasets, Model Cards).
+  # Justification: Following recognized standards improves consistency, comparability, and ensures
+  # comprehensive coverage of important documentation aspects.
+  # Scoring:
+  # 0 (does not follow standard)
+  # 15 (follows recognized standard)
+  documentation_standard:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+# === 5. Maintenance Criteria ===
+# These criteria evaluate the ongoing maintenance and support for the benchmark
+maintenance:
+  # Criterion: Code usability was checked within the last year
+  # Explanation: The benchmark developers have verified that the evaluation code is still usable
+  # within the last year.
+  # Justification: Regular verification ensures that the benchmark remains functional as dependencies
+  # and environments evolve, maintaining accessibility and reproducibility.
+  # Scoring:
+  # 0 (not checked)
+  # 15 (checked within last year)
+  code_usability_checked:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Maintained feedback channel for users is available
+  # Explanation: The benchmark maintains an active feedback channel (e.g., GitHub Issues, email,
+  # forum) for users to report issues or ask questions.
+  # Justification: Maintaining a feedback channel enables community engagement, issue reporting, and
+  # continuous improvement of the benchmark.
+  # Scoring:
+  # 0 (not available)
+  # 15 (available and maintained)
+  feedback_channel:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Contact person is listed
+  # Explanation: The benchmark provides contact information for a person or team responsible for the benchmark.
+  # Justification: Providing contact information enables users to reach out with questions, issues, or
+  # collaboration opportunities, supporting ongoing maintenance and community engagement.
+  # Scoring:
+  # 0 (not listed)
+  # 15 (listed)
+  contact_person:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"

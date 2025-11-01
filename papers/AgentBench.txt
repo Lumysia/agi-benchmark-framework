@@ -1,0 +1,201 @@
+benchmark_info:
+name: "AgentBench"
+  
+version: "1.0"
+  
+description: "AgentBench is the first benchmark designed to evaluate LLM-as-Agent across a diverse spectrum of different environments. It encompasses 8 distinct environments to provide a more comprehensive evaluation of the LLMs' ability to operate as autonomous agents in various scenarios."
+  
+reference: "https://github.com/THUDM/AgentBench"
+
+Design
+-
+Tested capability or concept is defined
+15
+The authors discuss this in the Abstract.
+-
+How tested capability or concept translates to benchmark task is described
+15
+The authors provide descriptions for most, if not all, benchmark tasks and explain how they relate to the tested capabilities of LLMs (e.g., reasoning, coding, and decision-making) in the Abstract.
+-
+How knowing about the tested capability or concept is helpful in the real world is described
+15
+The authors state, 'Large Language Models (LLMs) are becoming increasingly smart and autonomous, targeting real-world pragmatic missions beyond traditional NLP tasks. As a result, there has been an urgent need to evaluate LLMs as agents on challenging tasks in interactive environments.'
+-
+How benchmark scores should or shouldn't be interpreted or used is described
+15
+The authors cover this in Section 4.2 and Section 4.3.
+-
+Domain experts are involved
+10
+The authors did not directly discuss how domain experts were involved with the design process.
+-
+Use cases or user personas are described
+15
+The authors describe this in the Introduction.
+-
+Domain literature is integrated
+15
+Domain literature is integrated throughout the paper.
+-
+Informed performance metric choice
+15
+The authors cover this in Section 4.1.
+-
+Metric floors and ceilings are included
+10
+A floor and ceiling was given for some but not all of the metrics. This can be seen in Section 4 and Table 3.
+-
+Human performance level is included
+0
+A human performance level was not included.
+-
+Random performance level is included
+15
+Random performance is included for the tasks where it is applicable.
+-
+Has validated automatic evaluation
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Differences to related benchmarks are explained
+15
+The authors discuss this in the Introduction.
+-
+Input sensitivity is addressed
+0
+Input sensitivity was not addressed.
+Implementation
+-
+Evaluation code is available
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Evaluation data or generation mechanism is accessible
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Evaluation of models via API is supported
+15
+API models are supported.
+-
+Evaluation of local models is supported
+15
+Local models are supported.
+-
+A globally unique identifier is added or evaluation instances are encrypted
+0
+A GUID or encrypted evaluation instances were not included.
+-
+Task to identify if model is trained on benchmark data is included
+5
+The authors mention this in The section 'Impact of training on code' but do not provide an identification task.
+-
+Script to replicate results is included
+0
+A script to replicate results was not included.
+-
+Statistical significance or uncertainty quantification of benchmark results is reported
+0
+Statistical significance or uncertainty quantification of benchmark results were not reported.
+-
+Need for warnings for sensitive/harmful content is assessed
+0
+A need for warnings for sensitive/harmful content was not assessed.
+-
+Build status (or equivalent) is implemented
+0
+A build status (or equivalent) was not implemented.
+-
+Release requirements are specified
+0
+Release requirements were not specified.
+Documentation
+-
+Requirements file or equivalent is available
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Quick-start guide or demo is available
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+In-line code comments are used
+10
+Comments in the repository are largely thorough, but are missing from some functions/files. https://github.com/THUDM/AgentBench
+-
+Code documentation is available
+10
+Code documentation is included for some but not all files/functions. https://github.com/THUDM/AgentBench
+-
+Accompanying paper is accepted at peer-reviewed venue
+15
+Accepted to ICLR 2024
+-
+Benchmark construction process is documented
+15
+This is covered in Section 4 of the paper.
+-
+Test tasks & rationale are documented
+15
+This is covered in the paper starting with Section 3.
+-
+Assumptions of normative properties are documented
+0
+Normative properties were not documented.
+-
+Limitations are documented
+10
+The authors never directly cite any 'limitations', however, they are somewhat discussed in Appendix A.1, A.2, & J.
+-
+Data collection process, test environment design, or prompt design process is documented
+15
+This is covered in Section 4 of the paper.
+-
+Evaluation metric is documented
+15
+This is covered in Section 4 of the paper.
+-
+Applicable license is specified
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Globally unique, persistent identifier for dataset and metadata is provided
+5
+DOI on Arxiv for the paper only.
+-
+Standardized metadata is included
+0
+Standardized metadata is not included.
+-
+Data sources and how the data was collected is documented
+10
+This paper does not include any information about licenses (or why they did not need them).
+-
+Data preprocessing steps taken are documented
+15
+This is covered in Section 4 of the paper.
+-
+Data annotation process is documented (if applicable)
+10
+The authors discuss the use of annotators, but do not provide the specific instructions given to them.
+-
+Representativeness of the data is explained (if applicable)
+10
+The paper is Missing discussion on potential limitations to the dataset or potential biases.
+-
+Documentation follows recognized standard
+0
+Documentation does not follow a recognized standard.
+Maintenance
+-
+Code usability was checked within the last year
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Maintained feedback channel for users is available
+15
+This is available in the repository. https://github.com/THUDM/AgentBench
+-
+Contact person is listed
+15
+This is available in the repository. https://github.com/THUDM/AgentBench

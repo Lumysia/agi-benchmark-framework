@@ -1,0 +1,197 @@
+benchmark_info:
+  name: "AgentBench"
+  version: "0.3"
+  description: "AgentBench is the first benchmark designed to evaluate LLM-as-Agent across a diverse spectrum of different environments. It encompasses 8 distinct environments to provide a more comprehensive evaluation of the LLMs' ability to operate as autonomous agents in various scenarios."
+  reference: "https://github.com/THUDM/AgentBench"
+
+design:
+  tested_capability_definition:
+    score: 15
+    justification: "The authors discuss this in the Abstract."
+
+  capability_to_task_translation:
+    score: 15
+    justification: "The authors provide descriptions for most, if not all, benchmark tasks and explain how they relate to the tested capabilities of LLMs (e.g., reasoning, coding, and decision-making) in the Abstract."
+  
+  real_world_relevance:
+    score: 15
+    justification: "The authors state, 'Large Language Models (LLMs) are becoming increasingly smart and autonomous, targeting real-world pragmatic missions beyond traditional NLP tasks. As a result, there has been an urgent need to evaluate LLMs as agents on challenging tasks in interactive environments.'"
+  
+  use_cases_and_personas:
+    score: 15
+    justification: "The authors describe this in the Introduction."
+  
+  domain_expert_involvement:
+    score: 10
+    justification: "The authors did not directly discuss how domain experts were involved with the design process."
+  
+  domain_literature_integration:
+    score: 15
+    justification: "Domain literature is integrated throughout the paper."
+  
+  score_interpretation:
+    score: 15
+    justification: "The authors cover this in Section 4.2 and Section 4.3."
+  
+  informed_metric_choice:
+    score: 15
+    justification: "The authors cover this in Section 4.1."
+  
+  metric_floors_ceilings:
+    score: 10
+    justification: "A floor and ceiling was given for some but not all of the metrics. This can be seen in Section 4 and Table 3."
+  
+  human_performance_level:
+    score: 0
+    justification: "A human performance level was not included."
+  
+  random_performance_level:
+    score: 15
+    justification: "Random performance is included for the tasks where it is applicable."
+  
+  input_sensitivity:
+    score: 0
+    justification: "Input sensitivity was not addressed."
+  
+  validated_automatic_evaluation:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "The authors discuss this in the Introduction."
+
+implementation:
+  evaluation_code_available:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  replication_script:
+    score: 0
+    justification: "A script to replicate results was not included."
+  
+  evaluation_data_accessible:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  api_evaluation_support:
+    score: 15
+    justification: "API models are supported."
+  
+  local_model_evaluation_support:
+    score: 15
+    justification: "Local models are supported."
+  
+  guid_or_encryption:
+    score: 0
+    justification: "A GUID or encrypted evaluation instances were not included."
+  
+  training_on_test_set_task:
+    score: 5
+    justification: "The authors mention this in The section 'Impact of training on code' but do not provide an identification task."
+  
+  sensitive_content_warnings:
+    score: 0
+    justification: "A need for warnings for sensitive/harmful content was not assessed."
+  
+  release_requirements:
+    score: 0
+    justification: "Release requirements were not specified."
+  
+  build_status:
+    score: 0
+    justification: "A build status (or equivalent) was not implemented."
+  
+  requirements_file:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  quick_start_guide:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  statistical_significance:
+    score: 0
+    justification: "Statistical significance or uncertainty quantification of benchmark results were not reported."
+
+documentation:
+  inline_code_comments:
+    score: 10
+    justification: "Comments in the repository are largely thorough, but are missing from some functions/files. https://github.com/THUDM/AgentBench"
+  
+  code_documentation:
+    score: 10
+    justification: "Code documentation is included for some but not all files/functions. https://github.com/THUDM/AgentBench"
+  
+  peer_reviewed_venue:
+    score: 15
+    justification: "Accepted to ICLR 2024"
+  
+  construction_process_documented:
+    score: 15
+    justification: "This is covered in Section 4 of the paper."
+  
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "This is covered in the paper starting with Section 3."
+  
+  normative_properties_documented:
+    score: 0
+    justification: "Normative properties were not documented."
+  
+  limitations_documented:
+    score: 10
+    justification: "The authors never directly cite any 'limitations', however, they are somewhat discussed in Appendix A.1, A.2, & J."
+  
+  data_collection_documented:
+    score: 15
+    justification: "This is covered in Section 4 of the paper."
+  
+  evaluation_metric_documented:
+    score: 15
+    justification: "This is covered in Section 4 of the paper."
+  
+  license_specified:
+    score: 15
+    justification: "It is under the Apache-2.0 license."
+  
+  persistent_identifier:
+    score: 5
+    justification: "DOI on Arxiv for the paper only."
+  
+  standardized_metadata:
+    score: 0
+    justification: "Standardized metadata is not included."
+  
+  data_sources_documented:
+    score: 10
+    justification: "This paper does not include any information about licenses (or why they did not need them)."
+  
+  data_preprocessing_documented:
+    score: 15
+    justification: "This is covered in Section 4 of the paper."
+  
+  data_annotation_documented:
+    score: 10
+    justification: "The authors discuss the use of annotators, but do not provide the specific instructions given to them."
+  
+  data_representativeness_explained:
+    score: 10
+    justification: "The paper is Missing discussion on potential limitations to the dataset or potential biases."
+  
+  documentation_standard:
+    score: 0
+    justification: "Documentation does not follow a recognized standard."
+
+maintenance:
+  code_usability_checked:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  feedback_channel:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"
+  
+  contact_person:
+    score: 15
+    justification: "This is available in the repository. https://github.com/THUDM/AgentBench"

@@ -1,0 +1,516 @@
+﻿Name,Type,Description,Benchmark paper,Code repository,Dataset ,Number of examples,License,Initial publication year,Cited by:
+MultiLoKo,"language & reasoning,multilingual",A new benchmark for evaluating multilinguality in LLMs covering 31 languages.,"MultiLoKo: a multilingual local knowledge benchmark for LLMs spanning 31 languages 
+https://arxiv.org/abs/2504.10356",https://github.com/facebookresearch/multiloko,see repo,15500,MIT License,2025,New
+FACTS Grounding,safety,A measure of how accurately LLMs ground their responses in provided source material and avoid hallucinations.,"FACTS Grounding: A new benchmark for evaluating the factuality of large language models
+Published 
+https://arxiv.org/abs/2501.03200",https://www.kaggle.com/code/andrewmingwang/facts-grounding-benchmark-starter-code,https://www.kaggle.com/datasets/deepmind/facts-grounding-examples,1719,CC-BY-4.0,2025,New
+Graphwalks,language & reasoning,"A dataset for evaluating multi-hop long-context reasoning. In Graphwalks, the model is given a graph represented by its edge list and asked to perform an operation.","Introducing GPT-4.1 in the API 
+https://openai.com/index/gpt-4-1/",n/a,https://huggingface.co/datasets/openai/graphwalks,1150,MIT License,2025,New
+NoLiMa,information retrieval & RAG,"Extended NIAH, where questions and needles have minimal lexical overlap, requiring models to infer latent associations to locate the needle within the haystack.","NoLiMa: Long-Context Evaluation Beyond Literal Matching 
+https://arxiv.org/abs/2502.05167",https://github.com/adobe-research/NoLiMa,https://huggingface.co/datasets/amodaresi/NoLiMa,7540,Adobe Research License,2025,New
+MultiChallenge,conversation & chatbots,"Evaluates LLMs on conducting multi-turn conversations with human users across 4 challenges: instruction retention, inference memory, reliable versioned editing, and self-coherence. ","MultiChallenge: A Realistic Multi-Turn Conversation Evaluation Benchmark Challenging to Frontier LLMs 
+https://arxiv.org/abs/2501.17399",https://github.com/ekwinox117/multi-challenge,https://github.com/ekwinox117/multi-challenge/tree/main/data,273,see dataset page,2025,New
+ColBench,agents & tools use,"A new benchmark, where an LLM agent interacts with a human collaborator over multiple turns to solve realistic tasks in backend programming and frontend design.","SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks 
+https://arxiv.org/abs/2503.15478",https://github.com/facebookresearch/sweet_rl,https://huggingface.co/datasets/facebook/collaborative_agent_bench,n/a,see dataset page,2025,New
+AlpacaEval,"instruction-following,conversation & chatbots",An automatic evaluator for instruction-following LLMs.,"Length-Controlled AlpacaEval: A Simple Way to Debias Automatic Evaluators
+https://arxiv.org/abs/2404.04475",https://github.com/tatsu-lab/alpaca_eval,https://huggingface.co/datasets/tatsu-lab/alpaca_eval,n/a,CC-BY-NC-4.0,2024,New
+MT-Bench-101,conversation & chatbots,Multi-turn dialogues.,"MT-Bench-101: A Fine-Grained Benchmark for Evaluating Large Language Models in Multi-Turn Dialogues
+https://arxiv.org/abs/2402.14762 ",https://github.com/mtbench101/mt-bench-101,https://github.com/mtbench101/mt-bench-101/tree/main/data/subjective,4208,Apache-2.0 license,2024,New
+Chatbot Arena,conversation & chatbots,Open-source platform for comparing LLMs in a competitive environment.,"Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference
+https://arxiv.org/abs/2403.04132
+",https://github.com/lm-sys/FastChat/tree/main,https://huggingface.co/datasets/lmsys/chatbot_arena_conversations,33000,see dataset page,2024,New
+HarmBench,safety,"Adversarial behaviors including cybercrime, copyright violations, and generating misinformation (https://www.harmbench.org). ",https://arxiv.org/abs/2402.04249,https://github.com/centerforaisafety/HarmBench/tree/main,https://github.com/centerforaisafety/HarmBench/tree/main/data/behavior_datasets,510,MIT License,2024,New
+MMLU Pro,"knowledge,language & reasoning","An enhanced dataset designed to extend the MMLU benchmark. More challenging questions, the choice set of ten options.","MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark
+https://arxiv.org/abs/2406.01574",https://github.com/TIGER-AI-Lab/MMLU-Pro,https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro,12100,MIT License,2024,New
+MixEval,conversation & chatbots,A ground-truth-based dynamic benchmark derived from off-the-shelf benchmark mixtures.,"MixEval: Deriving Wisdom of the Crowd from LLM Benchmark Mixtures
+https://arxiv.org/abs/2406.06565",https://github.com/Psycoy/MixEval,https://huggingface.co/datasets/MixEval/MixEval,5000,Apache-2.0 license,2024,New
+SimpleQA,safety,"Measures the ability for language models to answer short, fact-seeking questions to reduce hallucinations.","Measuring short-form factuality in large language models
+https://arxiv.org/abs/2411.04368",https://github.com/openai/simple-evals,https://huggingface.co/datasets/basicv8vc/SimpleQA,4326,MIT License,2024,New
+"CRUXEval (Code Reasoning, Understanding, and Execution Evaluation)",coding,A set of Python functions and input-output pairs that consists of two tasks: input prediction and output prediction.,"CRUXEval: A Benchmark for Code Reasoning,
+Understanding and Execution
+https://arxiv.org/abs/2401.03065",https://github.com/facebookresearch/cruxeval,https://huggingface.co/datasets/cruxeval-org/cruxeval,800,MIT License,2024,New
+AgentHarm,safety,"Explicitly malicious agent tasks, including fraud, cybercrime, and harassment.","AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents
+https://arxiv.org/abs/2410.09024",https://github.com/UKGovernmentBEIS/inspect_evals,https://huggingface.co/datasets/ai-safety-institute/AgentHarm,110,MIT License,2024,New
+StrongReject,safety,Tests a model’s resistance against common attacks from the literature.,"A StrongREJECT for Empty Jailbreaks
+https://arxiv.org/abs/2402.10260",https://github.com/dsbowen/strong_reject,https://github.com/dsbowen/strong_reject/tree/main/docs/api,n/a,MIT License,2024,New
+BFCL (Berkeley Function-Calling Leaderboard),agents & tools use,"A set of function-calling tasks, including multiple and parallel function calls.","Berkeley Function-Calling Leaderboard
+https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html",https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard,https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard,2000,Apache-2.0 license,2024,New
+TrustLLM,"safety,bias & ethics","A benchmark across six dimensions including truthfulness, safety, fairness, robustness, privacy, and machine ethics. Consists of over 30 datasets.","TrustLLM: Trustworthiness in Large Language Models
+https://arxiv.org/abs/2401.05561",https://github.com/HowieHwong/TrustLLM,https://github.com/HowieHwong/TrustLLM?tab=readme-ov-file#dataset-download,n/a,MIT License,2024,New
+BigCodeBench,coding,Function-level code generation tasks with complex instructions and diverse function calls.,"BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions
+https://arxiv.org/abs/2406.15877",https://github.com/bigcode-project/bigcodebench,https://github.com/bigcode-project/bigcodebench,1140,Apache-2.0 license,2024,New
+AIR-Bench,safety,"AI safety benchmark aligned with emerging regulations. Considers operational, content safety, legal and societal risks (https://crfm.stanford.edu/helm/air-bench/latest/).",https://arxiv.org/abs/2407.17436,https://github.com/stanford-crfm/air-bench-2024,https://huggingface.co/datasets/stanford-crfm/air-bench-2024,"5,694",Apache-2.0 license,2024,New
+WildChat,conversation & chatbots,"A collection of 1 million conversations between human users and ChatGPT, alongside demographic data (https://wildchat.allen.ai/about). ","WildChat: 1M ChatGPT Interaction Logs in the Wild
+https://arxiv.org/abs/2405.01470",n/a,https://huggingface.co/datasets/allenai/WildChat-1M,"1,000,000+",ODC-BY license,2024,New
+Video-MME,"language & reasoning,multimodal,video",A benchmark for multimodal long context understanding.,"Video-MME: The First-Ever Comprehensive Evaluation Benchmark of Multi-modal LLMs in Video Analysis 
+https://arxiv.org/abs/2405.21075 ",https://github.com/MME-Benchmarks/Video-MME,https://github.com/MME-Benchmarks/Video-MME?tab=readme-ov-file#-dataset,900,see dataset page,2024,101-500
+OR-Bench,safety,"80,000 benign prompts likely rejected by LLMs across 10 common rejection categories.","An Over-Refusal Benchmark for Large
+Language Models
+https://arxiv.org/abs/2405.20947 ",https://github.com/justincui03/or-bench,https://huggingface.co/datasets/bench-llm/or-bench,80000,CC-BY-4.0,2024,New
+BiGGen-Bench,"language & reasoning,agents & tools use,safety,instruction-following","Evaluates nine distinct capabilities of LMs, including instruction following, reasoning, tool usage, and safety.","The BiGGen Bench: A Principled Benchmark for Fine-grained Evaluation of Language Models with Language Models 
+https://arxiv.org/abs/2406.05761",https://github.com/prometheus-eval/prometheus-eval/tree/main/BiGGen-Bench,https://huggingface.co/datasets/prometheus-eval/BiGGen-Bench,765,CC-BY-SA-4.0,2024,New
+Global MMLU,bias & ethics,"Translated MMLU, that also includes cultural sensitivity annotations for a subset of the questions, with evaluation coverage across 42 languages.","Global MMLU: Understanding and Addressing Cultural and Linguistic Biases in Multilingual Evaluation 
+https://arxiv.org/abs/2412.03304 ",n/a,https://huggingface.co/datasets/CohereForAI/Global-MMLU,601734,Apache-2.0 license,2024,New
+MC-Bench (Minecraft AI Benchmark),image generation,A platform for evaluating and comparing AI models by challenging them to create Minecraft builds.,https://mcbench.ai/,https://github.com/mc-bench,Not dataset-based,n/a,MIT License,2024,New
+TOFUEVAL,safety,Evaluation benchmark on topic-focused dialogue summarization. Contains binary sentence-level human annotations of the factual consistency of these summaries along with detailed explanations of factually inconsistent sentences.,"TofuEval: Evaluating Hallucinations of LLMs on Topic-Focused Dialogue Summarization
+https://arxiv.org/abs/2402.13249",https://github.com/amazon-science/tofueval,see repo,n/a,see dataset page,2024,New
+BackdoorLLM,safety,A benchmark for backdoor attacks in text generation.,"BackdoorLLM: A Comprehensive Benchmark for Backdoor Attacks on Large Language Models 
+https://arxiv.org/abs/2408.12798",https://github.com/bboylyg/BackdoorLLM,https://huggingface.co/datasets/BackdoorLLM/Backdoored_Dataset,4200,see dataset page,2024,New
+AIME,math,This dataset contains problems from the American Invitational Mathematics Examination (AIME) 2024.,n/a,https://artofproblemsolving.com/wiki/index.php/American_Invitational_Mathematics_Examination,https://huggingface.co/datasets/Maxwell-Jia/AIME_2024,30,MIT License,2024,New
+RULER,information retrieval & RAG,A synthetic benchmark with flexible configurations for customized sequence length and task complexity. RULER expands upon the vanilla NIAH test to encompass variations with diverse types and quantities of needles.,"RULER: What's the Real Context Size of Your Long-Context Language Models? 
+https://arxiv.org/abs/2404.06654",https://github.com/NVIDIA/RULER,see repo,13,see dataset page,2024,New
+ClinicBench,domain-specific,"Datasets and clinical tasks that are common in real-world medical practice, e.g., open-ended decision-making, long document processing, and emerging drug analysis.","Large Language Models in the Clinic: A Comprehensive Benchmark 
+https://arxiv.org/abs/2405.00716",https://github.com/AI-in-Health/ClinicBench,https://github.com/AI-in-Health/ClinicBench,n/a,see dataset page,2024,New
+Hal-eval,safety,Assesses LVLMs' ability to tackle a broad spectrum of hallucinations.,"Hal-Eval: A Universal and Fine-grained Hallucination Evaluation Framework for Large Vision Language Models 
+https://arxiv.org/abs/2402.15721",https://github.com/WisdomShell/hal-eval, https://github.com/WisdomShell/hal-eval/tree/main/evaluation_dataset,2000000,see dataset page,2024,New
+Zebralogic,language & reasoning,Evaluation framework for assessing LLM reasoning performance on logic grid puzzles derived from constraint satisfaction problems (CSPs). ,"ZebraLogic: On the Scaling Limits of LLMs for Logical Reasoning 
+https://arxiv.org/abs/2502.01100",https://github.com/WildEval/ZeroEval,https://huggingface.co/datasets/WildEval/ZebraLogic,4259,see dataset page,2024,New
+JudgeBench,llm judge evaluation,"A benchmark for evaluating LLM-based judges on challenging response pairs spanning knowledge, reasoning, math, and coding. Evaluated on a collection of prompted judges, fine-tuned judges, multi-agent judges, and reward models.","JudgeBench: A Benchmark for Evaluating LLM-based Judges 
+https://arxiv.org/abs/2410.12784 ",https://github.com/ScalerLab/JudgeBench?tab=readme-ov-file,https://huggingface.co/datasets/ScalerLab/JudgeBench,620,MIT License,2024,New
+"FRAMES (Factuality, Retrieval, And reasoning MEasurement Set)","information retrieval & RAG,language & reasoning,safety","Tests the capabilities of Retrieval-Augmented Generation (RAG) systems across factuality, retrieval accuracy, and reasoning.","Fact, Fetch, and Reason: A Unified Evaluation of Retrieval-Augmented Generation 
+https://arxiv.org/abs/2409.12941",n/a,https://huggingface.co/datasets/google/frames-benchmark,824,Apache-2.0 license,2024,New
+NovelQA,language & reasoning,Tests deep textual understanding in LLMs with extended texts. Constructed from English novels.,"NovelQA: Benchmarking Question Answering on Documents Exceeding 200K Tokens 
+https://arxiv.org/abs/2403.12766",https://github.com/NovelQA/novelqa.github.io,https://huggingface.co/datasets/NovelQA/NovelQA,2305,Apache-2.0 license,2024,New
+MMNeedle,"multimodal,information retrieval & RAG",MultiModal Needle-in-a-haystack (MMNeedle) benchmark is designed to assess the long-context capabilities of MLLMs.,"Multimodal Needle in a Haystack: Benchmarking Long-Context Capability of Multimodal Large Language Models 
+https://arxiv.org/abs/2406.11230",https://github.com/Wang-ML-Lab/multimodal-needle-in-a-haystack,https://drive.google.com/drive/folders/1D2XHmj466e7WA4aY7zLkbdTmp3it2ZPy,880000,see dataset page,2024,New
+OmniEval,"information retrieval & RAG,language & reasoning,domain-specific","RAG benchmark in the financial domain, with queries in five task classes and 16 financial topics.","OmniEval: An Omnidirectional and Automatic RAG Evaluation Benchmark in Financial Domain 
+https://arxiv.org/abs/2412.13018",https://github.com/RUC-NLPIR/OmniEval,see repo,N/A,MIT License,2024,New
+CHAMP,math,"High-school math problems, annotated with general math facts and problem-specific hints. These annotations allow exploring the effects of additional information, such as relevant hints, misleading concepts, or related problems. ","CHAMP: A Competition-level Dataset for Fine-Grained Analyses of LLMs' Mathematical Reasoning Capabilities 
+https://arxiv.org/abs/2401.06961",https://github.com/YilunZhou/champ-dataset,https://yujunmao1.github.io/CHAMP/explorer.html,n/a,see dataset page,2024,New
+Infobench,instruction-following,"Evaluating Large Language Models' (LLMs) ability to follow instructions by breaking complex instructions into simpler criteria, facilitating a detailed analysis of LLMs' compliance with various aspects of tasks.","INFOBENCH: Evaluating Instruction Following Ability in Large Language Models 
+https://arxiv.org/abs/2401.03601",https://github.com/qinyiwei/InfoBench,https://huggingface.co/datasets/kqsong/InFoBench,500,MIT License,2024,New
+LLM-AggreFact,safety,Fact verification benchmark that aggregates 11 publicly available datasets on factual consistency evaluation across both closed-book and grounded generation settings.,"MiniCheck: Efficient Fact-Checking of LLMs on Grounding Documents 
+https://arxiv.org/abs/2404.10774 ",https://github.com/Liyan06/MiniCheck,https://huggingface.co/datasets/lytang/LLM-AggreFact,59740,CC-BY-ND-4.0,2024,New
+ACPBench,"agents & tools use,language & reasoning",A benchmark for evaluating the reasoning tasks in the field of planning. The benchmark consists of 7 reasoning tasks over 13 planning domains.,"ACPBench: Reasoning about Action, Change, and Planning
+https://arxiv.org/abs/2410.05669",https://github.com/ibm/ACPBench,https://huggingface.co/datasets/ibm-research/acp_bench,3210,CDLA-Permissive-2.0,2024,New
+DetectRL,llm-generated text detection,Human-written datasets from domains where LLMs are particularly prone to misuse.,"DetectRL: Benchmarking LLM-Generated Text Detection in Real-World Scenarios 
+https://arxiv.org/abs/2410.23746",https://github.com/NLP2CT/DetectRL,see repo,n/a,see dataset page,2024,New
+Reveal ,language & reasoning,A dataset to benchmark automatic verifiers of complex Chain-of-Thought reasoning in open-domain question-answering settings,"A Chain-of-Thought Is as Strong as Its Weakest Link: A Benchmark for Verifiers of Reasoning Chains 
+https://arxiv.org/abs/2402.00559",https://reveal-dataset.github.io,https://huggingface.co/datasets/google/reveal,6102,CC-BY-ND-4.0,2024,New
+FlowBench,agents & tools use,"A benchmark for workflow-guided planning that covers 51 different scenarios from 6 domains, with knowledge presented in text, code, and flowchart formats.","FlowBench: Revisiting and Benchmarking Workflow-Guided Planning for LLM-based Agents 
+https://arxiv.org/abs/2406.14884",https://github.com/Justherozen/FlowBench,see repo,5313,see dataset page,2024,New
+ConflictBank,knowledge,"Evaluates knowledge conflicts from three aspects: 1) conflicts in retrieved knowledge, 2) conflicts within the models’ encoded knowledge, and 3) the interplay between these conflict forms. ","ConflictBank: A Benchmark for Evaluating Knowledge Conflicts in Large Language Models 
+https://arxiv.org/html/2408.12076v1",https://github.com/zhaochen0110/conflictbank,see repo,553000,CC-BY-SA-4.0,2024,New
+AutoTools,agents & tools use,A framework that enables LLMs to automate the tool-use workflow.,"Tool Learning in the Wild: Empowering Language Models as Automatic Tool Agents 
+https://arxiv.org/abs/2405.16533",https://github.com/mangopy/Tool-learning-in-the-wild,see repo,n/a,see dataset page,2024,New
+LongBench,language & reasoning,"Assesses the ability of LLMs to handle long-context problems requiring deep understanding and reasoning across real-world multitasks. Consists of multiple-choice questions, with contexts ranging from 8k to 2M words.","LongBench v2: Towards Deeper Understanding and Reasoning on Realistic Long-context Multitasks 
+https://arxiv.org/abs/2412.15204",https://github.com/THUDM/LongBench,https://huggingface.co/datasets/THUDM/LongBench-v2,503,Apache-2.0 license,2024,New
+InfiniteBench,language & reasoning,"Evaluates the capabilities of language models to process, understand, and reason over super long contexts (100k+ tokens).","∞Bench: Extending Long Context Evaluation Beyond 100K Tokens 
+https://arxiv.org/abs/2402.13718",https://github.com/OpenBMB/InfiniteBench,https://huggingface.co/datasets/xinrongzhang2022/InfiniteBench,n/a,see dataset page,2024,New
+LOFT,"language & reasoning,information retrieval & RAG,multimodal",A benchmark of real-world tasks requiring context up to millions of tokens designed to evaluate LCLMs' performance on in-context retrieval and reasoning. ,"Can Long-Context Language Models Subsume Retrieval, RAG, SQL, and More? 
+https://arxiv.org/abs/2406.13121",https://github.com/google-deepmind/loft,https://github.com/google-deepmind/loft?tab=readme-ov-file#datasets,n/a,see dataset page,2024,New
+WorfBench,agents & tools use,Unified workflow generation benchmark with multi-faceted scenarios and graph workflow structures.,"Benchmarking Agentic Workflow Generation 
+https://arxiv.org/abs/2410.07869 ",https://github.com/zjunlp/WorfBench,https://huggingface.co/collections/zjunlp/worfbench-66fc28b8ac1c8e2672192ea1,21000,Apache-2.0 license,2024,New
+Arena-Hard ,conversation & chatbots,"Automatic evaluation tool for instruction-tuned LLMs, contains 500 challenging user queries sourced from Chatbot Arena. ","From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline
+https://arxiv.org/abs/2406.11939",https://github.com/lmarena/arena-hard-auto,https://huggingface.co/spaces/lmarena-ai/arena-hard-browser,500,see dataset page,2024,New
+TemplateGSM,math,"A dataset comprising over 7 million synthetically generated grade school math problems, each accompanied by code-based and natural language solutions.","Training and Evaluating Language Models with Template-based Data Generation 
+https://arxiv.org/abs/2411.18104",https://github.com/iiis-ai/TemplateMath,https://huggingface.co/datasets/math-ai/TemplateGSM,7000000,CC-BY-4.0,2024,New
+HARD-Math,math,"Human-Annotated Reasoning Dataset for Math. Consists of short answer problems, based on the AHSME, AMC, & AIME contests.","HARDMath: A Benchmark Dataset for Challenging Problems in Applied Mathematics 
+https://arxiv.org/abs/2410.09988",https://github.com/sarahmart/HARDMath,https://github.com/sarahmart/HARDMath/tree/main/data,1400,see dataset page,2024,New
+Loong,information retrieval & RAG,"Long-context benchmark, aligning with realistic scenarios through extended multi-document question answering (QA).","Leave No Document Behind: Benchmarking Long-Context LLMs with Extended Multi-Doc QA 
+https://arxiv.org/abs/2406.17419",https://github.com/MozerWang/Loong,(in Chinese) https://modelscope.cn/datasets/iic/Loong,1600,see dataset page,2024,New
+SWE-bench verified,coding,"A subset of SWE-bench, consisting of 500 samples verified to be non-problematic by our human annotators.","Introducing SWE-bench Verified 
+https://openai.com/index/introducing-swe-bench-verified/",n/a,https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified,500,see dataset page,2024,New
+API-Bank,agents & tools use,Specifically designed for tool-augmented LLMs.,"API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs
+https://arxiv.org/abs/2304.08244",https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/api-bank,https://huggingface.co/datasets/liminghao1630/API-Bank,n/a,MIT License,2023,51-100
+CrossCodeEval,coding,"Multilingual code completion tasks built on built on real-world GitHub repositories in Python, Java, TypeScript, and C#.","CrossCodeEval: A Diverse and Multilingual Benchmark for Cross-File Code Completion
+https://arxiv.org/abs/2310.11248",https://github.com/amazon-science/cceval,https://github.com/amazon-science/cceval/tree/main/data,10000,Apache-2.0 license,2023,51-100
+SEED-Bench,multimodal,A benchmark for evaluating Multimodal LLMs using multiple-choice questions.,"SEED-Bench: Benchmarking Multimodal LLMs with Generative Comprehension
+https://arxiv.org/abs/2307.16125",https://github.com/AILab-CVC/SEED-Bench,https://huggingface.co/datasets/AILab-CVC/SEED-Bench-2,24000,CC-BY-NC-4.0,2023,101-500
+Chain-of-Thought Hub,language & reasoning,"Curated complex reasoning tasks including math, science, coding, long-context.","Chain-of-Thought Hub: A Continuous Effort to Measure Large Language Models' Reasoning Performance
+https://arxiv.org/abs/2305.17306",https://github.com/FranxYao/chain-of-thought-hub/,see repository ,1000+,MIT License,2023,11-50
+ForbiddenQuestions,safety,A set of questions targetting 13 behavior scenarios disallowed by OpenAI.,"""Do Anything Now"": Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models
+https://arxiv.org/abs/2308.03825",https://github.com/verazuo/jailbreak_llms,https://github.com/verazuo/jailbreak_llms,15140,MIT License,2023,101-500
+MuSR,language & reasoning,"Multistep reasoning tasks based on text narratives (e.g., 1000 words murder mysteries).",https://arxiv.org/abs/2310.16049,https://github.com/Zayne-sprague/MuSR,https://github.com/Zayne-sprague/MuSR/tree/main/datasets,756,MIT License,2023,11-50
+ToolLLM,agents & tools use,An instruction-tuning dataset for tool use.,"ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
+https://arxiv.org/abs/2307.16789",https://github.com/OpenBMB/ToolBench,https://github.com/OpenBMB/ToolBench?tab=readme-ov-file#data-release,n/a,Apache-2.0 license,2023,101-500
+FreshQA,knowledge,Tests factuality of LLM-generated text in the context of answering questions that test current world knowledge. The dataset is updated weekly.,"FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation
+https://arxiv.org/abs/2310.03214",https://github.com/freshllms/freshqa,https://github.com/freshllms/freshqa?tab=readme-ov-file#freshqa,599,Apache-2.0 license,2023,101-500
+MT-Bench,conversation & chatbots,Multi-turn questions: an open-ended question and a follow-up question.,"Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena 
+https://arxiv.org/abs/2306.05685",https://github.com/lm-sys/FastChat/tree/main,https://huggingface.co/datasets/lmsys/mt_bench_human_judgments,3300,CC-BY-4.0,2023,>500
+ToolBench,agents & tools use,A tool manipulation benchmark consisting of software tools for real-world tasks.,"On the Tool Manipulation Capability of Open-source Large Language Models
+https://arxiv.org/abs/2305.16504",https://github.com/sambanova/toolbench/tree/main,https://github.com/sambanova/toolbench/tree/main,n/a,Apache-2.0 license,2023,51-100
+AgentBench,agents & tools use,"Evaluate LLM-as-Agent across 8 environments, including Operating System (OS)
+Database (DB), Knowledge Graph (KG), Digital Card Game (DCG), and Lateral Thinking Puzzles (LTP).","AgentBench: Evaluating LLMs as Agents
+https://arxiv.org/abs/2308.03688",https://github.com/THUDM/AgentBench,https://github.com/THUDM/AgentBench/tree/main/data,1360,Apache-2.0 license,2023,101-500
+Q-bench,multimodal,"Evaluates MLLMs on three dimensions: low-level visual perception, low-level visual description, and overall visual quality assessment.","Q-Bench: A Benchmark for General-Purpose Foundation Models on Low-level Vision
+https://arxiv.org/abs/2309.14181",https://github.com/Q-Future/Q-Bench,https://huggingface.co/datasets/q-future/Q-Bench-HF,2990,S-Lab License 1.0,2023,51-100
+EvalPlus,coding,Extended HumanEval & MBPP by 80x/35x for rigorous eval.,"Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation
+https://arxiv.org/abs/2305.01210",https://github.com/evalplus/evalplus,https://github.com/evalplus/evalplus/tree/master/evalplus/data,n/a,Apache-2.0 license,2023,>500
+MaliciousInstruct,safety,"Covers ten 'malicious intentions', including psychological manipulation, theft, cyberbullying, and fraud.","Catastrophic Jailbreak of Open-source LLMs via Exploiting Generation
+https://arxiv.org/abs/2310.06987",https://github.com/Princeton-SysML/Jailbreak_LLM/tree/main,https://github.com/Princeton-SysML/Jailbreak_LLM/tree/main/data,100,see dataset page,2023,101-500
+SycophancyEval,safety,"Tests if human feedback encourages model responses to match user beliefs over truthful ones, a behavior known as sycophancy.","Towards Understanding Sycophancy in Language Models
+https://arxiv.org/abs/2310.13548",https://github.com/meg-tong/sycophancy-eval,https://huggingface.co/datasets/meg-tong/sycophancy-eval,n/a,MIT License,2023,101-500
+DecodingTrust,safety,"Evaluate trustworthiness of LLMs across 8 perspectives: toxicity, stereotypes, adversarial and robustness, privacy, ethics and fairness.","DecodingTrust: A Comprehensive Assessment of Trustworthiness in GPT Models
+https://arxiv.org/abs/2306.11698",https://github.com/AI-secure/DecodingTrust,https://huggingface.co/datasets/AI-Secure/DecodingTrust,"243,877",CC-BY-SA-4.0,2023,101-500
+AdvBench,safety,A set of 500 harmful strings that the model should not reproduce and 500 harmful instructions.,"Universal and Transferable Adversarial Attacks on Aligned Language Models
+https://arxiv.org/abs/2307.15043",https://github.com/llm-attacks/llm-attacks,https://github.com/llm-attacks/llm-attacks/tree/main/data/advbench,1000,MIT License,2023,>500
+XSTest,safety,A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models.,"XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models
+https://arxiv.org/abs/2308.01263",https://github.com/paul-rottger/exaggerated-safety,https://github.com/paul-rottger/exaggerated-safety/blob/main/xstest_v2_prompts.csv,450,CC-BY-4.0,2023,51-100
+ClassEval,coding,Class-level Python code generation tasks.,"ClassEval: A Manually-Crafted Benchmark for Evaluating LLMs on Class-level Code Generation""
+https://arxiv.org/abs/2308.01861",https://github.com/FudanSELab/ClassEval,https://huggingface.co/datasets/FudanSELab/ClassEval,100,MIT License,2023,101-500
+MetaTool,agents & tools use,"A set of user queries in the form of prompts that trigger LLMs to use tools, including both single-tool and multi-tool scenarios.","MetaTool Benchmark for Large Language Models: Deciding Whether to Use Tools and Which to Use
+https://arxiv.org/abs/2310.03128",https://github.com/HowieHwong/MetaTool,https://github.com/HowieHwong/MetaTool/tree/master/dataset,20879,MIT License,2023,51-100
+M3Exam,multimodal,"A set of human exam questions in 9 diverse languages with three educational levels, where about 23% of the questions require processing images for successful solving.","M3Exam: A Multilingual, Multimodal, Multilevel Benchmark for Examining Large Language Models
+https://arxiv.org/abs/2306.05179",https://github.com/DAMO-NLP-SG/M3Exam,https://github.com/DAMO-NLP-SG/M3Exam?tab=readme-ov-file#data,12317,see dataset page,2023,51-100
+OpinionQA,safety,A dataset for evaluating the alignment of LM opinions with those of 60 US demographic groups.,"Whose Opinions Do Language Models Reflect?
+https://arxiv.org/abs/2303.17548",https://github.com/tatsu-lab/opinions_qa,https://worksheets.codalab.org/worksheets/0x6fb693719477478aac73fc07db333f69,1498,see dataset page,2023,101-500
+SafetyBench,safety,"Multiple-choice questions concerning offensive content, bias, illegal activities, and mental health.","SafetyBench: Evaluating the Safety of Large Language Models
+https://arxiv.org/abs/2309.07045",https://github.com/thu-coai/SafetyBench,https://huggingface.co/datasets/thu-coai/SafetyBench,11435,MIT License,2023,101-500
+GPQA,language & reasoning,"A set of multiple-choice questions written by domain experts in biology, physics, and chemistry.","GPQA: A Graduate-Level Google-Proof Q&A Benchmark
+https://arxiv.org/abs/2311.12022",https://github.com/idavidrein/gpqa,https://huggingface.co/datasets/Idavidrein/gpqa,448,CC-BY-4.0,2023,101-500
+Repobench,coding,"Consists of three interconnected evaluation tasks: retrieve the most relevant code snippets, predict the next line of code, and handle complex tasks that require a combination of both retrieval and next-line prediction. Supports both Python and Java.","RepoBench: Benchmarking Repository-Level Code Auto-Completion Systems
+https://arxiv.org/abs/2306.03091",https://github.com/Leolty/repobench,"https://huggingface.co/datasets/tianyang/repobench-r 
+https://huggingface.co/datasets/tianyang/repobench-c 
+https://huggingface.co/datasets/tianyang/repobench-p",unspecified,CC-BY-NC-ND 4.0,2023,51-100
+IFEval,"language & reasoning,instruction-following","A set of prompts with verifiable instructions, such as ""write in more than 400 words"".",https://arxiv.org/abs/2311.07911,https://github.com/google-research/google-research/tree/master/instruction_following_eval,https://github.com/google-research/google-research/tree/master/instruction_following_eval,500,Apache-2.0 license,2023,101-500
+AGIEval,language & reasoning,"A collection of standardized tests, including GRE, GMAT, SAT, LSAT.","AGIEval: A Human-Centric Benchmark for Evaluating Foundation Models
+https://arxiv.org/abs/2304.06364",https://github.com/ruixiangcui/AGIEval/tree/main,"https://github.com/ruixiangcui/AGIEval/tree/main/data
+",n/a,MIT License,2023,101-500
+HarmfulQA,safety,Harmful questions covering 10 topics and ~10 subtopics each.,"Red-Teaming Large Language Models using Chain of Utterances for Safety-Alignment
+https://arxiv.org/abs/2308.09662",https://github.com/declare-lab/red-instruct,https://huggingface.co/datasets/declare-lab/HarmfulQA,1960,Apache-2.0 license,2023,51-100
+QHarm,safety,Dataset consists of human-written entries sampled randomly from AnthropicHarmlessBase.,"Safety-Tuned LLaMAs: Lessons From Improving the Safety of Large Language Models that Follow Instructions
+https://arxiv.org/abs/2309.07875",https://github.com/vinid/safety-tuned-llamas,https://github.com/vinid/safety-tuned-llamas,100,CC-BY-SA-4.0,2023,101-500
+LegalBench,domain-specific,Collaboratively curated tasks for evaluating legal reasoning in English LLMs.,"LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models
+https://arxiv.org/abs/2308.11462",https://github.com/HazyResearch/legalbench/,https://huggingface.co/datasets/nguha/legalbench,162,see dataset page,2023,101-500
+MMMU,"multimodal,language & reasoning","Evaluates multimodal models on massive multi-discipline tasks demanding college-level subject knowledge. Includes 11.5K questions from college exams, quizzes, and textbooks (https://mmmu-benchmark.github.io/).","MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI
+https://arxiv.org/abs/2311.16502",https://github.com/MMMU-Benchmark/MMMU,https://huggingface.co/datasets/MMMU/MMMU,11500,Apache-2.0 license,2023,101-500
+"A Multitask, Multilingual, Multimodal Evaluation of ChatGPT",multimodal,A framework for quantitatively evaluating interactive LLMs such as ChatGPT using 23 data sets covering 8 common NLP tasks.,"A Multitask, Multilingual, Multimodal Evaluation of ChatGPT on Reasoning, Hallucination, and Interactivity
+https://arxiv.org/abs/2302.04023",https://github.com/HLTCHKUST/chatgpt-evaluation,https://github.com/HLTCHKUST/chatgpt-evaluation/tree/main/src,n/a,see dataset page,2023,>500
+SWE-bench,coding,Real-world software issues collected from GitHub.,"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
+https://arxiv.org/abs/2310.06770",https://github.com/princeton-nlp/SWE-bench,https://huggingface.co/datasets/princeton-nlp/SWE-bench,2200,MIT License,2023,101-500
+Webarena,agents & tools use,An environment for autonomous agents that perform tasks on the web.,"WebArena: A Realistic Web Environment for Building Autonomous Agents
+https://arxiv.org/abs/2307.13854",https://github.com/web-arena-x/webarena,https://github.com/web-arena-x/webarena/blob/main/config_files/test.raw.json,n/a,Apache-2.0 license,2023,101-500
+BeaverTails,safety,A set of prompts sampled from AnthropicRedTeam that cover 14 harm categories.,"BeaverTails: Towards Improved Safety Alignment of LLM via a Human-Preference Dataset
+https://arxiv.org/abs/2307.04657",https://github.com/PKU-Alignment/beavertails,https://huggingface.co/datasets/PKU-Alignment/BeaverTails,334000,CC-BY-SA-4.0,2023,101-500
+Code Lingua,coding,Compares the ability of LLMs to understand what the code implements in source language and translate the same semantics in target language.,"Lost in Translation: A Study of Bugs Introduced by Large Language Models while Translating Code
+https://arxiv.org/abs/2308.03109",https://github.com/codetlingua/codetlingua,https://huggingface.co/iidai,1700,MIT License,2023,51-100
+SummEdits,language & reasoning,Inconsistency detection in summaries,https://arxiv.org/abs/2305.14540,https://github.com/salesforce/factualNLG,https://github.com/salesforce/factualNLG/tree/master/data/summedits,"6,348",Apache-2.0 license,2023,11-50
+EvalCrafter,"video,multimodal","A framework and pipeline for evaluating the performance of the generated videos, such as visual qualities, content qualities, motion qualities, and text-video alignment.","EvalCrafter: Benchmarking and Evaluating Large Video Generation Models
+https://arxiv.org/abs/2310.11440",https://github.com/EvalCrafter/EvalCrafter,https://huggingface.co/datasets/RaphaelLiu/EvalCrafter_T2V_Dataset,700,Apache-2.0 license,2023,51-100
+MME,multimodal,Measures both perception and cognition abilities on a total of 14 subtasks.,"MME: A Comprehensive Evaluation Benchmark for Multimodal Large Language Models
+https://arxiv.org/abs/2306.13394",https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation,https://huggingface.co/datasets/lmms-lab/MME,2374,see dataset page,2023,>500
+DoNotAnswer,safety,The dataset consists of prompts across 12 harm types to which responsible LLMs do not answer. ,"Do-Not-Answer: Evaluating Safeguards in LLMs
+https://arxiv.org/abs/2308.13387",https://github.com/Libr-AI/do-not-answer,https://huggingface.co/datasets/LibrAI/do-not-answer,939,Apache-2.0 license,2023,51-100
+ToolQA,agents & tools use,A new dataset to evaluate the capabilities of LLMs in answering challenging questions with external tools. It offers two levels (easy/hard) across eight real-life scenarios.,"ToolQA: A Dataset for LLM Question Answering with External Tools 
+https://arxiv.org/abs/2306.13304",https://github.com/night-chen/ToolQA ,see repo,n/a,see dataset page,2023,101-500
+TRUSTGPT,"safety,bias & ethics","Evaluates large language models on toxicity, bias, and value-alignment to ensure ethical and moral compliance.","TRUSTGPT: A Benchmark for Trustworthy and
+Responsible Large Language Models
+https://arxiv.org/pdf/2306.11507",https://github.com/HowieHwong/TrustGPT,https://github.com/mbforbes/social-chemistry-101,292000,CC-BY-SA-4.0,2023,51-100
+T-Eval,agents & tools use,"Decomposes the tool utilization capability into multiple sub-processes, including instruction following, planning, reasoning, retrieval, understanding, and review.","T-Eval: Evaluating the Tool Utilization Capability of Large Language Models Step by Step 
+https://arxiv.org/abs/2312.14033 ",https://github.com/open-compass/T-Eval,https://huggingface.co/datasets/lovesnowbest/T-Eval,23305,Apache-2.0 license,2023,11-50
+GAIA,agents & tools use,"Presents real-world questions requiring reasoning, multi-modality handling, and tool-use proficiency to evaluate general AI assistants.","GAIA: A Benchmark for General AI Assistants 
+https://arxiv.org/pdf/2311.12983 ",https://huggingface.co/gaia-benchmark,https://huggingface.co/datasets/gaia-benchmark/GAIA,450,see dataset page,2023,101-500
+LVLM-eHub,multimodal,Multi-Modality Arena helps benchmark vision-language models side-by-side while providing images as inputs. ,"LVLM-eHub: A Comprehensive Evaluation Benchmark for Large Vision-Language Models 
+https://arxiv.org/abs/2306.09265",https://github.com/OpenGVLab/Multi-Modality-Arena,see repo,n/a,see dataset page,2023,101-500
+ARB,"language & reasoning,knowledge","Advanced reasoning problems in math, physics, biology, chemistry, and law.","ARB: Advanced Reasoning Benchmark for Large Language Models
+https://arxiv.org/abs/2307.13692",https://github.com/TheDuckAI/arb?tab=readme-ov-file,https://advanced-reasoning-benchmark.netlify.app/documentation,n/a,see dataset page,2023,51-100
+RAGTruth,"information retrieval & RAG,safety","A corpus tailored for analyzing word-level hallucinations within the standard RAG frameworks for LLM applications. RAGTruth comprises 18,000 naturally generated responses from diverse LLMs using RAG.","RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models 
+https://arxiv.org/abs/2401.00396",https://github.com/ParticleMedia/RAGTruth,https://huggingface.co/datasets/wandb/RAGTruth-processed,18000,see dataset page,2023,51-100
+AGIEval,"language & reasoning,knowledge","Uses human-centric standardized exams, such as college entrance exams, law school admission tests, math competitions, and lawyer qualification tests.",AGIEval: A Human-Centric Benchmark for Evaluating Foundation Models https://arxiv.org/pdf/2304.06364,https://github.com/ruixiangcui/AGIEval,see repo,8000,see dataset page,2023,101-500
+SOCKET,"bias & ethics,knowledge","A theory-driven benchmark containing 58 NLP tasks testing social knowledge, including humor, sarcasm, offensiveness, sentiment, emotion, and trustworthiness.",Do LLMs Understand Social Knowledge? Evaluating the Sociability of Large Language Models with the SOCKET Benchmark. https://arxiv.org/pdf/2305.14938  ,https://github.com/minjechoi/SOCKET,https://huggingface.co/datasets/Blablablab/SOCKET/tree/main/SOCKET_DATA ,58,CC-BY-4.0,2023,51-100
+ExpertQA,safety,Long-form QA dataset with 2177 questions spanning 32 fields for evaluating attribution and factuality of LLM outputs in domain-specific scenarios.,"ExpertQA: Expert-Curated Questions and Attributed Answers 
+https://arxiv.org/abs/2309.07852",https://github.com/chaitanyamalaviya/ExpertQA,see repo,2177,MIT License,2023,51-100
+MINT,agents & tools use,Evaluates LLMs' ability to solve tasks with multi-turn interactions by using tools and leveraging natural language feedback.,"MINT: Evaluating LLMs in Multi-turn Interaction with Tools and Language Feedback
+https://arxiv.org/abs/2309.10691 ",https://github.com/xingyaoww/mint-bench,https://github.com/xingyaoww/mint-bench/blob/main/docs/DATA.md,586,see dataset page,2023,101-500
+HaluEval,safety,A collection of generated and human-annotated hallucinated samples for evaluating the performance of LLMs in recognizing hallucination.,"HaluEval: A Large-Scale Hallucination Evaluation Benchmark for Large Language Models 
+https://arxiv.org/abs/2305.11747",https://github.com/RUCAIBox/HaluEval,https://github.com/RUCAIBox/HaluEval?tab=readme-ov-file#data-release,35000,Apache-2.0 license,2023,101-500
+ToolEmu,"safety,agents & tools use","A framework that uses an LM to emulate tool execution and enables the testing of LM agents against a diverse range of tools and scenarios, without manual instantiation.","Identifying the Risks of LM Agents with an LM-Emulated Sandbox 
+https://arxiv.org/abs/2309.15817",https://github.com/ryoungj/ToolEmu,https://github.com/ryoungj/ToolEmu/blob/main/assets/all_cases.json,144,see dataset page,2023,101-500
+MMBench,multimodal,"A bilingual benchmark for assessing the multi-modal capabilities of vision-language models. Contains 2974 multiple-choice questions, covering 20 ability dimensions.","MMBench: Is Your Multi-modal Model an All-around Player? 
+https://arxiv.org/abs/2307.06281",https://github.com/open-compass/MMBench,see repo,2974,see dataset page,2023,>500
+EmotionBench,empathy,"Evaluates the empathy ability of LLMs across 8 emotions: anger, anxiety, depression, frustration, jealousy, guilt, fear, embarrassment.","Emotionally Numb or Empathetic? Evaluating How LLMs Feel Using EmotionBench 
+https://arxiv.org/abs/2308.03656",https://github.com/CUHK-ARISE/EmotionBench,https://huggingface.co/datasets/CUHK-ARISE/EmotionBench,400,Apache-2.0 license,2023,51-100
+EQ-Bench,empathy,Assesses the ability of LLMs to understand complex emotions and social interactions by asking them to predict the intensity of emotional states of characters in a dialogue.,"EQ-Bench: An Emotional Intelligence Benchmark for Large Language Models 
+https://arxiv.org/abs/2312.06281",https://github.com/EQ-bench/EQ-Bench,https://huggingface.co/datasets/pbevan11/EQ-Bench,171,MIT License,2023,11-50
+RED-EVAL,safety,Safety evaluation benchmark that carries out red-teaming.,"Red-Teaming Large Language Models using Chain of Utterances for Safety-Alignment
+https://arxiv.org/abs/2308.09662",https://github.com/declare-lab/red-instruct,see repo,1960,see dataset page,2023,101-500
+WiCE,information retrieval & RAG,Textual entailment dataset built on natural claim and evidence pairs extracted from Wikipedia.,"WiCE: Real-World Entailment for Claims in Wikipedia 
+https://arxiv.org/abs/2303.01432",https://github.com/ryokamoi/wice,https://huggingface.co/datasets/tasksource/wice,5377,CC-BY-SA-4.0,2023,51-100
+TheoremQA	,math,"Theorem-driven QA dataset that evaluates LLMs capabilities to apply theorems to solve science problems. Contains 800 questions covering 350 theorems from math, physics, EE&CS, and finance.","TheoremQA: A Theorem-driven Question Answering dataset 
+https://arxiv.org/abs/2305.12524",https://github.com/TIGER-AI-Lab/TheoremQA,https://huggingface.co/datasets/TIGER-Lab/TheoremQA,800,MIT License,2023,101-500
+LFQA-Verification,information retrieval & RAG,"Tests how retrieval augmentation impacts different LMs. Compares answers generated while using the same evidence documents by different LMs, and how differing quality of retrieval documents impacts the answers generated from the same LM.","Understanding Retrieval Augmentation for Long-Form Question Answering 
+https://arxiv.org/abs/2310.12150",https://github.com/timchen0618/LFQA-Verification/,https://github.com/timchen0618/LFQA-Verification/tree/main/data,100,see dataset page,2023,11-50
+NPHardEval,language & reasoning,"Evaluates the reasoning abilities of LLMs across a broad spectrum of 900 algorithmic questions, extending up to the NP-Hard complexity class.","NPHardEval: Dynamic Benchmark on Reasoning Ability of Large Language Models via Complexity Classes 
+https://arxiv.org/abs/2312.14890",https://github.com/casmlab/NPHardEval,https://github.com/casmlab/NPHardEval,900,see dataset page,2023,11-50
+AgentBench ,agents & tools use,A multi-dimensional benchmark to assess LLM-as-Agent's reasoning and decision-making abilities in a multi-turn open-ended generation setting.,"AgentBench: Evaluating LLMs as Agents 
+https://arxiv.org/abs/2308.03688",https://github.com/THUDM/AgentBench,https://github.com/THUDM/AgentBench/tree/main/data,n/a,see dataset page,2023,101-500
+PandaLM,instruction-following,"A judge large language model which is trained to distinguish the superior model given several LLMs. It compares the responses of different LLMs and provide a reason for the decision, along with a reference answer.","PandaLM: An Automatic Evaluation Benchmark for LLM Instruction Tuning Optimization
+https://arxiv.org/abs/2306.05087",https://github.com/WeOpenML/PandaLM,https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL3UvYy8xZDM3ZWRlNmVhYTk3NGRkL0VkMTBxZXJtN1RjZ2dCMnJBZ0FBQUFBQk5hbTM2YVExNlpjTU1IMjFaVU85ZlE%5FZT1nTjZueFI&cid=1D37EDE6EAA974DD&id=1D37EDE6EAA974DD%21683&parId=1D37EDE6EAA974DD%21682&o=OneUp,1000,see dataset page,2023,101-500
+DocMath-Eval,"math,language & reasoning",Designed to evaluate the numerical reasoning capabilities of LLMs in the context of understanding and analyzing specialized documents containing both text and tables. ,"DocMath-Eval: Evaluating Math Reasoning Capabilities of LLMs in Understanding Long and Specialized Documents 
+https://arxiv.org/abs/2311.09805",https://github.com/yale-nlp/DocMath-Eval,https://huggingface.co/datasets/yale-nlp/DocMath-Eval,4000,MIT License,2023,11-50
+ScienceQA,"knowledge,language & reasoning,multimodal",Multimodal multiple choice questions with diverse science topics and annotations of their answers with corresponding lectures and explanations.,"Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering
+https://arxiv.org/abs/2209.09513",https://github.com/lupantech/ScienceQA,https://huggingface.co/datasets/derek-thomas/ScienceQA,21208,CC-BY-SA-4.0,2022,>500
+DS-1000,coding,"Code generation benchmark with data science problems spanning seven Python libraries, such as NumPy and Pandas.","DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation
+https://arxiv.org/abs/2211.11501",https://github.com/xlang-ai/DS-1000,https://huggingface.co/datasets/xlangai/DS-1000,1000,CC-BY-SA-4.0,2022,101-500
+MedMCQA,domain-specific,"Four-option multiple-choice questions from Indian medical entrance examinations. Covers 2,400 healthcare topics and 21 medical subjects.","MedMCQA : A Large-scale Multi-Subject Multi-Choice Dataset for Medical domain Question Answering
+https://arxiv.org/abs/2203.14371",https://github.com/medmcqa/medmcqa,https://github.com/medmcqa/medmcqa,194000,MIT License,2022,101-500
+ToxiGen,safety,A set of toxic and benign statements about minority groups.,"ToxiGen: A Large-Scale Machine-Generated Dataset for Adversarial and Implicit Hate Speech Detection
+https://arxiv.org/abs/2203.09509",https://github.com/microsoft/TOXIGEN/tree/main,https://huggingface.co/datasets/toxigen/toxigen-data,274000,MIT License,2022,101-500
+HELM,"language & reasoning,safety",Reasoning tasks in several domains (reusing other benchmarks) with a focus on multi-metric evaluation (https://crfm.stanford.edu/helm/).,https://arxiv.org/abs/2211.09110,https://github.com/stanford-crfm/helm,see repository ,unspecified,Apache-2.0 license,2022,>500
+"HHH (Helpfulness, Honesty, Harmlessness)",safety,Human preference data about helpfulness and harmlessness.,"Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback
+https://arxiv.org/abs/2204.05862",https://github.com/anthropics/hh-rlhf,https://github.com/anthropics/hh-rlhf,44849,MIT License,2022,>500
+PersonalInfoLeak,safety,"Evaluates whether LLMs are prone to leaking PII, contains name-email pairs.","Are Large Pre-Trained Language Models Leaking Your Personal Information?
+https://arxiv.org/abs/2205.12628",https://github.com/jeffhj/LM_PersonalInfoLeak,https://github.com/jeffhj/LM_PersonalInfoLeak/tree/main/data,3238,Apache-2.0 license,2022,101-500
+e-CARE (explainable CAusal REasoning dataset),language & reasoning,A human-annotated dataset that contains causal reasoning questions.,"e-CARE: a New Dataset for Exploring Explainable Causal Reasoning
+https://arxiv.org/abs/2205.05849",https://github.com/Waste-Wood/e-CARE,https://github.com/Waste-Wood/e-CARE/tree/main/dataset,21000,MIT License,2022,11-50
+MGSM (Multilingual Grade School Math),math,"Grade-school math problems from the GSM8K dataset, translated into 10 languages.","Language Models are Multilingual Chain-of-Thought Reasoners
+https://arxiv.org/abs/2210.03057",https://github.com/google-research/url-nlp,https://huggingface.co/datasets/juletxara/mgsm,2500,CC-BY-SA-4.0,2022,101-500
+BigBench Hard,"knowledge,language & reasoning",A suite of BigBench tasks for which LLMs did not outperform the average human-rater.,"Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them
+https://arxiv.org/abs/2210.09261",https://github.com/suzgunmirac/BIG-Bench-Hard,https://huggingface.co/datasets/maveriq/bigbenchhard,6500,MIT License,2022,>500
+PlanBench,language & reasoning,A benchmark designed to evaluate the ability of LLMs to generate plans of action and reason about change.,"PlanBench: An Extensible Benchmark for Evaluating Large Language Models on Planning and Reasoning about Change
+https://arxiv.org/abs/2206.10498",https://github.com/karthikv792/LLMs-Planning/tree/main/plan-bench,https://huggingface.co/datasets/tasksource/planbench,11113,see dataset page,2022,101-500
+BigBench,"knowledge,language & reasoning","Set of questions crowdsourced by domain experts in math, biology, physics, and beyond.","Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models
+https://arxiv.org/abs/2206.04615",https://github.com/google/BIG-bench,https://huggingface.co/datasets/google/bigbench,n/a,Apache-2.0 license,2022,>500
+AnthropicRedTeam,safety,Human-generated and annotated red teaming dialogues.,"Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned
+https://arxiv.org/abs/2209.07858",https://github.com/anthropics/hh-rlhf,https://huggingface.co/datasets/Anthropic/hh-rlhf,38961,MIT License,2022,101-500
+GLUE-X,language & reasoning,"Includes 13 publicly available datasets for Out-of-distribution testing, and evaluations are conducted on 8 classic NLP tasks over 21 popularly used PLMs, including GPT-3 and GPT-3.5","GLUE-X: Evaluating Natural Language Understanding Models from an Out-of-distribution Generalization Perspective 
+https://arxiv.org/abs/2211.08073",https://github.com/YangLinyi/GLUE-X,https://drive.google.com/drive/folders/1BcwjmVOqq96igfbB2MCXwLzthFX7XEhy,n/a,see dataset page,2022,51-100
+Webshop,agents & tools use,"A simulated e-commerce website environment with 1.18 million real-world products and 12,087 crowd-sourced text instructions. An agent needs to navigate multiple types of webpages, find, customize, and purchase an item.","WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents 
+https://arxiv.org/abs/2207.01206",https://github.com/princeton-nlp/webshop,https://huggingface.co/datasets/jyang/webshop_inst_goal_pairs_truth,529107,MIT License,2022,101-500
+FOLIO,language & reasoning,"A human-annotated, logically complex dataset for reasoning in natural language, equipped with first-order logic (FOL) annotations.","FOLIO: Natural Language Reasoning with First-Order Logic 
+https://arxiv.org/abs/2209.00840",https://github.com/Yale-LILY/FOLIO,https://huggingface.co/datasets/yale-nlp/FOLIO,1204,MIT License,2022,101-500
+GSMHard,math,The harder version of the GSM8K math reasoning dataset. Numbers in the questions of GSM8K are replaced with larger numbers that are less common.,"PAL: Program-aided Language Models 
+https://arxiv.org/abs/2211.10435",https://github.com/reasoning-machines/pal,https://huggingface.co/datasets/reasoning-machines/gsm-hard,1319,MIT License,2022,>500
+SVAMP,math,Grade-school-level math word problems that require models to perform single-variable arithmetic operations. Created by applying variations over examples sampled from existing datasets. ,"Are NLP Models really able to Solve Simple Math Word Problems?
+https://arxiv.org/abs/2103.07191",https://github.com/arkilpatel/SVAMP,https://github.com/arkilpatel/SVAMP/tree/main/data,1000,MIT License,2021,>500
+MATH,math,"Tasks from US mathematics competitions that cover algebra, calculus, geometry, and statistics.","Measuring Mathematical Problem Solving With the MATH Dataset
+https://arxiv.org/abs/2103.03874",https://github.com/hendrycks/math/?tab=readme-ov-file,https://github.com/hendrycks/math/?tab=readme-ov-file,12500,MIT License,2021,>500
+BEIR,"language & reasoning,information retrieval & RAG","BEIR is a heterogeneous benchmark for information retrieval (IR) tasks, contains 15+ IR datasets.","BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models
+https://arxiv.org/abs/2104.08663",https://github.com/beir-cellar/beir,https://huggingface.co/BeIR,n/a,see dataset page,2021,>500
+SpartQA,language & reasoning,A textual question answering benchmark for spatial reasoning on natural language text.,"SpartQA: : A Textual Question Answering Benchmark for Spatial Reasoning
+https://arxiv.org/abs/2104.05832",https://github.com/HLR/SpartQA-baselines,https://github.com/HLR/SpartQA_generation,510,MIT License,2021,51-100
+TAT-QA ,domain-specific,Questions and associated hybrid contexts from real-world financial reports.,"TAT-QA: A Question Answering Benchmark on a Hybrid of Tabular and Textual Content in Finance
+https://arxiv.org/abs/2105.07624",https://github.com/NExTplusplus/TAT-QA,https://github.com/NExTplusplus/TAT-QA/tree/master/dataset_raw,16552,MIT License,2021,101-500
+CodeXGLUE,coding,"14 datasets for program understanding and generation and three baseline systems, including the BERT-style, GPT-style, and Encoder-Decoder models.","CodeXGLUE: A Machine Learning Benchmark Dataset for Code Understanding and Generation
+https://arxiv.org/abs/2102.04664",https://github.com/microsoft/CodeXGLUE,https://huggingface.co/datasets?search=code_x_glue,n/a,see dataset page,2021,>500
+TruthfulQA,"knowledge,language & reasoning,safety",Evaluates how well models generate truthful responses.,"TruthfulQA: Measuring How Models Mimic Human Falsehoods
+https://arxiv.org/abs/2109.07958v2",https://github.com/sylinrl/TruthfulQA,https://huggingface.co/datasets/truthfulqa/truthful_qa,1634,Apache-2.0 license,2021,>500
+APPS (Automated Programming Progress Standard),coding,"A dataset for code generation, including introductory to competitive programming problems.","Measuring Coding Challenge Competence With APPS
+https://arxiv.org/abs/2105.09938",https://github.com/hendrycks/apps,https://huggingface.co/datasets/codeparrot/apps,10000,MIT License,2021,101-500
+BOLD,"safety,bias & ethics",A set of unfinished sentences from Wikipedia designed to assess bias in text generation.,"BOLD: Dataset and Metrics for Measuring Biases in Open-Ended Language Generation
+https://arxiv.org/abs/2101.11718",https://github.com/amazon-science/bold,https://github.com/amazon-science/bold/tree/main/prompts,23679,CC-BY-SA-4.0,2021,101-500
+BBQ,"safety,bias & ethics",Evaluate social biases of LLMs in question answering.,"BBQ: A Hand-Built Bias Benchmark for Question Answering
+https://arxiv.org/abs/2110.08193",https://github.com/nyu-mll/BBQ,https://github.com/nyu-mll/BBQ/tree/main/data,58492,CC-BY-SA-4.0,2021,101-500
+MBPP (Mostly Basic Programming Problems),coding,Crowd-sourced entry-level programming tasks.,"Program Synthesis with Large Language Models
+https://arxiv.org/abs/2108.07732",https://github.com/google-research/google-research/blob/master/mbpp/README.md,https://github.com/google-research/google-research/blob/master/mbpp/mbpp.jsonl,974,CC-BY-SA-4.0,2021,>500
+HumanEval,coding,Programming tasks and unit tests to check model-generated code.,"Evaluating Large Language Models Trained on Code
+https://arxiv.org/abs/2107.03374 ",https://github.com/openai/human-eval,https://huggingface.co/datasets/openai/openai_humaneval,164,MIT License,2021,>500
+GSM8K,math,Grade school math word problems.,"Training Verifiers to Solve Math Word Problems
+https://arxiv.org/abs/2110.14168",https://github.com/openai/grade-school-math,https://github.com/openai/grade-school-math/tree/master/grade_school_math/data,8500,MIT License,2021,>500
+TURINGBENCH,safety,The TuringBench Dataset will assist researchers in building models that can effectively distinguish machine-generated texts from human-written texts.,"TURINGBENCH: A Benchmark Environment for Turing Test in the Age of Neural Text Generation 
+https://arxiv.org/abs/2109.13296",https://github.com/AdaUchendu/TuringBench,https://turingbench.ist.psu.edu/,200000,see dataset page,2021,101-500
+APPS,coding,"A benchmark dataset for code generation and completion tasks, containing coding problems and solutions.","Measuring Coding Challenge Competence With
+APPS
+https://arxiv.org/pdf/2105.09938",https://github.com/hendrycks/apps,https://huggingface.co/datasets/codeparrot/apps,10000,MIT License,2021,101-500
+HHH alignment,safety,"Evaluates language models on alignment, broken down into the categories of helpfulness, honesty/accuracy, harmlessness, and other.","A General Language Assistant as a Laboratory for Alignment 
+https://arxiv.org/abs/2112.00861",n/a,https://huggingface.co/datasets/HuggingFaceH4/hhh_alignment,221,Apache-2.0 license,2021,101-500
+WebQA,"multimodal,language & reasoning",Visual Question Answering (VQA) benchmark that evaluates models' language groundable visual representations for novel objects and the ability to reason.,"WebQA: Multihop and Multimodal QA
+https://arxiv.org/abs/2109.00590",https://github.com/WebQnA/WebQA,https://drive.google.com/drive/folders/1ApfD-RzvJ79b-sLeBx1OaiPNUYauZdAZ,41732,see dataset page,2021,101-500
+CUAD,domain-specific,"A dataset for legal contract review with over 13,000 annotations.","CUAD: An Expert-Annotated NLP Dataset for
+Legal Contract Review
+https://arxiv.org/pdf/2103.06268",https://github.com/TheAtticusProject/cuad,https://huggingface.co/datasets/theatticusproject/cuad-qa,13000,CC-BY-4.0,2021,101-500
+FinQA,"math,language & reasoning","Large-scale dataset with Question-Answering pairs over Financial reports, written by financial experts.","FinQA: A Dataset of Numerical Reasoning over Financial Data 
+https://arxiv.org/abs/2109.00122 ",https://github.com/czyssrs/FinQA,https://huggingface.co/datasets/ibm-research/finqa,8000,CC-BY-4.0,2021,101-500
+StereoSet,"safety,bias & ethics","A large-scale natural dataset in English to measure stereotypical biases in four domains: gender, profession, race, and religion.","StereoSet: Measuring stereotypical bias in pretrained language models
+https://arxiv.org/abs/2004.09456",https://github.com/moinnadeem/StereoSet,https://huggingface.co/datasets/McGill-NLP/stereoset,4229,CC-BY-SA-4.0,2020,>500
+ETHICS,"safety,bias & ethics",A set of binary-choice questions on ethics with two actions to choose from.,"Aligning AI With Shared Human Values
+https://arxiv.org/abs/2008.02275",https://github.com/hendrycks/ethics,https://huggingface.co/datasets/hendrycks/ethics,134400,MIT License,2020,101-500
+Social Chemistry 101,"language & reasoning,bias & ethics",A conceptual formalism to study people’s everyday social norms and moral judgments.,"Social Chemistry 101: Learning to Reason about Social and Moral Norms
+https://arxiv.org/abs/2011.00620",https://github.com/mbforbes/social-chemistry-101,https://github.com/mbforbes/social-chemistry-101?tab=readme-ov-file#data,4500000,CC-BY-SA-4.0,2020,101-500
+RealToxicityPrompt,safety,"A dataset of 100K naturally occurring, sentence-level prompts derived from a large corpus of English web text, paired with toxicity scores from a widely-used toxicity classifier.","RealToxicityPrompts: Evaluating Neural Toxic Degeneration in Language Models
+https://arxiv.org/abs/2009.11462",https://github.com/allenai/real-toxicity-prompts?tab=readme-ov-file,https://huggingface.co/datasets/allenai/real-toxicity-prompts,99442,Apache-2.0 license,2020,>500
+MMLU,"knowledge,language & reasoning","Multi-choice tasks across 57 subjects, high school to expert level.","Measuring Massive Multitask Language Understanding
+https://arxiv.org/abs/2009.03300",https://github.com/hendrycks/test/tree/master,https://huggingface.co/datasets/cais/mmlu,231400,MIT License,2020,>500
+CrowS-Pairs (Crowdsourced Stereotype Pairs),"safety,bias & ethics","Covers stereotypes dealing with nine types of bias, like race, religion, and age.","CrowS-Pairs: A Challenge Dataset for Measuring Social Biases in Masked Language Models
+https://arxiv.org/abs/2010.00133",https://github.com/nyu-mll/crows-pairs,https://github.com/nyu-mll/crows-pairs/blob/master/data/crows_pairs_anonymized.csv,1508,CC-BY-SA-4.0,2020,>500
+MLSUM,"summarization,language & reasoning",Multilingual summarization dataset crawled from different news websites.,"MLSUM: The Multilingual Summarization Corpus
+https://arxiv.org/abs/2004.14900",https://github.com/ThomasScialom/MLSUM,https://huggingface.co/datasets/GEM/mlsum,535062,see dataset page,2020,101-500
+MedQA,domain-specific,Free-form multiple-choice OpenQA dataset for solving medical problems collected from the professional medical board exams.,"What Disease does this Patient Have? A Large-scale Open Domain Question Answering Dataset from Medical Exams
+https://arxiv.org/abs/2009.13081",https://github.com/jind11/MedQA,https://github.com/jind11/MedQA,12723,MIT License,2020,101-500
+RobustBench,safety,Adversarial robustness benchmark.,"RobustBench: a standardized adversarial robustness benchmark 
+https://arxiv.org/abs/2010.09670",https://github.com/RobustBench/robustbench,see repo,n/a,see dataset page,2020,>500
+Contrast Sets,decision-making,"Annotation paradigm for NLP that helps to close systematic gaps in the test data. Contrast sets provide a local view of a model's decision boundary, which can be used to more accurately evaluate a model's true linguistic capabilities.","Evaluating Models' Local Decision Boundaries via Contrast Sets 
+https://arxiv.org/abs/2004.02709",https://github.com/allenai/contrast-sets,see repo,n/a,see dataset page,2020,>500
+Natural Questions,language & reasoning,"User questions issued to Google search, and answers found from Wikipedia by annotators.","Natural Questions: A Benchmark for Question Answering Research
+https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00276/43518/Natural-Questions-A-Benchmark-for-Question",https://github.com/google-research-datasets/natural-questions,https://ai.google.com/research/NaturalQuestions,300000,Apache-2.0 license,2019,>500
+ANLI,language & reasoning,"Large-scale NLI benchmark dataset, collected via an iterative, adversarial human-and-model-in-the-loop procedure.","Adversarial NLI: A New Benchmark for Natural Language Understanding
+https://arxiv.org/abs/1910.14599",https://github.com/facebookresearch/anli,https://huggingface.co/datasets/facebook/anli,169265,CC-BY-NC-4.0,2019,>500
+SEAT (Sentence Encoder Association Test),"safety,bias & ethics",Measures bias in sentence encoders.,"On Measuring Social Biases in Sentence Encoders
+https://arxiv.org/abs/1903.10561",https://github.com/W4ngatang/sent-bias,https://github.com/W4ngatang/sent-bias/tree/master/tests,n/a,CC-BY-NC-4.0,2019,>500
+BoolQ,language & reasoning,"Yes/No questions from Google searches, paired with Wikipedia passages.","BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions
+https://arxiv.org/abs/1905.10044",https://github.com/google-research-datasets/boolean-questions,https://github.com/google-research-datasets/boolean-questions,16000,CC-BY-SA-3.0,2019,>500
+SuperGLUE,language & reasoning,Improved and more challenging version of GLUE benchmark.,"SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems
+https://arxiv.org/abs/1905.00537",https://github.com/nyu-mll/jiant,https://huggingface.co/datasets/aps/super_glue,n/a,see dataset page,2019,>500
+DROP (Discrete Reasoning Over Paragraphs),language & reasoning,"Tasks to resolve references in a question and perform discrete operations over them (such as addition, counting, or sorting).","DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning Over Paragraphs
+https://arxiv.org/abs/1903.00161",https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/drop/README.md,https://huggingface.co/datasets/ucinlp/drop,96000,CC-BY-SA-4.0,2019,>500
+OpenDialKG,conversation & chatbots,"A dataset of conversations between two crowdsourcing
+agents engaging in a dialog about a given topic.","OpenDialKG: Explainable Conversational Reasoning with Attention-based Walks over Knowledge Graphs
+https://aclanthology.org/P19-1081/",https://github.com/facebookresearch/opendialkg,https://github.com/facebookresearch/opendialkg/tree/main/data,15000,CC-BY-NC-4.0,2019,101-500
+HellaSwag,language & reasoning,"Predict the most likely ending of a sentence, multiple-choice.","HellaSwag: Can a Machine Really Finish Your Sentence?
+https://arxiv.org/abs/1905.07830",https://github.com/rowanz/hellaswag/tree/master,https://github.com/rowanz/hellaswag/tree/master/data,59950,MIT License,2019,>500
+PubMedQA,domain-specific,A dataset for biomedical research question answering.,"PubMedQA: A Dataset for Biomedical Research Question Answering
+https://arxiv.org/abs/1909.06146",https://github.com/pubmedqa/pubmedqa,https://github.com/pubmedqa/pubmedqa,270000,MIT License,2019,>500
+Winogrande,language & reasoning,Fill-in-a-blank tasks resolving ambiguities in pronoun references with binary options.,"WinoGrande: An Adversarial Winograd Schema Challenge at Scale
+https://arxiv.org/abs/1907.10641",https://github.com/allenai/winogrande,https://huggingface.co/datasets/allenai/winogrande,44000,Apache-2.0 license,2019,>500
+PIQA (Physical Interaction QA),language & reasoning,Naive physics reasoning tasks focusing on how we interact with everyday objects in everyday situations.,"PIQA: Reasoning about Physical Commonsense in Natural Language
+https://arxiv.org/abs/1911.11641",https://github.com/ybisk/ybisk.github.io/tree/master/piqa,https://huggingface.co/datasets/ybisk/piqa,18000,"Academic Free License (""AFL"") v. 3.1",2019,>500
+Civil Comments,bias & ethics,A suite of threshold-agnostic metrics for unintended bias and a test set of online comments with crowd-sourced annotations for identity references.,"Nuanced Metrics for Measuring Unintended Bias with Real Data for Text Classification 
+https://arxiv.org/abs/1903.04561",https://github.com/conversationai/conversationai.github.io/tree/main,https://huggingface.co/datasets/google/civil_comments,1999514,CC0-1.0,2019,>500
+HotpotQA,language & reasoning,"A set of Wikipedia-based question-answer
+pairs with multi-hop questions.","HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering
+https://arxiv.org/abs/1809.09600",https://github.com/hotpotqa/hotpot,https://hotpotqa.github.io/,113000,CC-BY-SA-4.0,2018,>500
+GLUE (General Language Understanding Evaluation),language & reasoning,Tool for evaluating and analyzing the performance of models on NLU tasks. Was quickly outperformed by LLMs and replaced by SuperGLUE.,"GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding
+https://arxiv.org/abs/1804.07461",https://github.com/nyu-mll/GLUE-baselines,https://huggingface.co/datasets/nyu-mll/glue,n/a,see dataset page,2018,>500
+OpenBookQA,language & reasoning,"Question answering dataset, modeled after open book exams.","Can a Suit of Armor Conduct Electricity? A New Dataset for Open Book Question Answering
+https://arxiv.org/abs/1809.02789",https://github.com/allenai/OpenBookQA,https://huggingface.co/datasets/allenai/openbookqa,12000,Apache-2.0 license,2018,>500
+WinoGender,"safety,bias & ethics","Pairs of sentences that differ only by the gender of one pronoun in the sentence, designed to test for the presence of gender bias in automated coreference resolution systems.","Gender Bias in Coreference Resolution
+https://arxiv.org/abs/1804.09301",https://github.com/rudinger/winogender-schemas,https://huggingface.co/datasets/oskarvanderwal/winogender,720,MIT License,2018,>500
+CoQA (Conversational Question Answering),conversation & chatbots,Questions with answers collected from 8000+ conversations.,"CoQA: A Conversational Question Answering Challenge
+https://arxiv.org/abs/1808.07042",https://stanfordnlp.github.io/coqa/,https://stanfordnlp.github.io/coqa/,127000,see dataset page,2018,>500
+SQuAD2.0,language & reasoning,"Combines the 100,000 questions in SQuAD1.1 with over 50,000 unanswerable questions written adversarially by crowdworkers to look similar to answerable ones.","Know What You Don't Know: Unanswerable Questions for SQuAD
+https://arxiv.org/abs/1806.03822",https://rajpurkar.github.io/SQuAD-explorer/,https://huggingface.co/datasets/bayes-group-diffusion/squad-2.0,150000,CC-BY-SA-4.0,2018,>500
+ARC,"knowledge,language & reasoning","Grade-school level, multiple-choice science questions.","Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge
+https://arxiv.org/abs/1803.05457",https://github.com/allenai/aristo-leaderboard/tree/master/arc,https://huggingface.co/datasets/allenai/ai2_arc,7787,CC-BY-SA-4.0,2018,>500
+SWAG,language & reasoning,Multi-choice tasks of grounded commonsense inference with adversarial filtering.,"SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference
+https://arxiv.org/abs/1808.05326
+",https://github.com/rowanz/swagaf,https://github.com/rowanz/swagaf/tree/master/data,113000,MIT License,2018,>500
+CommonsenseQA,language & reasoning,Multiple-choice question answering dataset that requires commonsense knowledge to predict the correct answers.,"CommonsenseQA: A Question Answering Challenge Targeting Commonsense Knowledge
+https://arxiv.org/abs/1811.00937",https://github.com/jonathanherzig/commonsenseqa,https://github.com/jonathanherzig/commonsenseqa,12102,see dataset page,2018,>500
+QuAC (Question Answering in Context),conversation & chatbots,"Question-answer pairs, simulating student-teacher interactions.","QuAC : Question Answering in Context
+https://arxiv.org/abs/1808.07036",https://quac.ai/,https://quac.ai/,100000,CC-BY-SA-4.0,2018,>500
+FEVER,information retrieval & RAG,"A dataset for verification against textual sources, FEVER: Fact Extraction and VERification.","FEVER: a large-scale dataset for Fact Extraction and VERification 
+https://arxiv.org/abs/1803.05355",https://github.com/awslabs/fever,https://fever.ai/dataset/fever.html,185445,see dataset page,2018,>500
+RACE (ReAding Comprehension Dataset From Examinations),language & reasoning,Reading comprehension tasks collected from the English exams for middle and high school Chinese students.,"RACE: Large-scale ReAding Comprehension Dataset From Examinations
+https://arxiv.org/abs/1704.04683",n/a,https://www.cs.cmu.edu/~glai1/data/race/,100000,see dataset page,2017,>500
+SciQ,language & reasoning,Multiple choice science exam questions.,"Crowdsourcing Multiple Choice Science Questions
+https://arxiv.org/abs/1707.06209",n/a,https://huggingface.co/datasets/allenai/sciq,13700,CC-BY-SA-3.0,2017,101-500
+TriviaQA,language & reasoning,A large-scale question-answering dataset.,"TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension
+https://arxiv.org/abs/1705.03551",https://github.com/mandarjoshi90/triviaqa,https://huggingface.co/datasets/mandarjoshi/trivia_qa,650000,see dataset page,2017,>500
+MultiNLI (Multi-Genre Natural Language Inference),language & reasoning,A crowdsourced collection of sentence pairs annotated with textual entailment information.,"A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference
+https://arxiv.org/abs/1704.05426",https://github.com/nyu-mll/multiNLI,https://huggingface.co/datasets/nyu-mll/multi_nli,433000,see dataset page,2017,>500
+NarrativeQA,"language & reasoning,information retrieval & RAG",A dataset that requires reading entire books or movie scripts to answer the questions. It requires an understanding of the underlying narrative rather than relying on pattern matching or salience. ,"The NarrativeQA Reading Comprehension Challenge 
+https://arxiv.org/abs/1712.07040 ",https://github.com/google-deepmind/narrativeqa,https://huggingface.co/datasets/deepmind/narrativeqa_manual,1572,Apache-2.0 license,2017,>500
+AQUA-RAT,math,"An algebraic word problem dataset, with multiple choice questions annotated with rationales.","Program Induction by Rationale Generation : Learning to Solve and Explain Algebraic Word Problems 
+https://arxiv.org/abs/1705.04146",https://github.com/google-deepmind/AQuA,https://huggingface.co/datasets/deepmind/aqua_rat,100000,Apache-2.0 license,2017,>500
+SQuAD (Stanford Question Answering Dataset),language & reasoning,"A reading comprehension dataset consisting of 100,000 questions posed by crowdworkers on a set of Wikipedia articles.","SQuAD: 100,000+ Questions for Machine Comprehension of Text
+https://arxiv.org/abs/1606.05250",https://rajpurkar.github.io/SQuAD-explorer/,https://huggingface.co/datasets/rajpurkar/squad,100000,CC-BY-SA-4.0,2016,>500
+LAMBADA (LAnguage Modelling Broadened to Account for Discourse Aspects),language & reasoning,"A set of passages composed of a
+context and a target sentence. The task is to guess the last word of the target sentence. ","The LAMBADA dataset: Word prediction requiring a broad discourse context
+https://arxiv.org/abs/1606.06031",n/a,https://huggingface.co/datasets/cimec/lambada,12684,CC-BY-SA-4.0,2016,>500
+MS MARCO,language & reasoning,Questions sampled from Bing's search query logs and passages from web documents.,"MS MARCO: A Human Generated MAchine Reading COmprehension Dataset
+https://arxiv.org/abs/1611.09268",https://microsoft.github.io/msmarco/,https://huggingface.co/datasets/microsoft/ms_marco,1112939,see dataset page,2016,>500
+HQHBench,multimodal,"Evaluates the performance of LVLMs across different types of hallucination. It consists of 4000 free-form VQA image-instruction pairs, with 500 pairs for each hallucination type.","Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations
+https://arxiv.org/pdf/1602.07332v1",https://github.com/HQHBench/HQHBench,see repo,4000,see dataset page,2016,>500
+NeedleInAHaystack (NIAH),information retrieval & RAG,A simple 'needle in a haystack' analysis to test in-context retrieval ability of long context LLMs.,n/a,https://github.com/gkamradt/LLMTest_NeedleInAHaystack/tree/main,https://huggingface.co/datasets/YurtsAI/NIAH_eval_dataset,215,MIT License,,
+MedConceptsQA,domain-specific,"MedConceptsQA measures the ability of models to interpret and distinguish between medical codes for diagnoses, procedures, and drugs. ","MedConceptsQA: Open source medical concepts QA benchmark 
+https://www.sciencedirect.com/science/article/pii/S0010482524011740 ",https://github.com/nadavlab/MedConceptsQA,https://huggingface.co/datasets/ofir408/MedConceptsQA,819829,Apache-2.0 license,2024,New
+CUPCase,domain-specific,"CUPCase is based on 3,563 real-world clinical case reports formulated into diagnoses in open-ended textual format and as multiple-choice options with distractors.","CUPCase: Clinically Uncommon Patient Cases and Diagnoses Dataset 
+https://arxiv.org/abs/2503.06204",n/a,https://huggingface.co/datasets/ofir408/CupCase,3562,Apache-2.0 license,2025,New
+SPC (Synthetic-Persona-Chat Dataset),conversation & chatbots,"A persona-based conversational dataset, consisting of synthetic personas and conversations.",Faithful Persona-based Conversational Dataset Generation with Large Language Models  https://arxiv.org/abs/2312.10007 ,https://github.com/google-research-datasets/Synthetic-Persona-Chat/tree/main ,https://huggingface.co/datasets/google/Synthetic-Persona-Chat ,10000+,CC-BY-4.0,2023,11-50
+LAB-Bench (Language Agent Biology Benchmark),domain-specific,An evaluation dataset for AI systems intended to benchmark capabilities foundational to scientific research in biology. ,"LAB-Bench: Measuring Capabilities of Language Models for Biology Research 
+https://arxiv.org/abs/2407.10362 ",https://github.com/Future-House/LAB-Bench,https://huggingface.co/datasets/futurehouse/lab-bench,2000,CC-BY-SA-4.0,2024,New
+PaperBench,agents & tools use,"A benchmark evaluating the ability of AI agents to replicate state-of-the-art AI research. Agents must replicate 20 ICML 2024 Spotlight and Oral papers from scratch, including understanding paper contributions, developing a codebase, and successfully executing experiments. ","PaperBench: Evaluating AI's Ability to Replicate AI Research 
+https://arxiv.org/abs/2504.01848 ",https://github.com/openai/preparedness/blob/main/project/paperbench/README.md,https://github.com/openai/preparedness/blob/main/project/paperbench/README.md,8316,see dataset page,2025,New
+Humanity's Last Exam (HLE),"knowledge,language & reasoning","A multi-modal benchmark at the frontier of human knowledge, consists of 2,500 questions across dozens of subjects, including mathematics, humanities, and the natural sciences.","Humanity's Last Exam 
+https://arxiv.org/abs/2501.14249 ",https://github.com/centerforaisafety/hle,https://huggingface.co/datasets/cais/hle,2500,MIT License,2025,New
+RAFT,language & reasoning,A benchmark evaluating the ability of LLMs to solve text classification tasks.,"RAFT: A Real-World Few-Shot Text Classification Benchmark
+https://arxiv.org/abs/2109.14076",https://github.com/oughtinc/raft-baselines,https://huggingface.co/datasets/ought/raft,29000,see dataset page,2021,51-100
+Wildbench,conversation & chatbots,"An automated evaluation framework designed to benchmark LLMs on real-world user queries. It consists of 1,024 tasks selected from over one million human-chatbot conversation logs. ","WildBench: Benchmarking LLMs with Challenging Tasks from Real Users in the Wild 
+https://arxiv.org/abs/2406.04770 ",https://github.com/allenai/WildBench,https://huggingface.co/datasets/allenai/WildBench,1024,CC-BY-4.0,2024,New
+LLF-Bench,agents & tools use,A benchmark that evaluates the ability of AI agents to interactively learn from natural language feedback and instructions.,"LLF-Bench: Benchmark for Interactive Learning from Language Feedback
+https://arxiv.org/abs/2312.06853",https://github.com/microsoft/LLF-Bench,https://github.com/microsoft/LLF-Bench,n/a,MIT License,2023,11-50
+SocialDial,conversation & chatbots,"A socially-aware dialogue corpus that covers five categories of social norms, including social relation, context, and social distance.","SocialDial: A Benchmark for Socially-Aware Dialogue Systems 
+https://arxiv.org/abs/2304.12026",https://github.com/zhanhl316/SocialDial,https://github.com/zhanhl316/SocialDial/blob/main/human_dialogue_data.json,n/a,see dataset page,2023,11-50
+We-Math,math,A benchmark that evaluates the problem-solving principles in knowledge acquisition and generalization for math tasks.,"We-Math: Does Your Large Multimodal Model Achieve Human-like Mathematical Reasoning? 
+https://arxiv.org/abs/2407.01284",https://github.com/We-Math/We-Math,https://huggingface.co/datasets/We-Math/We-Math,1740,CC-BY-NC-4.0,2024,New
+ViDoRe (Visual Document Retrieval Benchmark),"information retrieval & RAG,multimodal",A benchmark to evaluate LLMs on visually rich document retrieval.,"ColPali: Efficient Document Retrieval with Vision Language Models 
+https://arxiv.org/abs/2407.01449",https://github.com/illuin-tech/vidore-benchmark,https://huggingface.co/collections/vidore/vidore-benchmark-667173f98e70a1c0fa4db00d,n/a,see dataset page,2024,New
+CYBERSECEVAL 2,safety,"A novel benchmark to quantify LLM security risks, including prompt injection and code interpreter abuse.","CyberSecEval 2: A Wide-Ranging Cybersecurity Evaluation Suite for Large Language Models 
+https://arxiv.org/abs/2404.13161",https://github.com/meta-llama/PurpleLlama,https://github.com/meta-llama/PurpleLlama/tree/main/CybersecurityBenchmarks/benchmark,n/a,MIT License,2024,New
+ConfAIde,safety,A benchmark designed to identify critical weaknesses in the privacy reasoning capabilities of instruction-tuned LLMs.,"Can LLMs Keep a Secret? Testing Privacy Implications of Language Models via Contextual Integrity Theory 
+https://arxiv.org/abs/2310.17884",https://github.com/skywalker023/confAIde,https://github.com/skywalker023/confAIde/tree/main/benchmark,n/a,see dataset page,2023,101-500
+CRAG,information retrieval & RAG,A factual question answering benchmark of question-answer pairs and mock APIs to simulate web and Knowledge Graph (KG) search.,"CRAG -- Comprehensive RAG Benchmark 
+https://arxiv.org/abs/2406.04744",https://github.com/facebookresearch/CRAG,https://github.com/facebookresearch/CRAG/blob/main/docs/dataset.md,4409,see dataset page,2024,New
+LiveCodeBench ,coding,"A benchmark that evaluates the coding abilities of LLMs and contains problems from contests across three competition platforms - LeetCode, AtCoder, and CodeForces.","LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code
+https://arxiv.org/abs/2403.07974",https://livecodebench.github.io/,https://huggingface.co/livecodebench,1882,see dataset page,2024,New
+LiveCodeBench Pro,coding,"A benchmark composed of problems from Codeforces, ICPC, and IOI that are continuously updated to reduce the likelihood of data contamination. A team of Olympiad medalists annotates every problem.","LiveCodeBench Pro: How Do Olympiad Medalists Judge LLMs in Competitive Programming?
+https://arxiv.org/abs/2506.11928 ",https://github.com/GavinZhengOI/LiveCodeBench-Pro,https://huggingface.co/datasets/anonymous1926/anonymous_dataset,785,MIT License,2025,New
+CodeElo,coding,A standardized competition-level code generation benchmark.,"CodeElo: Benchmarking Competition-level Code Generation of LLMs with Human-comparable Elo Ratings 
+https://arxiv.org/abs/2501.01257",https://github.com/QwenLM/CodeElo,https://huggingface.co/datasets/Qwen/CodeElo,408,Apache-2.0 license,2025,New
+MM-Vet,multimodal,An evaluation benchmark that examines LMMs on complicated multimodal tasks. ,"MM-Vet: Evaluating Large Multimodal Models for Integrated Capabilities
+ 
+https://arxiv.org/abs/2308.02490",https://github.com/yuweihao/MM-Vet,https://huggingface.co/datasets/whyu/mm-vet,218,CC-BY-NC-4.0,2023,>500
+Livebench,"language & reasoning,coding,math,instruction-following","A new benchmark designed to be resistant to both test set contamination and the pitfalls of LLM judging and human crowdsourcing. It contains questions that are based on recently-released math competitions, arXiv papers, news articles, and datasets.","LiveBench: A Challenging, Contamination-Limited LLM Benchmark 
+https://arxiv.org/abs/2406.19314",https://github.com/livebench/livebench,https://huggingface.co/collections/livebench/livebench-67eaef9bb68b45b17a197a98,1000+,see dataset page,2024,New
+TLDR 9+,summarization,A large-scale summarization dataset that contains over 9 million training instances extracted from Reddit discussion forum.,"TLDR9+: A Large Scale Resource for Extreme Summarization of Social Media Posts 
+https://arxiv.org/abs/2110.01159",https://github.com/sajastu/reddit_collector,https://github.com/sajastu/reddit_collector?tab=readme-ov-file#dataset-links,9M+,see dataset page,2021,11-50
+LongGenBench,information retrieval & RAG,A synthetic benchmark that allows for flexible configurations of customized generation context lengths.,"LongGenBench: Long-context Generation Benchmark 
+https://arxiv.org/abs/2410.04199",https://github.com/mozhu621/LongGenBench,https://huggingface.co/datasets/mozhu/LongGenBench,n/a,CC-BY-ND-4.0,2024,11-50
+MultiAgentBench,agents & tools use,"A comprehensive benchmark designed to evaluate LLM-based multi-agent systems across diverse, interactive scenarios. It measures task completion and the quality of collaboration and competition.","MultiAgentBench: Evaluating the Collaboration and Competition of LLM agents
+https://arxiv.org/html/2503.01935v1",https://github.com/ulab-uiuc/MARBLE,https://github.com/MultiagentBench/MARBLE/tree/main/multiagentbench,n/a,see dataset page,2025,New
+DIBS (Domain Intelligence Benchmark Suite),"domain-specific,agents & tools use,information retrieval & RAG",DIBS measures LLM performance on datasets curated to reflect specialized domain knowledge and common enterprise use cases that traditional academic benchmarks often overlook.,"Benchmarking Domain Intelligence 
+https://www.databricks.com/blog/benchmarking-domain-intelligence",n/a,n/a,n/a,see dataset page,2024,New
+CRMArena,agents & tools use,A benchmark designed to evaluate AI agents on realistic tasks grounded in professional work environments. ,"CRMArena: Understanding the Capacity of LLM Agents to Perform Professional CRM Tasks in Realistic Environments
+https://arxiv.org/abs/2411.02305",https://github.com/SalesforceAIResearch/CRMArena,https://huggingface.co/datasets/Salesforce/CRMArena,1186,CC-BY-NC-4.0,2024,New
+CRMArena-Pro,agents & tools use,A benchmark developed by Salesforce AI Research to evaluate LLM agents in realistic CRM (Customer Relationship Management) tasks,"CRMArena-Pro: Holistic Assessment of LLM Agents Across Diverse Business Scenarios and Interactions 
+https://arxiv.org/abs/2505.18878",https://github.com/SalesforceAIResearch/CRMArena,https://huggingface.co/datasets/Salesforce/CRMArenaPro,8614,CC-BY-NC-4.0,2025,New
+FutureBench,agents & tools use,A benchmarking system that tests agents’ ability to predict real-world outcomes using fresh news and prediction market events.,"Back to The Future: Evaluating AI Agents on Predicting Future Events 
+https://huggingface.co/blog/futurebench",https://huggingface.co/spaces/togethercomputer/FutureBench,https://huggingface.co/spaces/togethercomputer/FutureBench,n/a,see dataset page,2025,New
+MegaScience,"knowledge,language & reasoning",A large-scale mixture of high-quality open-source datasets totaling 1.25 million instances.,"MegaScience: Pushing the Frontiers of Post-Training Datasets for Science Reasoning 
+https://arxiv.org/pdf/2507.16812",https://github.com/GAIR-NLP/MegaScience,https://huggingface.co/datasets/MegaScience/MegaScience,1.25M+,CC-BY-NC-SA-4.0,2025,New
+TeleMath,"math,domain-specific",Designed to evaluate LLM performance in solving mathematical problems with numerical solutions in the telecommunications domain.,"TeleMath: A Benchmark for Large Language Models in Telecom Mathematical Problem Solving
+
+https://arxiv.org/abs/2506.10674",n/a,https://huggingface.co/datasets/netop/TeleMath,500,MIT License,2025,New
+Include,"language & reasoning,multilingual",An evaluation suite to measure the capabilities of multilingual LLMs in a variety of regional contexts across 44 written languages.,"INCLUDE: Evaluating Multilingual Language Understanding with Regional Knowledge
+
+https://arxiv.org/pdf/2411.19799",n/a,https://huggingface.co/datasets/CohereLabs/include-base-44,22953,Apache-2.0 license,2024,New
+ResearchCodeBench,coding,A benchmark that evaluates LLMs’ ability to translate cutting-edge ML contributions from top 2024-2025 research papers into executable code.,"ResearchCodeBench: Benchmarking LLMs on Implementing Novel Machine Learning Research Code 
+
+https://arxiv.org/html/2506.02314v1",https://github.com/PatrickHua/ResearchCodeBench,https://researchcodebench.github.io/leaderboard/index.html,212,see dataset page,2025,New
+HealthBench,"safety,domain-specific","Realistic healthcare scenarios: emergency referrals, global health, health data tasks, context-seeking, expertise-tailored communication, response depth, and responding under uncertainty.","HealthBench: Evaluating Large Language Models
+Towards Improved Human Health
+
+https://cdn.openai.com/pdf/bd7a39d5-9e9f-47b3-903c-8b847ca650c7/healthbench_paper.pdf",https://github.com/openai/simple-evals,https://github.com/openai/simple-evals,5000,MIT License,2025,New
+FaithEval,information retrieval & RAG,Comprehensive evaluation of how well LLMs can align their responses with the context.,"FaithEval: Can Your Language Model Stay Faithful to Context, Even If ""The Moon is Made of Marshmallows"" 
+https://arxiv.org/abs/2410.03727",https://github.com/SalesforceAIResearch/FaithEval,https://huggingface.co/collections/Salesforce/faitheval-benchmark-66ff102cda291ca0875212d4,4900,see dataset page,2024,New
+PERRECBENCH,domain-specific,A novel benchmark for evaluating how well LLMs understand user preferences in recommendation systems.,https://arxiv.org/abs/2501.13391,https://github.com/TamSiuhin/PerRecBench,https://github.com/TamSiuhin/PerRecBench?tab=readme-ov-file#download-data,n/a,see dataset page,2025,New
+MediQ,"domain-specific,language & reasoning","A framework for simulating realistic clinical interactions, where an Expert model asks information-seeking questions when needed and respond reliably. ","MediQ: Question-Asking LLMs and a Benchmark for Reliable Interactive Clinical Reasoning
+
+https://arxiv.org/abs/2406.00922",https://github.com/stellalisy/mediQ,https://drive.google.com/drive/folders/1ZPGfr-iftLsQDLkwyNYRg5ERwpuCtLg_,n/a,see dataset page,2024,New
+MTRAG,information retrieval & RAG,An end-to-end human-generated multi-turn RAG benchmark that reflects several real-world properties across diverse dimensions for evaluating the full RAG pipeline. ,"MTRAG: A Multi-Turn Conversational Benchmark for Evaluating Retrieval-Augmented Generation Systems 
+
+https://arxiv.org/abs/2501.03468",https://github.com/ibm/mt-rag-benchmark,https://github.com/ibm/mt-rag-benchmark?tab=readme-ov-file#human-data,842,see dataset page,2025,New
+ContextualBench,information retrieval & RAG,A compilation of 7 popular contextual question answering benchmarks to evaluate LLMs in RAG application.,n/a,https://github.com/SalesforceAIResearch/SFR-RAG/blob/main/README_ContextualBench.md,https://huggingface.co/datasets/Salesforce/ContextualBench,215527,see dataset page,,New
+SpreadsheetBench,agents & tools use,A challenging spreadsheet manipulation benchmark exclusively derived from real-world scenarios.,"SpreadsheetBench: Towards Challenging Real World Spreadsheet Manipulation
+
+https://arxiv.org/abs/2406.14991",https://github.com/RUCKBReasoning/SpreadsheetBench,https://github.com/RUCKBReasoning/SpreadsheetBench/tree/main/data,912,CC-BY-SA-4.0,2024,New
+TheAgentCompany,agents & tools use,"An extensible benchmark for evaluating AI agents that interact with the world in similar ways to those of a digital worker: by browsing the Web, writing code, running programs, and communicating with other coworkers. ","TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks 
+
+https://arxiv.org/abs/2412.14161",https://github.com/TheAgentCompany/TheAgentCompany,https://github.com/TheAgentCompany/TheAgentCompany/blob/main/workspaces/README.md,175,see dataset page,2024,New
+MultiNRC,"language & reasoning,multilingual","Assesses LLMs on reasoning questions written by native speakers in French, Spanish, and Chinese. MultiNRC covers four core reasoning categories: language-specific linguistic reasoning, wordplay & riddles, cultural/tradition reasoning, and math reasoning with cultural relevance. ","MultiNRC: A Challenging and Native Multilingual Reasoning Evaluation Benchmark for LLMs 
+
+https://arxiv.org/abs/2507.17476",n/a,https://huggingface.co/datasets/ScaleAI/MultiNRC,1000,see dataset page,2025,New
+SKA-Bench,"knowledge,language & reasoning","A Structured Knowledge Augmented QA Benchmark that encompasses four widely used structured knowledge forms: Knowledge Graph (KG), Table, KG+Text, and Table+Text.","SKA-Bench: A Fine-Grained Benchmark for Evaluating Structured Knowledge Understanding of LLMs 
+
+https://arxiv.org/abs/2507.17178",https://github.com/Lza12a/SKA-Bench,https://github.com/Lza12a/SKA-Bench,2100,see dataset page,2025,New
+TaxCalcBench,"agents & tools use,domain-specific",A benchmark for determining models' abilities to calculate personal income tax returns given all of the necessary information. ,"TaxCalcBench: Evaluating Frontier Models on the Tax Calculation Task 
+
+https://arxiv.org/abs/2507.16126",https://github.com/column-tax/tax-calc-bench,https://github.com/column-tax/tax-calc-bench?tab=readme-ov-file#the-taxcalcbench-eval-ty24-dataset,51,see dataset page,2025,New
+WixQA,information retrieval & RAG,"A benchmark suite featuring QA datasets grounded in the released knowledge base corpus, enabling holistic evaluation of retrieval and generation components. ","https://arxiv.org/abs/2505.08643 
+WixQA: A Multi-Dataset Benchmark for Enterprise Retrieval-Augmented Generation",n/a,https://huggingface.co/datasets/Wix/WixQA,12842,MIT License,2025,New
+SciGym,"agents & tools use,domain-specific",A benchmark that assesses LLMs’ iterative experiment design and analysis abilities in open-ended scientific discovery tasks. It challenges models to uncover biological mechanisms by designing and interpreting simulated experiments.,"Measuring Scientific Capabilities of Language Models with a Systems Biology Dry Lab
+https://arxiv.org/html/2507.02083v1 ",https://github.com/h4duan/SciGym,https://huggingface.co/datasets/h4duan/scigym-sbml,350,see dataset page,2025,New
+DSBench,agents & tools use,"DSBench evaluates large language and vision-language models on realistic data science tasks, including data analysis and data modeling tasks.","DSBench: How Far Are Data Science Agents to Becoming Data Science Experts?
+https://arxiv.org/abs/2409.07703",https://github.com/LiqiangJing/DSBench,https://github.com/LiqiangJing/DSBench?tab=readme-ov-file#usage,540,see dataset page,2024,New
+Spider 2.0,coding,An evaluation framework comprising real-world text-to-SQL workflow problems derived from enterprise-level database use cases. ,"Spider 2.0: Evaluating Language Models on Real-World Enterprise Text-to-SQL Workflows
+https://arxiv.org/abs/2411.07763",https://github.com/xlang-ai/Spider2,https://github.com/xlang-ai/Spider2?tab=readme-ov-file#data,632,see dataset page,2024,New
+BrowseComp,agents & tools use,"A benchmark for measuring the ability of AI agents to browse the web. Comprises of questions that require persistently navigating the internet in search of hard-to-find, entangled information. ","BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents
+https://arxiv.org/abs/2504.12516",https://github.com/openai/simple-evals,https://github.com/openai/simple-evals,1266,MIT License,2025,New
+MathArena,math,A benchmark for evaluating LLMs on newly-released math competition problems.,"MathArena: Evaluating LLMs on Uncontaminated Math Competitions
+https://arxiv.org/abs/2505.23281 ",https://github.com/eth-sri/matharena,https://github.com/eth-sri/matharena,149,see dataset page,2025,New
+MLE-bench,agents & tools use,A benchmark for measuring how well AI agents perform at machine learning engineering.,"MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering
+https://arxiv.org/abs/2410.07095 
+",https://github.com/openai/mle-bench,https://github.com/openai/mle-bench,75,see dataset page,2024,New
+SciCode,coding,A benchmark that challenges language models to code solutions for scientific problems.,"SciCode: A Research Coding Benchmark Curated by Scientists
+https://arxiv.org/abs/2407.13168 ",https://github.com/scicode-bench/SciCode,https://huggingface.co/datasets/SciCode1/SciCode,80,Apache-2.0 license,2024,New

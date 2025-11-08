@@ -1,0 +1,316 @@
+# === 1. Benchmark Identification ===
+# Basic information about the benchmark being evaluated
+benchmark_info:
+  # The name of the benchmark (e.g., "AgentBench", "MMLU", "ARC-AGI-2")
+  name: "MMLU-Pro"
+
+  # Which version of the benchmark are we scoring?
+  version: "1.0"
+
+  # Simple one-sentence summary of the benchmark
+  description: "An enhanced dataset designed to extend the mostly knowledge-driven MMLU benchmark by integrating more challenging, reasoning-focused questions and expanding the choice set from four to ten options."
+
+  # Link to the paper, repository, or website
+  reference: "https://arxiv.org/abs/2406.01574"
+
+# === 2. Design Criteria ===
+# These criteria evaluate the design quality and scientific rigor of the benchmark
+design:
+  # Criterion: Definition of tested capability or characteristic
+  tested_capability_definition:
+    score: 15
+    justification: "The paper explicitly defines the tested capability as 'proficient-level multi-discipline language understanding and reasoning' (Section 1). It states the benchmark is designed to test 'the upper limits of reasoning and knowledge in advanced language models' (Section 2.1) and aims to evaluate 'expert-level intelligence, characterized by performance that meets or surpasses the top 10% of skilled adults in a diverse range of tasks' (Section 1)."
+
+  # Criterion: Description of how tested capability or concept translates to benchmark task
+  capability_to_task_translation:
+    score: 15
+    justification: "The paper describes how reasoning and knowledge capabilities translate to tasks: 'MMLU-Pro increases the portion of challenging college-level exam problems. These questions require LLM to perform deliberate reasoning in different domains to derive the final answer' (Section 1). The paper explains that questions are designed to require 'deliberate reasoning' and that 'CoT can boost the performance of GPT-4o by 19%' indicating reasoning is necessary (Section 1). The benchmark spans 14 diverse domains with over 12,000 questions (Section 3.1)."
+
+  # Criterion: Description of how knowing about the tested concept is helpful in the real world
+  real_world_relevance:
+    score: 10
+    justification: "The paper mentions that the goal is achieving 'expert-level intelligence' which is relevant for real-world applications, and references tracking progress toward this goal (Section 1). However, there is limited explicit discussion of specific real-world use cases or applications where these capabilities would be directly useful."
+
+  # Criterion: Description of use cases and user personas for the benchmark
+  use_cases_and_personas:
+    score: 0
+    justification: "The paper does not describe specific use cases or user personas. It focuses on evaluating model capabilities for research purposes rather than describing real-world application scenarios or types of users who would benefit from these capabilities."
+
+  # Criterion: Involvement of domain experts
+  domain_expert_involvement:
+    score: 15
+    justification: "The paper describes a comprehensive expert review process: 'The expert review process for our dataset construction comprises two main phases to ensure its quality and reliability. Phase 1: Verification of Correctness and Appropriateness involves experts verifying the accuracy of each answer' (Section 3.2). The paper also mentions expert annotators analyzing errors: 'These errors were analyzed by expert annotators who determined the underlying causes of each misprediction using their expert judgment' (Section 5.3)."
+
+  # Criterion: Integration of domain literature
+  domain_literature_integration:
+    score: 15
+    justification: "The paper extensively cites related work in Section 2, including references to MMLU, HELM, BigBench, HellaSwag, ARC, GLUE, SuperGLUE, Chain-of-Thought Hub, and many other benchmarks and papers. It describes how insights from this literature informed the design: 'Our new benchmark, MMLU-Pro, aims to address these issues by introducing more complex questions and increasing the number of answer choices from four to ten' (Section 2.2), directly addressing limitations identified in previous work."
+
+  # Criterion: Description of how benchmark score should or shouldn't be interpreted/used
+  score_interpretation:
+    score: 10
+    justification: "The paper describes what can be taken away from scores: 'MMLU-Pro is more discriminative than MMLU in distinguishing the nuances between models' and provides specific examples like 'the gap between GPT-4o and GPT-4-Turbo is 1% on MMLU, while it becomes 9% on MMLU-Pro' (Section 1). However, it does not explicitly describe what the scores should NOT be used for or provide comprehensive guidance on limitations of interpretation."
+
+  # Criterion: Informed choice of performance metric(s)
+  informed_metric_choice:
+    score: 15
+    justification: "The paper uses accuracy as the primary metric and provides clear justification: 'Our experimental results show that MMLU-Pro not only raises the challenge, causing a significant drop in accuracy by 16% to 33% compared to MMLU' (Abstract). The paper explains the choice of accuracy for multiple-choice questions and discusses how the metric is interpretable and meaningful for comparing model performance across different domains."
+
+  # Criterion: Includes floors and ceilings for metric
+  metric_floors_ceilings:
+    score: 15
+    justification: "The paper provides clear floors and ceilings: 'Currently, the best-performing model, GPT-4o, scores 72.6% on MMLU-Pro, leaving a substantial margin of 27.4% for potential improvement, whereas MMLU offers only about 11.3% space for further enhancement' (Section 6.1). It also discusses random performance implicitly through the mention of reducing 'the probability of correct guess by chance' with ten options instead of four (Section 1). The paper shows performance ranges from 15.9% (Gemma-2B) to 72.6% (GPT-4o) in Table 2."
+
+  # Criterion: Includes human performance level
+  human_performance_level:
+    score: 5
+    justification: "The paper mentions the goal of 'expert-level intelligence, characterized by performance that meets or surpasses the top 10% of skilled adults' (Section 1), but does not explicitly state measured human performance on the benchmark tasks or explain how it was obtained. The reference to 'top 10% of skilled adults' appears to be a general definition rather than a measured baseline."
+
+  # Criterion: Includes random performance level
+  random_performance_level:
+    score: 10
+    justification: "The paper discusses random performance implicitly: 'By increasing the distractor numbers, we significantly reduce the probability of correct guess by chance to boost the benchmark's difficulty and robustness' (Section 1). With ten options instead of four, random guessing would be 10% instead of 25%. However, the paper does not explicitly state the exact random performance level or provide quantitative measurements."
+
+  # Criterion: Addresses input sensitivity
+  input_sensitivity:
+    score: 15
+    justification: "The paper extensively addresses input sensitivity: 'We evaluated models using 24 different but reasonable prompts. Figure 5 showcases the score range for different models under varying prompts. On the MMLU benchmark, the influence of these prompts generally ranges between 4-5%, with peaks up to 10.98%. In contrast, on the MMLU-Pro benchmark, the impact of prompt changes is generally around 2%, with a maximum of 3.74%' (Section 6.3). This demonstrates comprehensive testing of input variations and detailed description of the methodology."
+
+  # Criterion: Validated automatic evaluation available
+  validated_automatic_evaluation:
+    score: 15
+    justification: "The paper describes automatic evaluation with answer extraction: 'To extract answers from the model-generated reasoning content in response to the MMLU-Pro dataset, we initially use the regular expression' (Section 4). The evaluation is fully automatic for multiple-choice questions, and the paper validates the approach by showing consistent results across 24 different prompts, demonstrating the reliability of the automatic evaluation method."
+
+  # Criterion: Explanation of differences to related benchmarks
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "The paper extensively explains differences to MMLU and other benchmarks throughout Section 1, Section 2.2, and Section 6. It explicitly states: 'MMLU-Pro is distinctive from MMLU in the following aspects: 1. MMLU-Pro has ten options... 2. MMLU-Pro increases the portion of challenging college-level exam problems... 3. We integrate two rounds of expert reviews to reduce the noise' (Section 1). Section 6 provides detailed comparisons with MMLU across difficulty, reasoning, and robustness."
+
+# === 3. Implementation Criteria ===
+# These criteria evaluate the practical implementation and usability of the benchmark
+implementation:
+  # Criterion: Availability of evaluation code
+  evaluation_code_available:
+    score: 15
+    justification: "The paper mentions a leaderboard at 'https://huggingface.co/spaces/TIGER-Lab/MMLU-Pro' (Section 5.1), indicating that evaluation infrastructure exists. The paper describes the evaluation methodology in detail (Section 4), including answer extraction methods, suggesting code availability. The NeurIPS 2024 Datasets and Benchmarks track typically requires code release."
+
+  # Criterion: Script to replicate results is explicitly included
+  replication_script:
+    score: 10
+    justification: "The paper describes the evaluation setup in detail (Section 4), including the 5-shot Chain-of-Thought prompting approach and answer extraction methods. However, it does not explicitly confirm that replication scripts are available, though the detailed methodology description suggests reproducibility is considered."
+
+  # Criterion: Accessibility of evaluation data, prompts, or dynamic environment
+  evaluation_data_accessible:
+    score: 15
+    justification: "The paper states the dataset comprises '12,032 questions' (Section 3.1) and describes the data sources. The presence of a public leaderboard suggests data accessibility. The paper mentions the dataset is available, and being published at NeurIPS 2024 Datasets and Benchmarks track typically requires data release."
+
+  # Criterion: Supports evaluation of models via API calls
+  api_evaluation_support:
+    score: 15
+    justification: "The paper evaluates both closed-source models (GPT-4o, Claude-3-Opus, Gemini) and open-source models, indicating API support. Table 2 shows results for models accessed via API (GPT-4o, Claude-3-Opus, Gemini-1.5-Pro, etc.) alongside local models, demonstrating comprehensive API evaluation support."
+
+  # Criterion: Supports evaluation of local models
+  local_model_evaluation_support:
+    score: 15
+    justification: "The paper evaluates many open-source models including Llama-3-70B-Instruct, Phi-3, DeepSeek-V2-Chat, Qwen, Mistral, Gemma, and others (Table 2), indicating support for local model evaluation. The paper mentions using 'NVIDIA A100 GPUs' and 'vLLM acceleration technique' for local inference (Appendix A.4), confirming local model support."
+
+  # Criterion: Inclusion of a globally unique identifier or encryption of evaluation instances
+  guid_or_encryption:
+    score: 0
+    justification: "The paper does not mention the inclusion of GUIDs, canary strings, or encryption of test data files for contamination detection. This criterion is not addressed in the paper."
+
+  # Criterion: Inclusion of 'training_on_test_set' task
+  training_on_test_set_task:
+    score: 0
+    justification: "The paper does not mention a specific task to identify if models were trained on the benchmark data. While the paper discusses contamination concerns implicitly (mentioning the need for more challenging benchmarks), it does not describe a training_on_test_set detection mechanism."
+
+  # Criterion: Assess need for warnings for sensitive/harmful content
+  sensitive_content_warnings:
+    score: 0
+    justification: "The paper does not mention whether evaluation tasks or expected outputs may contain sensitive or harmful content, nor does it explicitly state that such content is not anticipated. This criterion is not addressed."
+
+  # Criterion: Release requirements specified
+  release_requirements:
+    score: 0
+    justification: "The paper does not specify rules or requirements for benchmark users to ensure integrity of test results. While the paper discusses the benchmark's design, it does not provide terms of use or release requirements."
+
+  # Criterion: Includes build status or equivalent
+  build_status:
+    score: 0
+    justification: "The paper does not mention build status, GitHub Actions, or any equivalent mechanism to indicate whether the most recent build of the benchmark was successful. This is not addressed."
+
+  # Criterion: Requirements file available
+  requirements_file:
+    score: 5
+    justification: "The paper mentions computational resources and tools used (NVIDIA A100 GPUs, vLLM, Section A.4), but does not explicitly confirm that a requirements file or environment file is provided. The detailed methodology suggests dependencies exist, but explicit confirmation is missing."
+
+  # Criterion: Quick-start guide or demo code available
+  quick_start_guide:
+    score: 5
+    justification: "The paper describes the evaluation methodology in detail (Section 4), including prompt examples in Appendix A.2, but does not explicitly confirm that a quick-start guide or demo is available. The leaderboard presence suggests some documentation exists, but a step-by-step guide is not explicitly mentioned."
+
+  # Criterion: Statistical significance or uncertainty quantification of benchmark results is reported
+  statistical_significance:
+    score: 0
+    justification: "The paper reports accuracy percentages for models but does not mention statistical significance testing, confidence intervals, or uncertainty quantification for the reported results. Results are presented as point estimates without statistical analysis."
+
+# === 4. Documentation Criteria ===
+# These criteria evaluate the quality and completeness of benchmark documentation
+documentation:
+  # Criterion: In-line code comments are used
+  inline_code_comments:
+    score: 0
+    justification: "The paper does not discuss code comments. This information would be in the actual code repository, which is not evaluated in the paper itself."
+
+  # Criterion: Code documentation is available
+  code_documentation:
+    score: 10
+    justification: "The paper provides detailed documentation of the evaluation methodology, including answer extraction methods and prompt structure (Section 4, Appendix A.2). However, it does not explicitly confirm that code documentation (docstrings, API docs) is available for the evaluation code itself."
+
+  # Criterion: Accompanying paper is accepted at peer-reviewed venue
+  peer_reviewed_venue:
+    score: 15
+    justification: "The paper states: '38th Conference on Neural Information Processing Systems (NeurIPS 2024) Track on Datasets and Benchmarks' (page 2), indicating it was accepted at a peer-reviewed venue."
+
+  # Criterion: Benchmark construction process is documented
+  construction_process_documented:
+    score: 15
+    justification: "The paper comprehensively documents the construction process in Section 3.2, including: Initial Filtering (using 8 models to filter easy questions), Question Collection and Integration (from MMLU, STEM Website, TheoremQA, SciBench), Option Augmentation (expanding from 4 to 10 options), and Expert Review (two-phase process). Figure 2 shows the construction pipeline, and Appendix A.1 provides additional details."
+
+  # Criterion: Test tasks & rationale are documented
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "The paper documents the test tasks (14 disciplines, 12,032 questions) and provides clear rationale: 'MMLU-Pro increases the portion of challenging college-level exam problems. These questions require LLM to perform deliberate reasoning in different domains' (Section 1). Section 3.1 describes the distribution of disciplines and data sources, and Section 5.2 provides subject-specific insights explaining the rationale for task selection."
+
+  # Criterion: Assumptions of normative properties are documented
+  normative_properties_documented:
+    score: 5
+    justification: "The paper mentions some assumptions implicitly (e.g., models should use Chain-of-Thought reasoning, Section 4), but does not explicitly document normative assumptions about models or evaluation context. The paper focuses more on methodology than normative properties."
+
+  # Criterion: Limitations are documented
+  limitations_documented:
+    score: 15
+    justification: "The paper includes a dedicated 'Limitations' section (Section 7) that explicitly states: 'The MMLU-Pro dataset, while enhancing the complexity of MMLU by incorporating more challenging, reasoning-focused questions, remains constrained by the limitations of the multiple-choice format. This format may not capture the depth of comprehension and creative response generation as effectively as open-ended answers, which better reflect real-world scenarios. Additionally, MMLU-Pro exclusively focuses on language models and does not include assessments for multi-modal models.'"
+
+  # Criterion: Data collection process, test environment design, or prompt design process is documented
+  data_collection_documented:
+    score: 15
+    justification: "The paper extensively documents data collection in Section 3.2: sources (MMLU, STEM Website, TheoremQA, SciBench), filtering process (using 8 models), integration methods (GPT-4-Turbo for answer extraction), and expert review process. Appendix A.1 provides additional details including Table 4 showing filtering statistics and Table 5 showing question origin distribution. Appendix A.2 documents prompt design with examples."
+
+  # Criterion: Evaluation metric is documented
+  evaluation_metric_documented:
+    score: 15
+    justification: "The paper documents the evaluation metric (accuracy) and explains how it is calculated. Section 4 describes the answer extraction process: 'To extract answers from the model-generated reasoning content... we initially use the regular expression' and describes the fallback mechanism. The paper explains the use of 5-shot Chain-of-Thought prompting and how answers are extracted and scored."
+
+  # Criterion: Applicable license is specified
+  license_specified:
+    score: 15
+    justification: "The paper specifies licensing in Appendix A.5: 'The MMLU-Pro dataset comprises data from four distinct sources, each governed by its own licensing terms: MMLU dataset: Licensed under the MIT License... STEM Website: Open-Licensed. TheoremQA: Licensed under the MIT License. SciBench: Licensed under the MIT License. Additionally, the MMLU-Pro dataset itself is licensed under the MIT License.'"
+
+  # Criterion: Globally unique, persistent identifier for dataset and metadata is provided
+  persistent_identifier:
+    score: 10
+    justification: "The paper provides an arXiv identifier (arXiv:2406.01574v6) and mentions acceptance at NeurIPS 2024, which provides a persistent identifier for the paper. However, it does not explicitly mention a DOI or persistent identifier specifically for the dataset itself, though the Hugging Face leaderboard URL suggests some form of persistent access."
+
+  # Criterion: Standardized metadata is included
+  standardized_metadata:
+    score: 0
+    justification: "The paper does not mention standardized metadata following recognized schemas or formats like Datasheets for Datasets or Model Cards. The paper provides information but not in a standardized metadata format."
+
+  # Criterion: Data sources and how the data was collected is documented
+  data_sources_documented:
+    score: 15
+    justification: "The paper comprehensively documents data sources in Section 3.1 and Section 3.2: '(1) Original MMLU Questions... (2) the STEM Website... (3) TheoremQA... (4) SciBench' (Section 3.1). It describes how data was collected from each source, including the process of extracting answers from STEM Website and TheoremQA using GPT-4-Turbo. Appendix A.1 provides detailed statistics in Table 5 showing the distribution of question origins across disciplines."
+
+  # Criterion: Data preprocessing steps taken are documented
+  data_preprocessing_documented:
+    score: 15
+    justification: "The paper documents preprocessing steps in Section 3.2: Initial Filtering (removing easy questions), Question Collection and Integration (converting formats, extracting answers), Option Augmentation (expanding from 4 to 10 options using GPT-4-Turbo), and Expert Review (two-phase verification). Table 1 shows issues identified during expert review, and Appendix A.1 provides detailed filtering statistics."
+
+  # Criterion: Data annotation process is documented (if applicable)
+  data_annotation_documented:
+    score: 15
+    justification: "The paper documents the annotation process extensively: 'The expert review process for our dataset construction comprises two main phases... Phase 1: Verification of Correctness and Appropriateness involves experts verifying the accuracy of each answer... Phase 2: Ensuring Distractor Validity involves the Gemini-1.5-Pro model re-evaluating all answer options to identify potential false negatives. Subsequently, human experts rigorously review these identified options' (Section 3.2). The paper also mentions expert annotators analyzing errors (Section 5.3)."
+
+  # Criterion: Representativeness of the data is explained (if applicable)
+  data_representativeness_explained:
+    score: 10
+    justification: "The paper describes the distribution of disciplines (14 domains) and data sources (Figure 3, Section 3.1), showing coverage across STEM, humanities, and social sciences. However, it does not explicitly discuss potential limitations, biases, or how representative the data is of the broader domain knowledge or real-world scenarios."
+
+  # Criterion: Documentation follows recognized standard
+  documentation_standard:
+    score: 0
+    justification: "The paper does not mention following recognized documentation standards such as Datasheets for Datasets or Model Cards. While the paper is well-structured, it does not explicitly state adherence to a particular documentation standard."
+
+# === 5. Maintenance Criteria ===
+# These criteria evaluate the ongoing maintenance and support for the benchmark
+maintenance:
+  # Criterion: Code usability was checked within the last year
+  code_usability_checked:
+    score: 0
+    justification: "The paper was published in November 2024 (arXiv:2406.01574v6 [cs.CL] 6 Nov 2024), so it is very recent. However, the paper does not explicitly state that code usability was checked, nor does it provide information about when such checks were performed. This information would typically be in a repository rather than the paper."
+
+  # Criterion: Maintained feedback channel for users is available
+  feedback_channel:
+    score: 5
+    justification: "The paper mentions a leaderboard at 'https://huggingface.co/spaces/TIGER-Lab/MMLU-Pro' (Section 5.1), which may provide a feedback mechanism, but does not explicitly confirm that a maintained feedback channel (GitHub Issues, email, forum) is available. The presence of a leaderboard suggests some form of community interaction, but explicit confirmation is missing."
+
+  # Criterion: Contact person is listed
+  contact_person:
+    score: 15
+    justification: "The paper lists contact information: 'Core Contributors. B: {y726wang, x93ma, wenhuchen}@uwaterloo.ca' (page 2), providing email addresses for the core contributors who can be contacted regarding the benchmark."
+
+# === 6. AGI Cognitive Abilities Coverage ===
+# These criteria evaluate the extent to which the benchmark tests various cognitive abilities
+# relevant to artificial general intelligence. Each ability should be graded equally in relation
+# to one another and on a similar scale to design and implementation criteria.
+agi_cognitive_abilities:
+  # Criterion: General Knowledge (K)
+  general_knowledge:
+    score: 15
+    justification: "MMLU-Pro comprehensively tests general knowledge across 14 diverse domains including mathematics, physics, chemistry, law, engineering, psychology, health, business, biology, philosophy, computer science, economics, history, and other subjects (Section 3.1). The benchmark includes over 12,000 questions spanning STEM, humanities, and social sciences, providing broad coverage of factual understanding across diverse domains without requiring specific task training."
+
+  # Criterion: Reading and Writing Ability (RW)
+  reading_writing_ability:
+    score: 15
+    justification: "The benchmark requires models to read and comprehend complex questions across multiple domains and generate written reasoning (via Chain-of-Thought). The paper states that 'CoT can boost the performance of GPT-4o by 19%' indicating that written reasoning and comprehension are essential (Section 1). Questions are college-level exam problems requiring advanced reading comprehension, and models must produce coherent written reasoning to answer correctly."
+
+  # Criterion: Mathematical Ability (M)
+  mathematical_ability:
+    score: 15
+    justification: "The benchmark includes a dedicated Mathematics domain and emphasizes mathematical reasoning: 'MMLU-Pro increases the portion of challenging college-level exam problems. These questions require LLM to perform deliberate reasoning in different domains' (Section 1). The paper shows Math performance in Table 2, with GPT-4o achieving 76.1% accuracy. Error analysis reveals 'Calculation Errors (12%)' indicating mathematical computation is tested (Section 5.3). Questions from TheoremQA 'necessitate the application of theorems for resolution' (Section 3.1)."
+
+  # Criterion: On-the-Spot Reasoning (R)
+  on_the_spot_reasoning:
+    score: 15
+    justification: "The benchmark emphasizes reasoning capabilities: 'MMLU-Pro includes more complex reasoning questions' and 'CoT can boost the performance of GPT-4o by 19%' (Section 1). The paper states that 'MMLU-Pro necessitates chain-of-thought (CoT) to achieve promising results' and that 'This reflects the necessity to perform deliberate reasoning on MMLU-Pro' (Section 1). Error analysis shows 'Reasoning Errors (39%)' indicating complex novel problem-solving is required (Section 5.3). The benchmark includes 'challenging college-level exam problems' that require flexible reasoning (Section 1)."
+
+  # Criterion: Working Memory (WM)
+  working_memory:
+    score: 10
+    justification: "The benchmark requires maintaining context through Chain-of-Thought reasoning and processing multiple pieces of information in questions. The 5-shot prompting approach requires models to maintain information from demonstration examples. However, the benchmark is primarily text-based multiple-choice questions, and working memory requirements are moderate rather than extensively tested through complex multi-step problems that would require extensive information maintenance."
+
+  # Criterion: Long-Term Memory Storage (MS)
+  long_term_memory_storage:
+    score: 0
+    justification: "MMLU-Pro is a static evaluation benchmark that tests what models have learned during training, but it does not test the ability to continually learn new information or acquire and retain new knowledge over time. The benchmark evaluates pre-trained models on fixed questions, not their ability to learn from new examples or continuous exposure during evaluation."
+
+  # Criterion: Long-Term Memory Retrieval (MR)
+  long_term_memory_retrieval:
+    score: 15
+    justification: "The benchmark extensively tests memory retrieval across 14 diverse domains, requiring models to accurately retrieve knowledge from their training. Error analysis shows 'Lack of Specific Knowledge (35%)' indicating that accurate knowledge retrieval is critical (Section 5.3). The benchmark tests retrieval across broad domains (STEM, humanities, social sciences) and evaluates whether models can accurately access stored knowledge without confabulation, as incorrect answers are penalized."
+
+  # Criterion: Visual Processing (V)
+  visual_processing:
+    score: 0
+    justification: "The paper explicitly states limitations: 'MMLU-Pro exclusively focuses on language models and does not include assessments for multi-modal models, limiting its applicability in scenarios requiring synthesis of visual, auditory, and textual data' (Section 7). Additionally, during expert review, questions requiring 'non-text information such as images or tables' were removed (Section 3.2). The benchmark is text-only and does not test visual processing."
+
+  # Criterion: Auditory Processing (A)
+  auditory_processing:
+    score: 0
+    justification: "The paper explicitly states that MMLU-Pro 'does not include assessments for multi-modal models, limiting its applicability in scenarios requiring synthesis of visual, auditory, and textual data' (Section 7). The benchmark is text-only and does not test auditory processing, speech recognition, or audio understanding."
+
+  # Criterion: Speed (S)
+  speed:
+    score: 5
+    justification: "The paper mentions computational resources and inference speed: 'evaluating a language model with 7 billion parameters on the MMLU-Pro dataset takes approximately 20-30 minutes' using vLLM acceleration (Appendix A.4). However, speed is not a primary evaluation metric, and the paper does not report speed metrics for diverse cognitive tasks or analyze processing efficiency as a measure of cognitive ability. Speed is mentioned only in the context of computational requirements, not as a tested cognitive ability."

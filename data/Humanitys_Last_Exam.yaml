@@ -1,197 +1,316 @@
+# === 1. Benchmark Identification ===
+# Basic information about the benchmark being evaluated
 benchmark_info:
+  # The name of the benchmark (e.g., "AgentBench", "MMLU", "ARC-AGI-2")
   name: "Humanity's Last Exam"
-  version: "1.0"
-  description: "HUMANITY'S LAST EXAM (HLE) is a multi-modal benchmark at the frontier of human knowledge, designed to be the final closed-ended academic benchmark of its kind with broad subject coverage. HLE consists of 2,500 questions across dozens of subjects, including mathematics, humanities, and the natural sciences, developed globally by subject-matter experts."
-  reference: "https://arxiv.org/abs/2501.14249"
 
+  # Which version of the benchmark are we scoring?
+  version: "1.0"
+
+  # Simple one-sentence summary of the benchmark
+  description: "A multi-modal benchmark at the frontier of human knowledge, consisting of 2,500 extremely challenging questions across dozens of subjects including mathematics, humanities, and natural sciences, designed to be the final closed-ended academic benchmark of broad capabilities."
+
+  # Link to the paper, repository, or website
+  reference: "https://lastexam.ai"
+
+# === 2. Design Criteria ===
+# These criteria evaluate the design quality and scientific rigor of the benchmark
 design:
+  # Criterion: Definition of tested capability or characteristic
   tested_capability_definition:
     score: 15
-    justification: "The Abstract explicitly defines the tested capability: 'a multi-modal benchmark at the frontier of human knowledge, designed to be the final closed-ended academic benchmark of its kind with broad subject coverage.' Section 1 further explains: 'HLE is developed by academics and domain experts, providing a precise measure of capabilities as LLMs continue to improve.' Section 1 states: 'High accuracy on HLE would suggest expert-level capabilities on closed-ended academic questions.'"
-  
+    justification: "The paper explicitly defines the tested capability. The abstract states HLE is 'designed to be the final closed-ended academic benchmark of its kind with broad subject coverage' and tests 'expert-level capabilities on closed-ended academic questions.' Section 1 states it provides 'a precise measure of capabilities as LLMs continue to improve' and tests 'expert-level academic performance.' Section 5 clarifies HLE tests 'structured academic problems' and 'technical knowledge and reasoning' at 'the frontiers of human knowledge.'"
+
+  # Criterion: Description of how tested capability or concept translates to benchmark task
   capability_to_task_translation:
     score: 15
-    justification: "Section 1 comprehensively describes how expert-level academic knowledge translates to benchmark tasks: 'HLE consists of 2,500 extremely challenging questions from dozens of subject areas... HLE is multi-modal, featuring questions that are either text-only or accompanied by an image reference, and includes both multiple-choice and exact-match questions for automated answer verification.' Section 3 describes question formats: 'HLE contains two question formats: exact-match questions (models provide an exact string as output) and multiple-choice questions (the model selects one of five or more answer choices).'"
-  
+    justification: "The paper comprehensively describes how capabilities translate to tasks. Section 3.1 explains that questions are 'multiple-choice and exact-match questions suitable for automated grading' with 'known solution that is unambiguous and easily verifiable.' Section 3.1 states questions 'typically require graduate-level expertise or test knowledge of highly specific topics' and 'have specific, unambiguous answers accepted by domain experts.' Section 1 mentions HLE emphasizes 'world-class mathematics problems aimed at testing deep reasoning skills broadly applicable across multiple academic areas.' Section 3.1 describes question formats and requirements in detail."
+
+  # Criterion: Description of how knowing about the tested concept is helpful in the real world
   real_world_relevance:
-    score: 15
-    justification: "Section 1 discusses why this capability is valuable: 'As AI systems approach human expert performance in many domains, precise measurement of their capabilities and limitations is essential for informing research, governance, and the broader public.' Section 5 states: 'By providing a clear measure of AI progress, HLE creates a common reference point for scientists and policymakers to assess AI capabilities. This enables more informed discussions about development trajectories, potential risks, and necessary governance measures.'"
-  
-  use_cases_and_personas:
     score: 10
-    justification: "Section 1 mentions that the benchmark is designed to 'precisely measure capabilities as LLMs continue to improve' and to provide 'a common reference point for scientists and policymakers.' Section 3.1 describes contributors: 'questions from nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries – comprised mostly of professors, researchers, and graduate degree holders.' However, detailed use cases with cultural/geographic context and specific user personas are not comprehensively described."
-  
+    justification: "The paper provides limited but clear real-world relevance. Section 5 states 'High accuracy on HLE would demonstrate expert-level performance on closed-ended, verifiable questions and cutting-edge scientific knowledge.' Section 1 mentions the benchmark addresses the need for 'more challenging evaluations that can meaningfully assess the rapid improvements in LLM capabilities at the frontiers of human knowledge.' Section 5 states HLE 'creates a common reference point for scientists and policymakers to assess AI capabilities' enabling 'more informed discussions about development trajectories, potential risks, and necessary governance measures.' However, explicit real-world application scenarios are not detailed."
+
+  # Criterion: Description of use cases and user personas for the benchmark
+  use_cases_and_personas:
+    score: 5
+    justification: "The paper mentions that questions are developed by 'academics and domain experts' (Section 1) and 'nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries – comprised mostly of professors, researchers, and graduate degree holders' (Section 3.1). Section 5 mentions 'scientists and policymakers' as users. However, the paper does not explicitly describe use cases, user personas, cultural/geographic context, or specific interaction scenarios between humans and models in real-world applications."
+
+  # Criterion: Involvement of domain experts
   domain_expert_involvement:
     score: 15
-    justification: "Section 3.1 explicitly describes extensive domain expert involvement: 'HLE is a global collaborative effort, with questions from nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries – comprised mostly of professors, researchers, and graduate degree holders.' Section 3.2 describes expert reviewers: 'Our human reviewers possess a graduate degree (eg. Master's, PhD, JD, etc.) in their fields. Reviewers select submissions in their domain, grading them against standardized rubrics.' The paper lists hundreds of contributors with their institutional affiliations across diverse disciplines."
-  
+    justification: "The paper extensively documents domain expert involvement. Section 3.1 states HLE is 'developed globally by subject-matter experts' with 'nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries – comprised mostly of professors, researchers, and graduate degree holders.' Section 3.2 describes 'Expert Review' where 'Our human reviewers possess a graduate degree (eg. Master's, PhD, JD, etc.) in their fields.' The paper lists hundreds of contributors with institutional affiliations (Section A), demonstrating extensive domain expert involvement in question creation and review."
+
+  # Criterion: Integration of domain literature
   domain_literature_integration:
     score: 15
-    justification: "Section 2 extensively references domain literature throughout: discusses benchmarks (MMLU [22], AGIEval [48], ARC [12], BBH [33], MATH [19], Chatbot Arena [11], GPQA [45], FrontierMath [19], etc.), evaluation methods, and related work. Section 1 explains: 'Benchmarks are important tools for tracking the rapid advancement of LLM capabilities, including scientific [11, 13, 22, 30, 31, 45, 49, 55, 63] and mathematical reasoning [14, 18–20, 23, 32, 46, 52].' The literature is integrated to explain design decisions and contextualize HLE's position in the benchmark landscape."
-  
+    justification: "The paper extensively references domain literature throughout. Section 2 'Related Work' comprehensively reviews LLM benchmarks, saturation issues, and frontier benchmark design, citing numerous papers [1-63]. The paper discusses how HLE relates to existing benchmarks like MMLU [22] and addresses saturation issues [28, 33, 39, 40]. Section 3.1 mentions questions can be 'non-trivial syntheses of published information' and Section C.7.1 states 'For fields like psychology, philosophy, etc. we usually check if the rationale contains some reference to a book, paper or standard theories.' The paper describes how insights from related work informed HLE design."
+
+  # Criterion: Description of how benchmark score should or shouldn't be interpreted/used
   score_interpretation:
-    score: 15
-    justification: "Section 1 provides comprehensive guidance: 'High accuracy on HLE would suggest expert-level capabilities on closed-ended academic questions, but it would not alone suggest autonomous research capabilities or artificial general intelligence. HLE tests structured academic problems rather than open-ended research or creative problem-solving abilities, making it a focused measure of technical knowledge and reasoning.' Section 4.2 explains: 'All frontier models achieve low accuracy on HLE (Table 1), highlighting significant room for improvement... Nevertheless, we notice upon evaluation, models exhibit non-zero accuracy. This is due to inherent noise in model inference.' The paper explains both what scores indicate (expert-level capabilities) and what they do not indicate (AGI or open-ended research abilities)."
-  
+    score: 10
+    justification: "The paper provides some guidance on score interpretation. Section 4.2 states 'These low scores are partially by design – the dataset collection process (Section 3.1) attempts to filter out questions that existing models can answer correctly' and 'we stress the true capability floor of frontier models on the dataset will remain an open question and small inflections close to zero accuracy are not strongly indicative of progress.' Section 5 clarifies that 'High accuracy on HLE would demonstrate expert-level performance on closed-ended, verifiable questions' but 'would not alone suggest autonomous research capabilities or artificial general intelligence.' However, it does not comprehensively describe what scores should and shouldn't be used for."
+
+  # Criterion: Informed choice of performance metric(s)
   informed_metric_choice:
     score: 15
-    justification: "Section 4.1 explicitly explains the metric choice: 'As the question-answers are precise and close-ended, we use O3-MINI as a judge to verify answer correctness against model predictions while accounting for equivalent formats (e.g., decimals vs. fractions or estimations).' Section 3.1 explains: 'HLE is multi-modal, featuring questions that are either text-only or accompanied by an image reference, and includes both multiple-choice and exact-match questions for automated answer verification.' The choice of exact-match and multiple-choice formats is clearly justified for automated evaluation."
-  
+    justification: "The paper explicitly describes and justifies performance metrics. Section 4.2 uses accuracy as the primary metric and provides rationale: 'All frontier models achieve low accuracy on HLE, highlighting significant room for improvement.' Section 4.2 also describes calibration error measurement: 'To measure calibration, we prompt models to provide both an answer and their confidence from 0% to 100% (Section C.1.1), employing the setup from Wei et al. [56].' Section 4.2 explains why calibration matters: 'models should be calibrated, recognizing their uncertainty rather than confidently provide incorrect answers, indicative of confabulation/hallucination.' The paper explains both metrics and their interpretability."
+
+  # Criterion: Includes floors and ceilings for metric
   metric_floors_ceilings:
     score: 15
-    justification: "Section 4.2 provides explicit baselines: 'All frontier models achieve low accuracy on HLE (Table 1), highlighting significant room for improvement.' Table 1 shows model accuracies ranging from 2.7% (GPT-4O) to 13.4% (O3-MINI). Section 4.2 notes: 'This is due to inherent noise in model inference – models can inconsistently guess the right answer or guess worse than random chance for multiple choice questions.' The paper provides floor (near-zero accuracy) and implies ceiling (expert human level, though not explicitly stated)."
-  
+    justification: "The paper provides clear floors and ceilings. Section 4.2 (Table 1) shows model performance ranging from 2.7% (GPT-4O) to 13.4% (O3-MINI HIGH) accuracy. Section 4.2 states 'models exhibit non-zero accuracy' due to 'inherent noise in model inference' and mentions 'models can inconsistently guess the right answer or guess worse than random chance for multiple choice questions.' Section 4.2 establishes that 'small inflections close to zero accuracy are not strongly indicative of progress,' suggesting the floor is near zero. Section 5 mentions that 'models could exceed 50% accuracy on HLE by the end of 2025,' suggesting a ceiling. For multiple-choice questions, random performance would be 20% (1 in 5), but the paper does not explicitly state this."
+
+  # Criterion: Includes human performance level
   human_performance_level:
     score: 5
-    justification: "Section 1 mentions that questions require 'expert-level intelligence, characterized by performance that meets or surpasses the top 10% of skilled adults' but does not explicitly state measured human performance on HLE itself or explain how it was measured. Human performance is mentioned in passing as the target but not quantitatively measured for the benchmark."
-  
+    justification: "The paper does not explicitly state human performance levels with quantitative measurements. Section 3.1 mentions questions are developed by 'subject-matter experts' and 'typically require graduate-level expertise.' Section 3.2 describes expert reviewers with graduate degrees. Section B.3 discusses 'expert disagreement rate' of 15.4% for the public set and 18% for biology/chemistry/health subset, but this measures reviewer agreement, not human performance on answering questions. The paper implies human experts can solve the questions (since they create and review them), but does not provide quantitative human baseline performance metrics."
+
+  # Criterion: Includes random performance level
   random_performance_level:
-    score: 10
-    justification: "Section 4.2 mentions: 'models can inconsistently guess the right answer or guess worse than random chance for multiple choice questions.' Section B.1 notes: 'multiple-choice questions must stump all but one model to account for potential lucky guesses.' The paper implies random baseline would be 20% for 5-choice questions (1 in 5) but explicit quantitative random baseline is not fully stated for all question types."
-  
-  input_sensitivity:
     score: 5
-    justification: "Section B.3 discusses prompt variation: 'Prior to release, we conducted two main rounds of auditing, each on a sample of 200 questions' and mentions evaluation using standardized prompts (Section C.1.1), but the paper does not describe systematic testing with multiple input variations with the same semantic meaning or detailed descriptions of variation design."
-  
+    justification: "The paper does not explicitly state random performance levels. Section 4.2 mentions 'models can inconsistently guess the right answer or guess worse than random chance for multiple choice questions' and Section 3.2 states questions proceed if 'models on average do worse than random guessing' for multiple-choice questions, implying random performance is considered. However, the paper does not provide quantitative random baseline measurements or explicit statements about random performance (e.g., 20% for 5-choice multiple-choice, or near-zero for exact-match)."
+
+  # Criterion: Addresses input sensitivity
+  input_sensitivity:
+    score: 0
+    justification: "The paper does not mention input sensitivity testing, multiple input variations with the same semantic meaning, or robustness testing across semantically equivalent inputs. While Section B.2 mentions 'Searchable Questions' where questions were tested with and without search tools, this is about searchability rather than input sensitivity. There is no discussion of how performance might vary with input variations or how input sensitivity was addressed."
+
+  # Criterion: Validated automatic evaluation available
   validated_automatic_evaluation:
     score: 15
-    justification: "Section 4.1 describes automated evaluation: 'As the question-answers are precise and close-ended, we use O3-MINI as a judge to verify answer correctness against model predictions while accounting for equivalent formats (e.g., decimals vs. fractions or estimations). Evaluation prompts are detailed in Section C.1.1.' Section C.1.1 provides detailed judge prompts and validation methodology. Evaluation is fully automated (no human evaluation required) and validated through the judge system."
-  
+    justification: "The paper indicates automatic evaluation is available and validated. Section 4.1 states 'As the question-answers are precise and close-ended, we use O3-MINI as a judge to verify answer correctness against model predictions while accounting for equivalent formats (e.g., decimals vs. fractions or estimations).' Section C.1.1 provides detailed evaluation prompts and judge instructions. Section 3.1 states questions are 'suitable for automated grading' with 'unambiguous and easily verifiable' answers. Section 4.1 describes the evaluation setup in detail, indicating fully automated evaluation without requiring human evaluation."
+
+  # Criterion: Explanation of differences to related benchmarks
   differences_to_related_benchmarks:
     score: 15
-    justification: "Section 1 comprehensively explains differences to related benchmarks: 'state-of-the-art LLMs [3, 15, 17, 35, 38, 51, 58] now achieve over 90% accuracy on popular benchmarks such as MMLU [22], which were once challenging frontiers for LLMs. The saturation of existing benchmarks, as shown in Figure 1, limits our ability to precisely measure AI capabilities.' Section 2 explains: 'HLE combines these approaches: the questions are developed by subject-matter experts and undergo multiple rounds of review, while preserving the broad subject-matter coverage of MMLU. As a result, HLE provides a clear measurement of the gap between current AI capabilities and human expertise on closed-ended academic tasks.'"
+    justification: "The paper extensively explains differences to related benchmarks. Section 2 'Related Work' comprehensively reviews existing benchmarks and explains how HLE differs. Section 1 states 'LLMs now achieve over 90% accuracy on popular benchmarks such as MMLU [22], which were once challenging frontiers for LLMs' and HLE addresses this saturation. Section 2 explains 'HLE combines these approaches: the questions are developed by subject-matter experts and undergo multiple rounds of review, while preserving the broad subject-matter coverage of MMLU.' Section 1 states HLE is 'designed to be the final closed-ended academic benchmark of its kind' and emphasizes 'world-class mathematics problems' and multi-modal capabilities. The paper clearly positions HLE relative to MMLU and other benchmarks."
 
+# === 3. Implementation Criteria ===
+# These criteria evaluate the practical implementation and usability of the benchmark
 implementation:
+  # Criterion: Availability of evaluation code
   evaluation_code_available:
-    score: 10
-    justification: "Section 1 states: 'we publicly release a large number of 2,500 questions from HLE to enable this precise measurement' and 'To inform research and policymaking upon a clear understanding of model capabilities, we publicly release HLE at https://lastexam.ai.' However, explicit mention of evaluation code repository or GitHub link is not provided in the available text, though the public release suggests code may be available."
-  
+    score: 15
+    justification: "The paper indicates evaluation code is available. Section 4.1 describes the evaluation setup in detail, including standardized system prompts (Section C.1.1) and judge prompts. Section 1 states 'we publicly release HLE at https://lastexam.ai' and Section 3 mentions 'We publicly release these questions.' Section C.1.1 provides detailed evaluation prompts, suggesting code is available. The paper describes the evaluation infrastructure, indicating code availability for others to evaluate models."
+
+  # Criterion: Script to replicate results is explicitly included
   replication_script:
     score: 10
-    justification: "Section 4.1 describes evaluation setup: 'After data collection and review, we evaluated our final HLE dataset on additional frontier multi-modal LLMs. We employ a standardized system prompt that structures model responses into explicit reasoning followed by a final answer.' Section C.1.1 provides detailed evaluation prompts. However, explicit replication scripts with all hyperparameters and random seeds are not fully documented."
-  
+    justification: "The paper provides detailed evaluation setup information. Section 4.1 describes the evaluation process, Section C.1.1 provides evaluation prompts, and Section C.5 lists exact model versions used. However, the paper does not explicitly state that replication scripts are provided with all necessary information (hyperparameters, random seeds, etc.) for replicating the specific results presented in Table 1. The evaluation methodology is described but complete replication scripts are not explicitly confirmed."
+
+  # Criterion: Accessibility of evaluation data, prompts, or dynamic environment
   evaluation_data_accessible:
     score: 15
-    justification: "Section 1 explicitly states: 'we publicly release a large number of 2,500 questions from HLE to enable this precise measurement, while maintaining a private test set to assess potential model overfitting.' Section 1 notes: 'we publicly release HLE at https://lastexam.ai.' The dataset is publicly accessible, with a clear distinction between public and private sets."
-  
+    justification: "The paper explicitly states data accessibility. Section 1 states 'we publicly release a large number of 2,500 questions from HLE' and 'we publicly release HLE at https://lastexam.ai.' Section 3 states 'We publicly release these questions, while maintaining a private test set of held out questions to assess model overfitting.' Section 3.1 describes the question formats and structure. The paper clearly indicates that evaluation data (questions) is publicly accessible, with a private held-out set for overfitting assessment."
+
+  # Criterion: Supports evaluation of models via API calls
   api_evaluation_support:
-    score: 15
-    justification: "Section 4.1 explicitly describes evaluation of API-accessible models: 'we evaluated our final HLE dataset on additional frontier multi-modal LLMs' including 'GPT-4O,' 'CLAUDE 3.5 SONNET,' and 'GEMINI 1.5 PRO' (Table 1, Section C.5). The paper demonstrates API evaluation support through multiple API-accessible models."
-  
+    score: 10
+    justification: "The paper describes evaluation of models including closed-source models (GPT-4O, CLAUDE 3.5 SONNET, GEMINI, etc.) which are typically accessed via API. Section 4.1 and Table 1 show results from multiple API-accessible models. Section C.5 lists model versions. However, the paper does not explicitly describe whether the benchmark infrastructure supports API evaluation or if users need to implement their own API calls. The evaluation appears to support API-accessible models, but explicit API evaluation support documentation is not detailed."
+
+  # Criterion: Supports evaluation of local models
   local_model_evaluation_support:
     score: 10
-    justification: "Section 4.1 and Table 1 mention evaluation of 'O1,' 'DEEPSEEK-R1,' and 'O3-MINI (HIGH)' which may be local models. However, explicit documentation of local model evaluation support or code is not detailed in the available text."
-  
+    justification: "The paper describes evaluation setup that could support local models. Section 4.1 describes a standardized system prompt and evaluation process. Section C.1.1 provides evaluation prompts. However, the paper does not explicitly confirm that code supports evaluation of local models without API access, or if users need to write their own code for local model evaluation. The evaluation methodology is described but local model support is not explicitly confirmed."
+
+  # Criterion: Inclusion of a globally unique identifier or encryption of evaluation instances
   guid_or_encryption:
-    score: 0
-    justification: "Globally unique identifiers or encryption for contamination prevention are not mentioned in the available text. Section B.2 discusses searchability checks but does not mention GUID or encryption measures."
-  
+    score: 5
+    justification: "The paper mentions maintaining a private test set to assess overfitting (Section 3, Section 1), which suggests some protection of evaluation data. Section B.2 mentions 'Searchable Questions' were audited and removed if easily found via web search. However, the paper does not explicitly describe whether GUIDs, canary strings, or encryption are included in evaluation code or data files to detect contamination. The private test set serves a similar purpose but GUID/encryption mechanisms are not explicitly described."
+
+  # Criterion: Inclusion of 'training_on_test_set' task
   training_on_test_set_task:
     score: 5
-    justification: "Section 1 mentions: 'while maintaining a private test set to assess potential model overfitting' and Section B.2 discusses contamination concerns: 'Searchable Questions: A question is potentially searchable if a model with search tools answered correctly.' However, no explicit task to identify if models were trained on benchmark data is described."
-  
+    justification: "The paper mentions maintaining 'a private test set of held out questions to assess model overfitting' (Section 3) and 'a private test set to assess potential model overfitting' (Section 1). Section B.2 describes post-release refinement including removal of searchable questions. However, the paper does not explicitly describe a 'training_on_test_set' task or mechanism to detect if models were trained on benchmark data. The private test set serves to assess overfitting but a specific contamination detection task is not described."
+
+  # Criterion: Assess need for warnings for sensitive/harmful content
   sensitive_content_warnings:
     score: 10
-    justification: "Section 3.1 mentions: 'We prohibit open-ended questions, subjective interpretations, and content related to weapons of mass destruction.' Section C.7.1 Reviewer Instructions explicitly state: 'No questions about morality or what is ethical/unethical. (Score 0)' However, this is stated for either tasks (explicit prohibition) but not comprehensively for expected output."
-  
+    justification: "The paper explicitly addresses sensitive content. Section 3.1 states 'We prohibit open-ended questions, subjective interpretations, and content related to weapons of mass destruction.' This shows explicit consideration of sensitive/harmful content. However, the paper does not explicitly state whether evaluation tasks or expected output may contain other types of sensitive or harmful content, or explicitly state that they do not anticipate such content beyond the WMD prohibition."
+
+  # Criterion: Release requirements specified
   release_requirements:
     score: 5
-    justification: "Section 3.1 describes submission criteria and Section B.2 mentions 'community feedback bug bounty program' but explicit release requirements or rules for benchmark users to ensure integrity of test results are not fully specified in the available text."
-  
+    justification: "The paper mentions maintaining a private test set and describes post-release refinement processes (Section B.2), but does not explicitly specify release requirements or rules for benchmark users to ensure integrity of test results. Section B.2 describes community feedback and bug bounty programs, but formal release requirements or terms of use are not explicitly stated in the paper."
+
+  # Criterion: Includes build status or equivalent
   build_status:
     score: 0
-    justification: "Build status or equivalent (e.g., GitHub Actions) is not mentioned in the available text."
-  
-  requirements_file:
-    score: 10
-    justification: "The public release at lastexam.ai may include requirements files, but this is not explicitly mentioned in the paper text."
-  
-  quick_start_guide:
-    score: 10
-    justification: "Section C.1.1 provides detailed evaluation prompts and instructions, and the public release at lastexam.ai likely includes guides, but a comprehensive step-by-step quick-start guide is not explicitly mentioned in the paper."
-  
-  statistical_significance:
-    score: 10
-    justification: "Section 4 provides detailed results with accuracy percentages across models and categories (Tables 1-3, Figure 5). Section 4.2 discusses calibration error with RMS metrics. However, explicit statistical significance testing or uncertainty quantification (confidence intervals, p-values) beyond accuracy and calibration metrics is not reported."
+    justification: "The paper does not mention build status, GitHub Actions, or any equivalent system to indicate whether evaluation code is currently functional. While the website (lastexam.ai) is referenced, build status is not discussed."
 
+  # Criterion: Requirements file available
+  requirements_file:
+    score: 5
+    justification: "The paper references the website (lastexam.ai) and describes evaluation setup, but does not explicitly confirm that a requirements file or environment file is provided with all dependencies and versions specified. Section C.1.1 and C.5 provide evaluation prompts and model versions, but code repository requirements are not explicitly discussed."
+
+  # Criterion: Quick-start guide or demo code available
+  quick_start_guide:
+    score: 5
+    justification: "The paper references the website (lastexam.ai) and describes the evaluation setup (Section 4.1, C.1.1), but does not explicitly confirm that a comprehensive quick-start guide or demo code is available with step-by-step instructions. The evaluation methodology is described but a quick-start guide is not explicitly confirmed."
+
+  # Criterion: Statistical significance or uncertainty quantification of benchmark results is reported
+  statistical_significance:
+    score: 5
+    justification: "The paper reports accuracy and calibration error metrics (Table 1, Section 4.2) and provides category-wise breakdowns (Table 3, Section C.3). Section B.3 discusses expert disagreement rates (15.4% for public set, 18% for health subset). However, the paper does not report statistical significance, confidence intervals, or uncertainty quantification for model performance results. The metrics are reported but statistical significance testing is not described."
+
+# === 4. Documentation Criteria ===
+# These criteria evaluate the quality and completeness of benchmark documentation
 documentation:
+  # Criterion: In-line code comments are used
   inline_code_comments:
-    score: 10
-    justification: "Code quality and comments are not explicitly discussed in the paper. However, evaluation code may be available through the public release at lastexam.ai, and standard practice for such releases typically includes some level of code comments, though the extent is not specified."
-  
+    score: 0
+    justification: "The paper does not discuss in-line code comments in the evaluation code. While evaluation prompts and methodology are described, the paper does not provide information about code comment quality or usage in any codebase."
+
+  # Criterion: Code documentation is available
   code_documentation:
     score: 10
-    justification: "The public release at lastexam.ai likely includes documentation, but the paper does not explicitly describe the extent or quality of code documentation (docstrings, API docs, etc.)."
-  
+    justification: "The paper provides documentation of evaluation methodology. Section 4.1 describes the evaluation setup, Section C.1.1 provides detailed evaluation prompts, and Section C.5 lists model versions. However, the paper does not explicitly confirm comprehensive code documentation, docstrings, or API docs for all evaluation code. The methodology is documented but code-level documentation is not explicitly confirmed."
+
+  # Criterion: Accompanying paper is accepted at peer-reviewed venue
   peer_reviewed_venue:
     score: 0
-    justification: "The paper is on arXiv (2501.14249v9, dated September 25, 2025). The paper does not indicate acceptance at a peer-reviewed venue as of the document date."
-  
+    justification: "The paper is on arXiv (arXiv:2501.14249v9) dated September 25, 2025, but the paper does not indicate acceptance at a peer-reviewed venue. The document appears to be a preprint."
+
+  # Criterion: Benchmark construction process is documented
   construction_process_documented:
     score: 15
-    justification: "Section 3 comprehensively documents the construction process: Section 3.1 describes collection: 'HLE is a global collaborative effort, with questions from nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries.' Section 3.2 describes the review process: 'We employ a multi-stage review process to thoroughly ensure question difficulty and quality.' Figure 4 details the dataset creation pipeline. Section B.1, B.2, B.3 provide extensive documentation of submission process, post-release refinement, and auditing."
-  
+    justification: "The paper comprehensively documents the benchmark construction process. Section 3.1 describes collection: 'nearly 1000 subject expert contributors' from 'over 500 institutions across 50 countries,' question formats, submission criteria, and prize pool structure. Section 3.2 details the review process: LLM difficulty check, expert review with two rounds, rubrics. Section B.1 describes the submission process in detail. Section B.2 describes post-release refinement. Section C.7 provides detailed review instructions and rubrics. Figure 4 illustrates the dataset creation pipeline."
+
+  # Criterion: Test tasks & rationale are documented
   test_tasks_rationale_documented:
     score: 15
-    justification: "Section 3 extensively documents task design with rationale: 'HLE is developed by academics and domain experts, providing a precise measure of capabilities as LLMs continue to improve.' Section 3.1 describes submission format: 'Questions should be precise, unambiguous, solvable, and non-searchable.' Section C.7 provides detailed reviewer instructions and rubrics explaining task requirements. Section B.4 lists subject coverage. Figure 2 shows example questions with explanations."
-  
+    justification: "The paper extensively documents test tasks and rationale. Section 3.1 describes question formats (multiple-choice and exact-match), multi-modal nature (14% with images), question style, and submission format requirements. Section 3.1 explains rationale: questions should be 'precise, unambiguous, solvable, and non-searchable,' require 'graduate-level expertise,' and have 'specific, unambiguous answers.' Section 1 explains HLE emphasizes 'world-class mathematics problems aimed at testing deep reasoning skills.' Figure 2 shows sample questions. Section B.4 lists subject areas. Section C.7.1 and C.7.2 provide detailed rubrics explaining what makes good questions."
+
+  # Criterion: Assumptions of normative properties are documented
   normative_properties_documented:
-    score: 10
-    justification: "Section 3.1 describes submission criteria: 'Questions should be precise, unambiguous, solvable, and non-searchable, ensuring models cannot rely on memorization or simple retrieval methods.' Section 4.2 discusses calibration expectations: 'Given low performance on HLE, models should be calibrated, recognizing their uncertainty rather than confidently provide incorrect answers.' However, explicit normative assumptions or properties about models or evaluation context are not fully documented as such."
-  
+    score: 15
+    justification: "The paper documents normative assumptions throughout. Section 3.1 states questions 'typically require graduate-level expertise or test knowledge of highly specific topics' and must have 'specific, unambiguous answers accepted by domain experts.' Section 3.1 states questions should be 'original work or non-trivial syntheses of published information' and 'cannot be quickly answered via internet retrieval.' Section 1 states questions are 'suitable for automated grading' and have 'known solution that is unambiguous and easily verifiable.' Section C.7.1 states questions should be 'closed-ended' and 'objectively correct, univocal answer.' The paper clearly documents assumptions about question properties."
+
+  # Criterion: Limitations are documented
   limitations_documented:
     score: 15
-    justification: "Section 5 comprehensively documents limitations: 'HLE tests structured academic problems rather than open-ended research or creative problem-solving abilities, making it a focused measure of technical knowledge and reasoning. HLE may be the last academic exam we need to give to models, but it is far from the last benchmark for AI.' Section 4.2 notes: 'Nevertheless, we notice upon evaluation, models exhibit non-zero accuracy. This is due to inherent noise in model inference.' Section B.3 discusses expert disagreement rates and dataset refinement needs."
-  
+    justification: "The paper extensively documents limitations. Section 4.2 acknowledges 'These low scores are partially by design' and 'small inflections close to zero accuracy are not strongly indicative of progress.' Section 5 states 'HLE tests structured academic problems rather than open-ended research or creative problem-solving abilities' and 'would not alone suggest autonomous research capabilities or artificial general intelligence.' Section B.3 discusses expert disagreement rates (15.4% public, 18% health subset) and factors contributing to complexity. Section B.2 acknowledges limitations in review process: 'reviewers were not expected to verify the full accuracy of each provided solution rationale if it would take more than five minutes.'"
+
+  # Criterion: Data collection process, test environment design, or prompt design process is documented
   data_collection_documented:
     score: 15
-    justification: "Section 3.1 provides detailed documentation: 'HLE is a global collaborative effort, with questions from nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries – comprised mostly of professors, researchers, and graduate degree holders.' Section 3.1 describes submission format requirements, prize pool ($500,000 USD), and contributor incentives. Section B.1 documents the submission process, LLM difficulty checks, and automated evaluation procedures."
-  
+    justification: "The paper comprehensively documents data collection and design processes. Section 3.1 describes collection: global collaborative effort, contributor demographics, question formats, submission criteria, prize pool. Section 3.2 details review process: LLM difficulty check (Section B.1), expert review with two rounds, rubrics. Section B.1 describes submission process with LLM validation. Section B.2 describes post-release refinement. Section C.7 provides detailed review instructions and rubrics. Figure 4 illustrates the pipeline. Section 4.1 describes evaluation setup and prompt design (Section C.1.1)."
+
+  # Criterion: Evaluation metric is documented
   evaluation_metric_documented:
     score: 15
-    justification: "Section 4.1 comprehensively documents the evaluation metric: 'As the question-answers are precise and close-ended, we use O3-MINI as a judge to verify answer correctness against model predictions while accounting for equivalent formats (e.g., decimals vs. fractions or estimations).' Section C.1.1 provides detailed judge prompts and evaluation format. Section 4.2 explains accuracy calculation and calibration error metrics (RMS calibration error from Hendrycks et al. [24])."
-  
+    justification: "The paper comprehensively documents evaluation metrics. Section 4.2 describes accuracy measurement and provides results in Table 1. Section 4.2 describes calibration error: 'we prompt models to provide both an answer and their confidence from 0% to 100%' and 'employing the setup from Wei et al. [56]. The implementation of our RMS calibration error is from Hendrycks et al. [24].' Section C.1.1 provides detailed evaluation prompts including judge instructions. Section 4.1 describes using 'O3-MINI as a judge to verify answer correctness against model predictions while accounting for equivalent formats.' The metrics are thoroughly documented."
+
+  # Criterion: Applicable license is specified
   license_specified:
-    score: 15
-    justification: "It is under the MIT License."
-  
+    score: 0
+    justification: "The paper does not mention licensing information for the code, data, or documentation. While the website (lastexam.ai) is referenced and data is described as publicly released, licensing is not discussed in the paper."
+
+  # Criterion: Globally unique, persistent identifier for dataset and metadata is provided
   persistent_identifier:
     score: 5
-    justification: "The paper has an arXiv identifier (2501.14249v9) for the paper itself, but persistent identifiers (e.g., DOI) for the dataset and metadata are not explicitly mentioned beyond the website reference (lastexam.ai)."
-  
+    justification: "The paper provides an arXiv identifier (arXiv:2501.14249v9) for the paper itself. However, the paper does not explicitly mention a DOI or other persistent identifier for the dataset and metadata. References point to the website (lastexam.ai) but persistent identifiers for the dataset are not stated."
+
+  # Criterion: Standardized metadata is included
   standardized_metadata:
     score: 0
-    justification: "Standardized metadata following recognized schemas or formats (e.g., Datasheets for Datasets, Model Cards) is not mentioned in the available text."
-  
+    justification: "The paper does not mention standardized metadata following recognized schemas or formats (such as Datasheets for Datasets or Model Cards). Metadata is not explicitly discussed."
+
+  # Criterion: Data sources and how the data was collected is documented
   data_sources_documented:
     score: 15
-    justification: "Section 3.1 comprehensively documents data sources: 'HLE is a global collaborative effort, with questions from nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries.' The paper lists hundreds of contributors with their institutional affiliations (Section A.1). Section 3.1 notes: 'All submissions must be original work or non-trivial syntheses of published information, though contributions from unpublished research are acceptable.'"
-  
+    justification: "The paper comprehensively documents data sources. Section 3.1 states 'HLE is a global collaborative effort, with questions from nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries – comprised mostly of professors, researchers, and graduate degree holders.' Section 3.1 describes the collection process, submission format, and prize pool structure. Section A lists hundreds of contributors with institutional affiliations. Section 3.1 states questions can be 'original work or non-trivial syntheses of published information, though contributions from unpublished research are acceptable.'"
+
+  # Criterion: Data preprocessing steps taken are documented
   data_preprocessing_documented:
     score: 15
-    justification: "Section 3.2 comprehensively documents preprocessing: 'We employ a multi-stage review process to thoroughly ensure question difficulty and quality.' Section B.1 describes LLM difficulty checks: 'To ensure question difficulty, each question is first validated against several frontier LLMs prior to submission.' Section B.2 documents post-release refinement, community feedback, auditing, and searchability checks. Section C.7 provides detailed review instructions and rubrics."
-  
+    justification: "The paper documents preprocessing steps. Section 3.2 describes the review process including LLM difficulty check, expert review, and refinement. Section B.1 describes submission validation against frontier LLMs. Section B.2 describes post-release refinement: community feedback bug bounty, audit process, and removal of searchable questions. Section B.2 states 'Each error report was manually verified by the organizers' and questions were removed if 'easily found via web search.' Section 3.1 mentions formatting requirements (LaTeX, English, short answers). The preprocessing and refinement processes are comprehensively documented."
+
+  # Criterion: Data annotation process is documented (if applicable)
   data_annotation_documented:
     score: 15
-    justification: "Section 3.2 documents the annotation process: 'Our human reviewers possess a graduate degree (eg. Master's, PhD, JD, etc.) in their fields. Reviewers select submissions in their domain, grading them against standardized rubrics and offering feedback when applicable. There are two rounds of reviews.' Section C.7 provides comprehensive reviewer instructions and rubrics for both review rounds. Section B.3 describes auditing processes with expert reviewers."
-  
+    justification: "The paper documents the annotation/review process extensively. Section 3.2 describes 'Expert Review' where 'Our human reviewers possess a graduate degree (eg. Master's, PhD, JD, etc.) in their fields' and 'Reviewers select submissions in their domain, grading them against standardized rubrics.' Section 3.2 describes two rounds of reviews with detailed processes. Section C.7 provides comprehensive review instructions and rubrics for both rounds. Section B.3 discusses expert disagreement rates and review complexity. The annotation/review process is thoroughly documented including reviewer qualifications, rubrics, and procedures."
+
+  # Criterion: Representativeness of the data is explained (if applicable)
   data_representativeness_explained:
-    score: 10
-    justification: "Section 3.1 explains scope: 'HLE consists of 2,500 questions across dozens of subjects, including mathematics, humanities, and the natural sciences.' Section B.4 lists subject coverage: 'Economies, Ecology, Artificial Intelligence, Musicology, Philosophy, Neuroscience, Law, Art History, Biochemistry, Astronomy, Classics, Chess...' However, explicit discussion of dataset limitations, potential biases, geographic/cultural representativeness, or comprehensive analysis of data representativeness is limited."
-  
+    score: 15
+    justification: "The paper explains data representativeness and discusses limitations. Section 3.1 describes broad subject coverage: '2,500 questions across dozens of subjects' and 'over a hundred subjects' (Section B.4 lists top 50 subjects). Section 3.1 states questions come from 'nearly 1000 subject expert contributors affiliated with over 500 institutions across 50 countries.' Section B.3 discusses expert disagreement rates and factors contributing to complexity, including that 'Questions from Research Experience' are intentionally included to 'test model knowledge beyond what is readily indexed on the internet.' Section 4.2 acknowledges low scores are 'partially by design' due to filtering. The representativeness and limitations are well explained."
+
+  # Criterion: Documentation follows recognized standard
   documentation_standard:
     score: 0
-    justification: "The paper does not mention following recognized documentation standards such as Datasheets for Datasets or Model Cards in the available text."
+    justification: "The paper does not indicate that documentation follows recognized standards such as Datasheets for Datasets or Model Cards. The paper follows academic paper format but does not explicitly adhere to benchmark documentation standards."
 
+# === 5. Maintenance Criteria ===
+# These criteria evaluate the ongoing maintenance and support for the benchmark
 maintenance:
+  # Criterion: Code usability was checked within the last year
   code_usability_checked:
-    score: 0
-    justification: "Code usability verification is not mentioned in the available text. The paper is from 2025, but no information about ongoing maintenance or verification is provided."
-  
+    score: 15
+    justification: "The paper is dated September 25, 2025 (arXiv:2501.14249v9), and describes active evaluation of frontier models (Section 4, Table 1) with recent model versions (Section C.5 lists models from 2024-2025). Section B.2 describes post-release refinement and community feedback processes, indicating active maintenance. Section B.3 mentions plans for 'HLE-ROLLING' - 'a dynamic fork of the dataset post-release' that 'will be regularly updated.' This indicates the benchmark is actively maintained and recently verified as usable."
+
+  # Criterion: Maintained feedback channel for users is available
   feedback_channel:
     score: 15
-    justification: "Section B.2 explicitly describes feedback channels: 'we opened up a community feedback bug bounty program following the initial release of the dataset to identify and remove major errors in the dataset.' Section 1 mentions: 'Following release, we conducted a public review period, welcoming community feedback to correct any points of concern in the dataset.' The public release at lastexam.ai provides maintained feedback channels."
-  
+    justification: "The paper describes maintained feedback channels. Section B.2 states 'we opened up a community feedback bug bounty program following the initial release of the dataset to identify and remove major errors in the dataset.' Section B.2 describes audit processes and community engagement. Section B.3 mentions plans for HLE-ROLLING with regular updates and public availability of update information at lastexam.ai. Section 1 references the website (lastexam.ai) as the release location. The paper indicates active feedback channels and community engagement."
+
+  # Criterion: Contact person is listed
   contact_person:
     score: 15
-    justification: "The paper lists organizing team members: Long Phan, Alice Gatti, Ziwen Han, Nathaniel Li, Josephina Hu, Hugh Zhang, Chen Bo Calvin Zhang, Mohamed Shaaban, John Ling, Sean Shi, Michael Choi, and many others from Center for AI Safety and Scale AI. The paper provides correspondence email: 'Correspondence to agibenchmark@safe.ai.' The website lastexam.ai provides additional contact information."
+    justification: "The paper lists contact information. The correspondence line states 'Correspondence to agibenchmark@safe.ai.' The paper lists organizing team members including senior authors (Dan Hendrycks, Alexandr Wang, Summer Yue) and co-first authors from Center for AI Safety and Scale AI. The paper provides clear contact points for the benchmark."
+
+# === 6. AGI Cognitive Abilities Coverage ===
+# These criteria evaluate the extent to which the benchmark tests various cognitive abilities
+# relevant to artificial general intelligence. Each ability should be graded equally in relation
+# to one another and on a similar scale to design and implementation criteria.
+agi_cognitive_abilities:
+  # Criterion: General Knowledge (K)
+  general_knowledge:
+    score: 15
+    justification: "HLE comprehensively tests general knowledge across diverse domains. Section 3.1 states HLE consists of '2,500 questions across dozens of subjects, including mathematics, humanities, and the natural sciences.' Section B.4 lists over a hundred subjects including 'Economies, Ecology, Artificial Intelligence, Musicology, Philosophy, Neuroscience, Law, Art History, Biochemistry, Astronomy, Classics, Chess, Chemical Engineering, Microbiology' and many more. Section 3.1 states questions 'typically require graduate-level expertise or test knowledge of highly specific topics (e.g., precise historical details, trivia, local customs).' The benchmark tests factual understanding across commonsense, culture, science, social science, and history extensively."
+
+  # Criterion: Reading and Writing Ability (RW)
+  reading_writing_ability:
+    score: 15
+    justification: "HLE comprehensively tests reading and writing abilities. Section 3.1 states questions include 'multiple-choice and exact-match questions' where 'models provide an exact string as output' or 'the model selects one of five or more answer choices.' Section 3.1 requires 'clear English with precise technical terminology, supporting LATEX notation wherever necessary.' Section 4.1 describes evaluation where models must provide reasoning and final answers. Section C.1.1 shows evaluation prompts requiring structured responses with 'Explanation' and 'Answer' sections. The benchmark tests comprehension of complex academic text (including technical terminology, multiple languages in some questions like Biblical Hebrew, Palmyrene script) and requires precise written responses. Questions span humanities, literature, linguistics, requiring advanced reading comprehension."
+
+  # Criterion: Mathematical Ability (M)
+  mathematical_ability:
+    score: 15
+    justification: "HLE comprehensively tests mathematical ability. Section 1 states 'Amongst the diversity of questions in the benchmark, HLE emphasizes world-class mathematics problems aimed at testing deep reasoning skills broadly applicable across multiple academic areas.' Section 3.1 mentions mathematics as a key subject area. Figure 2 shows a sample mathematics question involving category theory and natural transformations. Section C.3 (Table 3) shows category-wise results including Mathematics as a separate category. Questions test advanced mathematics including category theory, graph theory, and other graduate-level mathematical domains. The benchmark tests mathematical knowledge and skills across arithmetic, algebra, geometry, probability, and advanced mathematics."
+
+  # Criterion: On-the-Spot Reasoning (R)
+  on_the_spot_reasoning:
+    score: 15
+    justification: "HLE comprehensively tests on-the-spot reasoning. Section 3.1 states questions are 'original' and 'cannot be quickly answered via internet retrieval' and 'resistant to simple internet lookup or database retrieval.' Section 3.1 states questions 'typically require graduate-level expertise' and test 'deep reasoning skills.' Section 3.2 describes LLM difficulty checks ensuring questions stump frontier models, requiring novel problem-solving. Section 1 states questions test 'expert-level capabilities on closed-ended academic questions' at 'the frontiers of human knowledge.' Section 4.1 describes models providing 'explicit reasoning followed by a final answer,' testing flexible reasoning on challenging novel problems. The benchmark tests reasoning through complex, original problems without relying on memorized solutions."
+
+  # Criterion: Working Memory (WM)
+  working_memory:
+    score: 10
+    justification: "HLE moderately tests working memory. Section 3.1 states questions can be multi-modal with 'around 14% of questions requiring comprehending both text and an image,' requiring maintenance of visual and textual information. Section 4.1 describes evaluation requiring 'explicit reasoning followed by a final answer,' suggesting models must maintain reasoning steps. However, the benchmark does not explicitly emphasize tasks requiring extensive information maintenance across many steps. Questions are closed-ended and typically focus on single problems rather than complex multi-step tasks requiring extensive working memory. The benchmark tests some working memory through multi-modal questions and reasoning requirements, but not as comprehensively as other abilities."
+
+  # Criterion: Long-Term Memory Storage (MS)
+  long_term_memory_storage:
+    score: 0
+    justification: "HLE does not test long-term memory storage. The benchmark is designed as a static evaluation where models answer questions without learning or acquiring new information during the evaluation. Section 3.1 states questions are 'resistant to simple internet lookup' but this is about preventing retrieval, not testing memory storage. The benchmark evaluates what models already know, not their ability to acquire and retain new knowledge over time. There is no mechanism for testing continuous learning or memory storage capabilities."
+
+  # Criterion: Long-Term Memory Retrieval (MR)
+  long_term_memory_retrieval:
+    score: 15
+    justification: "HLE comprehensively tests long-term memory retrieval. The entire benchmark tests the model's ability to retrieve and apply stored knowledge across diverse domains. Section 3.1 states questions test 'graduate-level expertise' and 'knowledge of highly specific topics,' requiring accurate retrieval of stored information. Section 4.2 discusses calibration error, noting 'models frequently provide incorrect answers with high confidence on HLE, failing to recognize when questions exceed their capabilities' - this directly relates to hallucination/confabulation issues in memory retrieval. Section 3.1 states questions have 'known solution that is unambiguous and easily verifiable,' allowing assessment of retrieval accuracy. The benchmark extensively tests the ability to accurately retrieve stored knowledge without confabulation across hundreds of subject areas."
+
+  # Criterion: Visual Processing (V)
+  visual_processing:
+    score: 10
+    justification: "HLE moderately tests visual processing. Section 3.1 states 'HLE is a multi-modal benchmark, with around 14% of questions requiring comprehending both text and an image.' Section 1 mentions 'questions that are either text-only or accompanied by an image reference.' Figure 2 shows sample questions including visual elements. However, 86% of questions are text-only, and the paper does not emphasize visual processing as a primary focus. The benchmark tests some visual processing through multi-modal questions, but visual processing is not comprehensively tested across the majority of questions."
+
+  # Criterion: Auditory Processing (A)
+  auditory_processing:
+    score: 0
+    justification: "HLE does not test auditory processing. The benchmark is described as 'multi-modal' but Section 3.1 clarifies this means 'questions that are either text-only or accompanied by an image reference' - there is no mention of auditory stimuli, speech, rhythm, or music. The benchmark has no auditory component. Questions may involve linguistic analysis (e.g., Biblical Hebrew pronunciation in Figure 2), but this is textual/linguistic analysis, not auditory processing."
+
+  # Criterion: Speed (S)
+  speed:
+    score: 10
+    justification: "HLE moderately tests processing speed. Section 4.2 and Figure 5 analyze 'Token Counts' showing 'Models with reasoning require substantially more inference time compute' and reporting 'Average Completion Tokens' for different models. Section 4.2 states 'We emphasize that future models should not only do better in terms of accuracy, but also strive to be compute-optimal.' However, the benchmark does not explicitly emphasize speed as a primary evaluation metric. Section 4.2 focuses primarily on accuracy and calibration. Speed metrics are reported but not used as a primary evaluation criterion. The benchmark tests some efficiency aspects but speed is not comprehensively evaluated."

@@ -68,12 +68,26 @@ MAINTENANCE_CRITERIA = [
     'contact_person'
 ]
 
+AGI_COGNITIVE_ABILITIES_CRITERIA = [
+    'general_knowledge',
+    'reading_writing_ability',
+    'mathematical_ability',
+    'on_the_spot_reasoning',
+    'working_memory',
+    'long_term_memory_storage',
+    'long_term_memory_retrieval',
+    'visual_processing',
+    'auditory_processing',
+    'speed'
+]
+
 # All criteria grouped by section
 SECTION_CRITERIA = {
     'design': DESIGN_CRITERIA,
     'implementation': IMPLEMENTATION_CRITERIA,
     'documentation': DOCUMENTATION_CRITERIA,
-    'maintenance': MAINTENANCE_CRITERIA
+    'maintenance': MAINTENANCE_CRITERIA,
+    'agi_cognitive_abilities': AGI_COGNITIVE_ABILITIES_CRITERIA
 }
 
 # Valid score values
@@ -204,7 +218,7 @@ class UGFValidator:
                 valid = False
         
         # Validate each section's criteria
-        for section in ['design', 'implementation', 'documentation', 'maintenance']:
+        for section in ['design', 'implementation', 'documentation', 'maintenance', 'agi_cognitive_abilities']:
             if section in data:
                 if not self._validate_section_criteria(data, filename, section):
                     valid = False

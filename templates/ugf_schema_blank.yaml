@@ -671,3 +671,161 @@ maintenance:
   contact_person:
     score: null
     justification: "Explanation of how this criterion is met or not met"
+
+# === 6. AGI Cognitive Abilities Coverage ===
+# These criteria evaluate the extent to which the benchmark tests various cognitive abilities
+# relevant to artificial general intelligence. Each ability should be graded equally in relation
+# to one another and on a similar scale to design and implementation criteria.
+agi_cognitive_abilities:
+  # Criterion: General Knowledge (K)
+  # Explanation: The breadth of factual understanding of the world, encompassing commonsense, culture,
+  # science, social science, and history. The benchmark evaluates the model's ability to demonstrate
+  # knowledge across diverse domains without specific task training.
+  # Justification: General knowledge is fundamental to AGI as it represents the foundational
+  # understanding of the world that enables reasoning and problem-solving across contexts.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, single domain)
+  # 10 (moderately tested, multiple domains)
+  # 15 (comprehensively tested across broad range of domains)
+  general_knowledge:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Reading and Writing Ability (RW)
+  # Explanation: Proficiency in consuming and producing written language, from basic decoding to complex
+  # comprehension, composition, and usage. The benchmark evaluates the model's ability to understand
+  # written text, generate coherent written responses, and demonstrate linguistic competence.
+  # Justification: Reading and writing are core communication abilities necessary for AGI to interact
+  # effectively with humans and process information from textual sources.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic tasks)
+  # 10 (moderately tested, intermediate complexity)
+  # 15 (comprehensively tested, advanced comprehension and composition)
+  reading_writing_ability:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Mathematical Ability (M)
+  # Explanation: The depth of mathematical knowledge and skills across arithmetic, algebra, geometry,
+  # probability, and calculus. The benchmark evaluates the model's ability to solve mathematical
+  # problems across various levels of complexity and mathematical domains.
+  # Justification: Mathematical reasoning is a fundamental cognitive ability that demonstrates
+  # systematic thinking, logical deduction, and problem-solving capabilities essential for AGI.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic arithmetic)
+  # 10 (moderately tested, intermediate mathematics)
+  # 15 (comprehensively tested, advanced mathematics across multiple domains)
+  mathematical_ability:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: On-the-Spot Reasoning (R)
+  # Explanation: The flexible control of attention to solve novel problems without relying exclusively
+  # on previously learned schemas, tested via deduction and induction. The benchmark evaluates the
+  # model's ability to reason through new problems that require flexible thinking and adaptation.
+  # Justification: On-the-spot reasoning demonstrates the ability to handle novel situations and
+  # apply logical thinking to unfamiliar problems, which is crucial for general intelligence.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, simple reasoning tasks)
+  # 10 (moderately tested, moderate complexity novel problems)
+  # 15 (comprehensively tested, complex novel problems requiring flexible reasoning)
+  on_the_spot_reasoning:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Working Memory (WM)
+  # Explanation: The ability to maintain and manipulate information in active attention across textual,
+  # auditory, and visual modalities. The benchmark evaluates the model's capacity to hold and work
+  # with multiple pieces of information simultaneously during problem-solving.
+  # Justification: Working memory is essential for complex tasks that require maintaining context
+  # and manipulating multiple pieces of information, which is fundamental to intelligent behavior.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, simple memory tasks)
+  # 10 (moderately tested, moderate complexity multi-step tasks)
+  # 15 (comprehensively tested, complex tasks requiring extensive information maintenance)
+  working_memory:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Long-Term Memory Storage (MS)
+  # Explanation: The capability to continually learn new information (associative, meaningful, and
+  # verbatim). The benchmark evaluates the model's ability to acquire and retain new knowledge
+  # over time, including the ability to learn from few examples or continuous exposure.
+  # Justification: Long-term memory storage enables systems to accumulate knowledge and improve
+  # over time, which is necessary for continuous learning and adaptation in AGI systems.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic memorization)
+  # 10 (moderately tested, meaningful learning tasks)
+  # 15 (comprehensively tested, continuous learning across diverse information types)
+  long_term_memory_storage:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Long-Term Memory Retrieval (MR)
+  # Explanation: The fluency and precision of accessing stored knowledge, including the critical
+  # ability to avoid confabulation (hallucinations). The benchmark evaluates the model's ability
+  # to accurately retrieve and apply previously learned information without generating false facts.
+  # Justification: Accurate memory retrieval is crucial for reliable AGI systems, as hallucinations
+  # can undermine trust and utility. This ability ensures that retrieved information is both
+  # accessible and accurate.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic retrieval)
+  # 10 (moderately tested, retrieval with some accuracy assessment)
+  # 15 (comprehensively tested, precise retrieval with hallucination detection)
+  long_term_memory_retrieval:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Visual Processing (V)
+  # Explanation: The ability to perceive, analyze, reason about, generate, and scan visual information.
+  # The benchmark evaluates the model's capability to process, understand, and work with visual
+  # data including images, diagrams, and spatial information.
+  # Justification: Visual processing is essential for AGI to interact with the visual world, interpret
+  # visual information, and generate visual content, which is a significant aspect of human intelligence.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic visual recognition)
+  # 10 (moderately tested, visual analysis and reasoning)
+  # 15 (comprehensively tested, advanced visual processing including generation and complex reasoning)
+  visual_processing:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Auditory Processing (A)
+  # Explanation: The capacity to discriminate, recognize, and work creatively with auditory stimuli,
+  # including speech, rhythm, and music. The benchmark evaluates the model's ability to process,
+  # understand, and generate auditory information.
+  # Justification: Auditory processing enables AGI to understand and generate speech, music, and
+  # other audio signals, which is crucial for natural human-computer interaction and multimedia
+  # understanding.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic speech recognition)
+  # 10 (moderately tested, speech understanding and generation)
+  # 15 (comprehensively tested, advanced auditory processing including music and creative audio)
+  auditory_processing:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"
+
+  # Criterion: Speed (S)
+  # Explanation: The ability to perform simple cognitive tasks quickly, encompassing perceptual speed,
+  # reaction times, and processing fluency. The benchmark evaluates the model's efficiency in
+  # processing and responding to tasks, measuring both latency and throughput.
+  # Justification: Processing speed is an important aspect of intelligence, as it affects the
+  # practical utility of AGI systems. While not the sole measure of intelligence, efficiency
+  # is important for real-world applications.
+  # Scoring:
+  # 0 (not tested)
+  # 5 (minimally tested, basic speed measurement)
+  # 10 (moderately tested, speed across multiple task types)
+  # 15 (comprehensively tested, speed metrics for diverse cognitive tasks with efficiency analysis)
+  speed:
+    score: null
+    justification: "Explanation of how this criterion is met or not met"

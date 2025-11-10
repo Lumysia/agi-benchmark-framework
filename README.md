@@ -35,22 +35,18 @@ pip3 install -r requirements.txt
 ## Usage
 
 ```bash
-# Run the validator
-cd src
-python3 validator.py
+# Run the validator (from the root directory)
+python3 -m src.validator
 
-# Run the better bench score calculator
-cd src
-python3 calculate_evaluation_scores.py
+# Run the better bench score calculator (from the root directory)
+python3 -m src.calculate_evaluation_scores
 
-# Run visualize benchmark generators
-cd src
-python3 visualize_benchmark_barcharts.py
-python3 visualize_benchmark_interactive.py
+# Run visualize benchmark generators (from the root directory)
+python3 -m src.visualize_benchmark_barcharts
+python3 -m src.visualize_benchmark_interactive
 
-# Run the analysis
-cd src
-python3 analysis.py
+# Run the analysis (from the root directory)
+python3 -m src.analysis
 ```
 
 If the validator runs without errors, all benchmark files in the `/data/` directory are correct.
@@ -61,6 +57,6 @@ This is the primary workflow for this project:
 
 1.  Create File: Add a new `.yaml` file to the `/data/` directory (e.g., `arc_agi_2.yaml`).
 2.  Populate Data: Fill out the schema fields based on the benchmark's paper and documentation.
-3.  Validate: Run `python3 src/validator.py` from the root directory.
+3.  Validate: Run `python3 -m src.validator` from the root directory.
 4.  Fix Errors: If the validator fails, fix the errors in your `.yaml` file.
 5.  Commit: Once the validator passes, commit new file.

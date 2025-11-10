@@ -57,5 +57,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run UGF Validator
-        working-directory: ./src
-        run: python validator.py
+        run: python -m src.validator

@@ -1,6 +1,6 @@
 import sys
 from typing import Dict, Any, List, Set, Optional
-from loader import load_benchmarks_from_dir
+from .loader import load_benchmarks_from_dir
 
 # Required top-level sections
 REQUIRED_SECTIONS = ['benchmark_info', 'design', 'implementation', 'documentation', 'maintenance']

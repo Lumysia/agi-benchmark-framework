@@ -1,5 +1,5 @@
 import pandas as pd
-from loader import load_benchmarks_from_dir
+from .loader import load_benchmarks_from_dir
 from typing import List, Dict, Any
 
 DATA_DIR = "../data"

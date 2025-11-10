@@ -1,22 +1,25 @@
-name: Validate UGF Data
+name: Validate & Test UGF Project
 
 on:
   push:
     paths:
       - 'data/**'
-      - 'src/validator.py'
+      - 'src/**'
+      - 'test/**'
       - '.github/workflows/validate.yml'
   pull_request:
     paths:
       - 'data/**'
-      - 'src/validator.py'
+      - 'src/**'
+      - 'test/**'
       - '.github/workflows/validate.yml'
 
 permissions:
   contents: read
 
 jobs:
-  validate:
+  run-unit-tests:
+    name: Run Pytest (Unit Tests)
     runs-on: ubuntu-latest
     
     steps:
@@ -29,7 +32,29 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install PyYAML
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Pytest
+        run: python -m pytest
+
+  validate-data:
+    name: Validate YAML Data (Integration Test)
+    runs-on: ubuntu-latest
+    needs: run-unit-tests
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
       - name: Run UGF Validator
         working-directory: ./src

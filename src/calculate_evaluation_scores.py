@@ -69,8 +69,7 @@ def calculate_average_score(scores: Dict[str, Optional[int]]) -> tuple[float, in
 
 
 def calculate_usability_score(
-    sI: float, sDo: float, sM: float, sCA: float,
-    nI: int, nDo: int, nM: int, nCA: int
+    sI: float, sDo: float, sM: float, sCA: float, nI: int, nDo: int, nM: int, nCA: int
 ) -> float:
     """
     Calculate usability score SU using the formula:

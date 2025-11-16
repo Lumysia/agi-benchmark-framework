@@ -29,10 +29,13 @@ def generate_bar_charts():
         print("Error: CSV must contain 'design_score_avg' and 'usability_score' columns.")
         return
 
-    print("Generating Design Scores Bar Chart with LaTeX...")
+    avg_design_score = df['design_score_avg'].mean()
+    avg_usability_score = df['usability_score'].mean()
+
+    print("Generating Design Scores Bar Chart...")
     
-    title_design = r'Benchmark Quality: Design Scores ($S_D$)'
-    label_design = r'Design Score ($S_D$)'
+    title_design = 'Benchmark Quality: Design Scores (S<sub>D</sub>)'
+    label_design = 'Design Score (S<sub>D</sub>)'
     
     fig_design = px.bar(
         df,
@@ -42,10 +45,16 @@ def generate_bar_charts():
         title=title_design,
         color='design_score_avg',
         text='design_score_avg',
-        labels={
-            'design_score_avg': label_design,
-            'benchmark_name': 'Benchmark'
-        }
+        labels={'design_score_avg': label_design, 'benchmark_name': 'Benchmark'}
+    )
+    
+    fig_design.add_vline(
+        x=avg_design_score, 
+        line_width=2, 
+        line_dash="dash", 
+        line_color="grey",
+        annotation_text=f"Average: {avg_design_score:.2f}",
+        annotation_position="bottom right"
     )
     
     fig_design.update_layout(
@@ -55,13 +64,13 @@ def generate_bar_charts():
         yaxis_title=None
     )
     fig_design.update_traces(texttemplate='%{text:.2f}', textposition='outside')
-    fig_design.write_html(design_chart_path, include_mathjax='cdn')
+    fig_design.write_html(design_chart_path)
     fig_design.show()
 
-    print("Generating Usability Scores Bar Chart with LaTeX...")
+    print("Generating Usability Scores Bar Chart...")
     
-    title_usability = r'Benchmark Quality: Usability Scores ($S_U$)'
-    label_usability = r'Usability Score ($S_U$)'
+    title_usability = 'Benchmark Quality: Usability Scores (S<sub>U</sub>)'
+    label_usability = 'Usability Score (S<sub>U</sub>)'
     
     fig_usability = px.bar(
         df,
@@ -71,10 +80,16 @@ def generate_bar_charts():
         title=title_usability,
         color='usability_score',
         text='usability_score',
-        labels={
-            'usability_score': label_usability,
-            'benchmark_name': 'Benchmark'
-        }
+        labels={'usability_score': label_usability, 'benchmark_name': 'Benchmark'}
+    )
+
+    fig_usability.add_vline(
+        x=avg_usability_score, 
+        line_width=2, 
+        line_dash="dash", 
+        line_color="grey",
+        annotation_text=f"Average: {avg_usability_score:.2f}",
+        annotation_position="bottom right"
     )
     
     fig_usability.update_layout(
@@ -84,11 +99,11 @@ def generate_bar_charts():
         yaxis_title=None
     )
     fig_usability.update_traces(texttemplate='%{text:.2f}', textposition='outside')
-    fig_usability.write_html(usability_chart_path, include_mathjax='cdn')
+    fig_usability.write_html(usability_chart_path)
     fig_usability.show()
 
-    print(f"Bar charts with LaTeX saved to {design_chart_path} and {usability_chart_path}")
-    print("Run completed. You can now open the HTML files manually in your browser.")
+    print(f"Bar charts saved to {design_chart_path} and {usability_chart_path}")
+    print("Run completed.")
 
 if __name__ == "__main__":
     generate_bar_charts()

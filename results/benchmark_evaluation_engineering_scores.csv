@@ -1,0 +1,5 @@
+benchmark_name,implementation_score_avg,documentation_score_avg,maintenance_score_avg,implementation_criteria_count,documentation_criteria_count,maintenance_criteria_count,usability_score,design_score_avg,agi_cognitive_abilities_score_avg,agi_cognitive_abilities_criteria_count
+ARC-AGI-2,8.46,8.82,15.0,13,17,3,9.24,11.43,6.0,10
+Humanity's Last Exam,7.69,9.71,15.0,13,17,3,9.39,11.07,10.5,10
+MMLU-Pro,6.15,10.88,6.67,13,17,3,8.64,12.14,9.0,10
+SWE-bench,8.46,10.94,15.0,13,16,3,10.31,11.15,6.0,10

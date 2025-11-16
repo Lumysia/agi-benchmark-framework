@@ -82,21 +82,16 @@ def test_calculate_usability_score():
     sI, nI = 10.0, 5
     sDo, nDo = 8.0, 10
     sM, nM = 12.0, 3
+    sCA, nCA = 9.0, 2
 
-    expected_su = (10.0 * 5 + 8.0 * 10 + 12.0 * 3) / (5 + 10 + 3)
-    su = calculate_usability_score(sI, sDo, sM, nI, nDo, nM)
-    assert su == expected_su
-
-    sI, nI = 10.0, 5
-    sDo, nDo = 8.0, 10
-    sM, nM = 0.0, 0
-    expected_su = (10.0 * 5 + 8.0 * 10 + 0.0 * 0) / (5 + 10 + 0)
-    su = calculate_usability_score(sI, sDo, sM, nI, nDo, nM)
+    expected_su = (10.0 * 5 + 8.0 * 10 + 12.0 * 3 + 9.0 * 2) / (5 + 10 + 3 + 2)
+    
+    su = calculate_usability_score(sI, sDo, sM, sCA, nI, nDo, nM, nCA)
     assert su == expected_su
 
 
 def test_calculate_usability_score_division_by_zero():
-    su = calculate_usability_score(10.0, 8.0, 12.0, 0, 0, 0)
+    su = calculate_usability_score(10.0, 8.0, 12.0, 0.0, 0, 0, 0, 0)
     assert su == 0.0
 
 
@@ -128,8 +123,13 @@ def test_process_benchmark(mock_load_yaml, mock_valid_benchmark_data):
     assert result["nCA"] == 9
     assert result["sCA"] == (10 + 15 + 5 + 10 + 0 + 5 + 0 + 0 + 0) / 9
 
-    nI, nDo, nM = result["nI"], result["nDo"], result["nM"]
-    sI, sDo, sM = result["sI"], result["sDo"], result["sM"]
-    expected_SU = (nI * sI + nDo * sDo + nM * sM) / (nI + nDo + nM)
+    nI, nDo, nM, nCA = result["nI"], result["nDo"], result["nM"], result["nCA"]
+    sI, sDo, sM, sCA = result["sI"], result["sDo"], result["sM"], result["sCA"]
 
-    assert result["SU"] == expected_SU
+    denominator = (nI + nDo + nM + nCA)
+    if denominator == 0:
+        expected_SU = 0.0
+    else:
+        expected_SU = (nI * sI + nDo * sDo + nM * sM + nCA * sCA) / denominator
+
+    assert result["SU"] == pytest.approx(expected_SU)

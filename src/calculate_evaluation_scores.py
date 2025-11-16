@@ -69,15 +69,18 @@ def calculate_average_score(scores: Dict[str, Optional[int]]) -> tuple[float, in
 
 
 def calculate_usability_score(
-    sI: float, sDo: float, sM: float, nI: int, nDo: int, nM: int
+    sI: float, sDo: float, sM: float, sCA: float,
+    nI: int, nDo: int, nM: int, nCA: int
 ) -> float:
     """
     Calculate usability score SU using the formula:
-    SU = (nI*sI + nDo*sDo + nM*sM)/(nI + nDo + nM)
+    SU = (nI*sI + nDo*sDo + nM*sM + nCA*sCA) / (nI + nDo + nM + nCA)
     """
-    if (nI + nDo + nM) == 0:
+    numerator = (nI * sI) + (nDo * sDo) + (nM * sM) + (nCA * sCA)
+    denominator = nI + nDo + nM + nCA
+    if denominator == 0:
         return 0.0
-    return (nI * sI + nDo * sDo + nM * sM) / (nI + nDo + nM)
+    return numerator / denominator
 
 
 def process_benchmark(file_path: Path) -> Dict[str, Any]:
@@ -102,7 +105,7 @@ def process_benchmark(file_path: Path) -> Dict[str, Any]:
     sCA, nCA = calculate_average_score(cognitive_abilities_scores)
 
     # Calculate usability score
-    SU = calculate_usability_score(sI, sDo, sM, nI, nDo, nM)
+    SU = calculate_usability_score(sI, sDo, sM, sCA, nI, nDo, nM, nCA)
 
     return {
         "benchmark_name": benchmark_name,

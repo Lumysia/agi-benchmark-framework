@@ -85,7 +85,7 @@ def test_calculate_usability_score():
     sCA, nCA = 9.0, 2
 
     expected_su = (10.0 * 5 + 8.0 * 10 + 12.0 * 3 + 9.0 * 2) / (5 + 10 + 3 + 2)
-    
+
     su = calculate_usability_score(sI, sDo, sM, sCA, nI, nDo, nM, nCA)
     assert su == expected_su
 
@@ -126,7 +126,7 @@ def test_process_benchmark(mock_load_yaml, mock_valid_benchmark_data):
     nI, nDo, nM, nCA = result["nI"], result["nDo"], result["nM"], result["nCA"]
     sI, sDo, sM, sCA = result["sI"], result["sDo"], result["sM"], result["sCA"]
 
-    denominator = (nI + nDo + nM + nCA)
+    denominator = nI + nDo + nM + nCA
     if denominator == 0:
         expected_SU = 0.0
     else:

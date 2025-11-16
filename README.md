@@ -24,12 +24,26 @@ The environment will build automatically. All dependencies (like PyYAML) will be
 
 If you prefer to work locally:
 
+#### Option 1: Using pip
+
 ```bash
 # Create and activate a virtual environment
 python3 -m venv env && source env/bin/activate
 
 # Install dependencies
 pip3 install -r requirements.txt
+```
+
+#### Option 2: Using uv
+
+[uv](https://docs.astral.sh/uv/) is a fast Python package installer and resolver:
+
+```bash
+# Install uv if you haven't already
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Sync dependencies and create virtual environment
+uv sync
 ```
 
 ## Usage

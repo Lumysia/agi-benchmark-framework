@@ -1,0 +1,316 @@
+# === 1. Benchmark Identification ===
+# Basic information about the benchmark being evaluated
+benchmark_info:
+  # The name of the benchmark (e.g., "AgentBench", "MMLU", "ARC-AGI-2")
+  name: "SWE-bench"
+
+  # Which version of the benchmark are we scoring?
+  version: "ICLR 2024"
+
+  # Simple one-sentence summary of the benchmark
+  description: "An evaluation framework consisting of 2,294 real-world software engineering problems from GitHub issues in 12 popular Python repositories."
+
+  # Link to the paper, repository, or website
+  reference: "https://swebench.com"
+
+# === 2. Design Criteria ===
+# These criteria evaluate the design quality and scientific rigor of the benchmark
+design:
+  # Criterion: Definition of tested capability or characteristic
+  tested_capability_definition:
+    score: 15
+    justification: "The benchmark explicitly defines the tested capability as 'real-world software engineering'. This is contrasted with traditional code generation and described as requiring skills like understanding and coordinating changes across multiple files, navigating large repositories, and performing complex reasoning over extremely long contexts."
+
+  # Criterion: Description of how tested capability or concept translates to benchmark task
+  capability_to_task_translation:
+    score: 15
+    justification: "The paper clearly describes the translation: the capability of resolving software issues is directly mapped to the task of generating a code patch to fix a real GitHub issue within a repository, with correctness verified by running the project's actual test suite."
+
+  # Criterion: Description of how knowing about the tested concept is helpful in the real world
+  real_world_relevance:
+    score: 15
+    justification: "The entire premise of the benchmark is its real-world relevance. It is built from actual software engineering problems (GitHub issues) from popular open-source projects, and the paper argues that advances on the benchmark represent steps towards more practical and autonomous language models."
+
+  # Criterion: Description of use cases and user personas for the benchmark
+  use_cases_and_personas:
+    score: "n/a"
+    justification: "The benchmark evaluates language models as autonomous agents for a specific task (code repair). It is a non-interactive evaluation and does not involve human user personas or varied cultural/geographic contexts."
+
+  # Criterion: Involvement of domain experts
+  domain_expert_involvement:
+    score: 15
+    justification: "The benchmark is constructed entirely from artifacts created by domain experts (i.e., open-source software developers). The problems (issues) and reference solutions (pull requests) are sourced directly from real-world software development, ensuring a high degree of domain relevance."
+
+  # Criterion: Integration of domain literature
+  domain_literature_integration:
+    score: 15
+    justification: "Section 6, 'Related Work', thoroughly reviews literature in 'ML for Software Engineering' and 'Code Generation Benchmarks'. It explicitly details how SWE-bench addresses the limitations of prior work, such as moving from self-contained problems (like HumanEval) to repository-scale code editing."
+
+  # Criterion: Description of how benchmark score should or shouldn't be interpreted/used
+  score_interpretation:
+    score: 10
+    justification: "The paper discusses limitations, noting that solely relying on execution-based testing is insufficient to guarantee code quality (efficiency, readability), which implies what the score *doesn't* capture. However, it does not provide explicit guidance on both what users should and should not conclude from the score."
+
+  # Criterion: Informed choice of performance metric(s)
+  informed_metric_choice:
+    score: 15
+    justification: "The metric is the percentage of issues resolved. An issue is resolved if the generated patch applies correctly and passes all associated unit and system tests. The paper justifies this execution-based verification as robust and standard for coding tasks, using both 'fail-to-pass' tests to check the fix and 'pass-to-pass' tests to check for regressions."
+
+  # Criterion: Includes floors and ceilings for metric
+  metric_floors_ceilings:
+    score: 5
+    justification: "The ceiling of 100% is implicit. The paper does not provide an explicit floor (e.g., random chance), but the results for SOTA models (e.g., GPT-4 at 0.00%, Claude 2 at 1.96%) are shown in tables, effectively establishing a near-zero baseline for current models."
+
+  # Criterion: Includes human performance level
+  human_performance_level:
+    score: 10
+    justification: "Human performance is implicitly 100%, as every task instance is created from a real pull request where a human developer successfully resolved the issue. The 'gold patch' serves as this human-level solution. However, this is not framed as a formal human evaluation but is inherent to the dataset's construction."
+
+  # Criterion: Includes random performance level
+  random_performance_level:
+    score: 0
+    justification: "The paper does not state or attempt to measure a random performance level, which would be non-trivial to define for generating complex, syntactically valid patch files."
+
+  # Criterion: Addresses input sensitivity
+  input_sensitivity:
+    score: 0
+    justification: "The paper does not investigate or discuss the sensitivity of models to variations in the natural language issue descriptions."
+
+  # Criterion: Validated automatic evaluation
+  validated_automatic_evaluation:
+    score: 15
+    justification: "The evaluation is fully automated. It uses the repository's own testing framework to execute tests against the patched code. This form of execution-based evaluation is self-validating, as the tests serve as the ground truth for correctness."
+
+  # Criterion: Explanation of differences to related benchmarks
+  differences_to_related_benchmarks:
+    score: 15
+    justification: "The 'Related Work' section explicitly contrasts SWE-bench with prior benchmarks like HumanEval (self-contained problems) and other code-editing datasets, highlighting its unique features like repository-scale context, realistic tasks from GitHub issues, and multi-file edits."
+
+# === 3. Implementation Criteria ===
+# These criteria evaluate the practical implementation and usability of the benchmark
+implementation:
+  # Criterion: Availability of evaluation code
+  evaluation_code_available:
+    score: 15
+    justification: "The paper states that the data, code, and a leaderboard are available at swebench.com. The reproducibility statement confirms the entire source code was submitted and will be open-sourced."
+
+  # Criterion: Script to replicate results is explicitly included
+  replication_script:
+    score: 15
+    justification: "The reproducibility statement confirms that the full source code for dataset collection, evaluation, model inference, and training is provided and organized, enabling replication of the paper's results."
+
+  # Criterion: Accessibility of evaluation data, prompts, or dynamic environment
+  evaluation_data_accessible:
+    score: 15
+    justification: "The paper states that the full set of 2,294 SWE-bench task instances is included in the release, along with the larger training dataset."
+
+  # Criterion: Supports evaluation of models via API calls
+  api_evaluation_support:
+    score: 15
+    justification: "The paper evaluates several proprietary, API-accessible models, including GPT-3.5, GPT-4, and Claude 2, demonstrating that the evaluation framework supports API-based models."
+
+  # Criterion: Supports evaluation of local models
+  local_model_evaluation_support:
+    score: 15
+    justification: "The paper details the fine-tuning and evaluation of open-source CodeLlama models (SWE-Llama), which are run locally. The code release is stated to include directories for 'open source model inference'."
+
+  # Criterion: Inclusion of a globally unique identifier or encryption of evaluation instances
+  guid_or_encryption:
+    score: 0
+    justification: "The paper discusses mitigating data contamination by creating new test instances from repositories post-dating a model's training cut-off, but does not mention the use of GUIDs or canary strings in the dataset itself."
+
+  # Criterion: Inclusion of 'training_on_test_set' task
+  training_on_test_set_task:
+    score: 5
+    justification: "The paper analyzes model performance on tasks created before and after 2023 to investigate potential 'cheating' from memorization, concluding it's unlikely. This serves as a post-hoc analysis but is not a dedicated task designed to detect contamination."
+
+  # Criterion: Assess need for warnings for sensitive/harmful content
+  sensitive_content_warnings:
+    score: 0
+    justification: "The 'Ethics Statement' discusses data licenses and user privacy but does not mention or assess the potential for sensitive or harmful content within the code or GitHub issue descriptions."
+
+  # Criterion: Release requirements specified
+  release_requirements:
+    score: 0
+    justification: "The paper does not specify any terms of use or release requirements for users of the benchmark to ensure the integrity of results."
+
+  # Criterion: Includes build status or equivalent
+  build_status:
+    score: 0
+    justification: "The paper and its appendices do not mention the use of a build status indicator or continuous integration for the benchmark's evaluation code."
+
+  # Criterion: Requirements file available
+  requirements_file:
+    score: 15
+    justification: "Appendix A.3 describes creating executable 'conda envs' for each repository version, which necessitates a form of requirements management. The plan to release the full, reproducible evaluation framework strongly implies the inclusion of such files."
+
+  # Criterion: Quick-start guide or demo code available
+  quick_start_guide:
+    score: 15
+    justification: "The paper's reproducibility statement promises 'thorough details that describes the benchmark, outlines the code, and details its usage'. Additionally, a full prompt template is provided in Appendix D.3, which serves as a guide for using the benchmark."
+
+  # Criterion: Statistical significance or uncertainty quantification of benchmark results is reported
+  statistical_significance:
+    score: 0
+    justification: "The results are reported as raw percentages without any mention of confidence intervals, error bars, or tests for statistical significance."
+
+# === 4. Documentation Criteria ===
+# These criteria evaluate the quality and completeness of benchmark documentation
+documentation:
+  # Criterion: In-line code comments are used
+  inline_code_comments:
+    score: 15
+    justification: "The reproducibility statement explicitly says: 'The source code contains inline documentation that details purpose and usage of different parts of the codebase.'"
+
+  # Criterion: Code documentation is available
+  code_documentation:
+    score: 15
+    justification: "The ethics statement promises to 'put forth ample documentation to describe each component and its use,' indicating comprehensive documentation beyond in-line comments is planned for the public release."
+
+  # Criterion: Accompanying paper is accepted at peer-reviewed venue
+  peer_reviewed_venue:
+    score: 15
+    justification: "The paper states at the top that it was 'Published as a conference paper at ICLR 2024,' which is a top-tier peer-reviewed conference."
+
+  # Criterion: Benchmark construction process is documented
+  construction_process_documented:
+    score: 15
+    justification: "The construction process is documented in extensive detail in Section 2.1 and further elaborated with technical specifics in Appendix A, covering the full 3-stage pipeline from data scraping to execution-based filtering."
+
+  # Criterion: Test tasks & rationale are documented
+  test_tasks_rationale_documented:
+    score: 15
+    justification: "The paper's introduction and methodology sections clearly document that the tasks are resolving real-world GitHub issues, with the rationale being to create a more realistic and challenging testbed for LM capabilities beyond simple code generation."
+
+  # Criterion: Assumptions of normative properties are documented
+  normative_properties_documented:
+    score: 5
+    justification: "The benchmark implicitly assumes that passing the repository's tests equates to a successful resolution. The limitations section partially addresses this by stating that execution-based testing is insufficient to guarantee code quality (e.g., readability, efficiency), acknowledging the limits of this assumption."
+
+  # Criterion: Limitations are documented
+  limitations_documented:
+    score: 15
+    justification: "Section 7, 'Discussion', contains a dedicated paragraph on 'Limitations and future directions,' which explicitly mentions that the benchmark is Python-only, uses simple baseline approaches, and that passing tests does not guarantee overall code quality."
+
+  # Criterion: Data collection process, test environment design, or prompt design process is documented
+  data_collection_documented:
+    score: 15
+    justification: "The data collection process is comprehensively documented in Section 2.1 and Appendix A. The prompt design is detailed with a full example template in Appendix D.3. Test environment design is described in Appendix A.3."
+
+  # Criterion: Evaluation metric is documented
+  evaluation_metric_documented:
+    score: 15
+    justification: "The evaluation metric ('percentage of task instances that are resolved') and the detailed procedure for calculating it are documented in Section 2.2 and Appendix A.4."
+
+  # Criterion: Applicable license is specified
+  license_specified:
+    score: 15
+    justification: "Yes, Section 8 (Ethics Statement) states that all data is from public repositories with permissive licenses, and Table 12 provides a list of the specific license for each of the 12 source repositories."
+
+  # Criterion: Globally unique, persistent identifier for dataset and metadata is provided
+  persistent_identifier:
+    score: 0
+    justification: "The paper provides a website URL but does not mention a persistent identifier like a DOI for the dataset itself."
+
+  # Criterion: Standardized metadata is included
+  standardized_metadata:
+    score: 0
+    justification: "The paper does not mention using a recognized standard for metadata, such as Datasheets for Datasets."
+
+  # Criterion: Data sources and how the data was collected is documented
+  data_sources_documented:
+    score: 15
+    justification: "The data sources (12 specific, popular GitHub repositories) are explicitly listed in Figure 3. The collection method (scraping PRs, filtering) is detailed in Section 2.1 and Appendix A."
+
+  # Criterion: Data preprocessing steps taken are documented
+  data_preprocessing_documented:
+    score: 15
+    justification: "The paper describes its data processing pipeline in detail, which includes aggregating issue text to form the problem statement, separating PR changes into 'test' and 'gold' patches, and multiple stages of attribute-based and execution-based filtering. This is thoroughly documented."
+
+  # Criterion: Data annotation process is documented (if applicable)
+  data_annotation_documented:
+    score: "n/a"
+    justification: "The benchmark uses naturally occurring data (GitHub issues and pull requests) and does not involve a manual data annotation process."
+
+  # Criterion: Representativeness of the data is explained (if applicable)
+  data_representativeness_explained:
+    score: 5
+    justification: "The paper justifies selecting 'popular' repositories as they tend to be better maintained with good test coverage. However, it does not discuss how representative these 12 Python projects are of software engineering more broadly. The limitation of being Python-only is mentioned."
+
+  # Criterion: Documentation follows recognized standard
+  documentation_standard:
+    score: 0
+    justification: "The paper does not state that its documentation follows a recognized standard like Datasheets for Datasets."
+
+# === 5. Maintenance Criteria ===
+# These criteria evaluate the ongoing maintenance and support for the benchmark
+maintenance:
+  # Criterion: Code usability was checked within the last year
+  code_usability_checked:
+    score: 15
+    justification: "The paper was published in 2024, indicating the work is recent and the code was usable at the time of publication."
+
+  # Criterion: Maintained feedback channel for users is available
+  feedback_channel:
+    score: 15
+    justification: "The ethics statement says 'we will also put in place convenient communication channels for soliciting feedback'. The project website and likely associated GitHub repository would serve this purpose."
+
+  # Criterion: Contact person is listed
+  contact_person:
+    score: 15
+    justification: "The first page of the paper provides a correspondence email address for the authors."
+
+# === 6. AGI Cognitive Abilities Coverage ===
+# These criteria evaluate the extent to which the benchmark tests various cognitive abilities
+# relevant to artificial general intelligence. Each ability should be graded equally in relation
+# to one another and on a similar scale to design and implementation criteria.
+agi_cognitive_abilities:
+  # Criterion: General Knowledge (K)
+  general_knowledge:
+    score: 5
+    justification: "The benchmark requires deep, specialized knowledge of Python programming and specific libraries (e.g., django, scikit-learn), which is a narrow domain rather than broad general or commonsense knowledge of the world."
+
+  # Criterion: Reading and Writing Ability (RW)
+  reading_writing_ability:
+    score: 10
+    justification: "The benchmark tests the ability to read and comprehend long, technical natural language problem descriptions from GitHub issues. The 'writing' component is highly structured code generation (a patch file), not free-form natural language."
+
+  # Criterion: Mathematical Ability (M)
+  mathematical_ability:
+    score: 0
+    justification: "The benchmark does not directly test mathematical ability, although individual software issues could incidentally involve mathematical logic."
+
+  # Criterion: On-the-Spot Reasoning (R)
+  on_the_spot_reasoning:
+    score: 15
+    justification: "This is a core tested ability. Models must analyze a novel problem (the issue) within a large, complex codebase and perform complex reasoning to localize the cause and devise a solution that integrates with existing code, far beyond simple retrieval or pattern matching."
+
+  # Criterion: Working Memory (WM)
+  working_memory:
+    score: 15
+    justification: "The benchmark heavily taxes working memory. It requires processing extremely long contexts (entire codebases with thousands of files) and maintaining an understanding of the relationships between different functions, classes, and files to generate a coordinated, multi-location edit."
+
+  # Criterion: Long-Term Memory Storage (MS)
+  long_term_memory_storage:
+    score: 0
+    justification: "The benchmark is a static evaluation set; it does not test a model's ability to learn and store new information over time."
+
+  # Criterion: Long-Term Memory Retrieval (MR)
+  long_term_memory_retrieval:
+    score: 10
+    justification: "The task requires fluent retrieval of stored knowledge about programming languages, libraries, and common software patterns. The difficulty of the tasks indicates this is a significant challenge. An incorrect patch can be seen as a failure of precise reasoning or retrieval."
+
+  # Criterion: Visual Processing (V)
+  visual_processing:
+    score: 5
+    justification: "The paper notes that a subset of issues (e.g., 32% in matplotlib) contain embedded images that may be necessary for a full understanding of the problem. However, the evaluated baseline models are not multi-modal, so this capability is present in the data but not actively tested by the paper's methodology."
+
+  # Criterion: Auditory Processing (A)
+  auditory_processing:
+    score: 0
+    justification: "The benchmark does not involve any auditory stimuli."
+
+  # Criterion: Speed (S)
+  speed:
+    score: 0
+    justification: "The benchmark's evaluation metric is correctness (% Resolved); it does not measure or report on the speed or efficiency of the generation process."

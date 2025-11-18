@@ -29,13 +29,13 @@ def process_data_for_details(
         valid_scores = []
         for v in scores_dict.values():
             score_val = v.get("score")
-            
-            if score_val is not None and str(score_val).lower() != 'n/a':
+
+            if score_val is not None and str(score_val).lower() != "n/a":
                 try:
                     valid_scores.append(float(score_val))
                 except ValueError:
                     continue
-        
+
         if not valid_scores:
             return 0.0, 0
         return sum(valid_scores) / len(valid_scores), len(valid_scores)
@@ -49,16 +49,16 @@ def process_data_for_details(
             for criterion, value in section.items():
                 if isinstance(value, dict):
                     score_val = value.get("score")
-                    
+
                     if score_val is not None:
-                        if str(score_val).lower() != 'n/a':
+                        if str(score_val).lower() != "n/a":
                             try:
                                 score_val = float(score_val)
                             except ValueError:
                                 score_val = None
                         else:
                             score_val = None
-                    
+
                     detailed_scores.append(
                         {
                             "benchmark": name,

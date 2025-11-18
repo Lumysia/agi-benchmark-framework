@@ -27,12 +27,12 @@ def process_scores(benchmarks: List[Dict[str, Any]]) -> pd.DataFrame:
         valid_scores = []
         for v in scores_dict.values():
             score_val = v.get("score")
-            if score_val is not None and str(score_val).lower() != 'n/a':
+            if score_val is not None and str(score_val).lower() != "n/a":
                 try:
                     valid_scores.append(float(score_val))
                 except ValueError:
                     pass
-        
+
         if not valid_scores:
             return 0.0, 0
         return sum(valid_scores) / len(valid_scores), len(valid_scores)

@@ -24,11 +24,15 @@ def process_scores(benchmarks: List[Dict[str, Any]]) -> pd.DataFrame:
     processed_data = []
 
     def calculate_average_score(scores_dict: Dict[str, Any]) -> tuple[float, int]:
-        valid_scores = [
-            v["score"]
-            for v in scores_dict.values()
-            if isinstance(v, dict) and v.get("score") is not None
-        ]
+        valid_scores = []
+        for v in scores_dict.values():
+            score_val = v.get("score")
+            if score_val is not None and str(score_val).lower() != 'n/a':
+                try:
+                    valid_scores.append(float(score_val))
+                except ValueError:
+                    pass
+        
         if not valid_scores:
             return 0.0, 0
         return sum(valid_scores) / len(valid_scores), len(valid_scores)

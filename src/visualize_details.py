@@ -26,11 +26,16 @@ def process_data_for_details(
     detailed_scores = []
 
     def calculate_average_score(scores_dict: Dict[str, Any]) -> tuple[float, int]:
-        valid_scores = [
-            v["score"]
-            for v in scores_dict.values()
-            if isinstance(v, dict) and v.get("score") is not None
-        ]
+        valid_scores = []
+        for v in scores_dict.values():
+            score_val = v.get("score")
+            
+            if score_val is not None and str(score_val).lower() != 'n/a':
+                try:
+                    valid_scores.append(float(score_val))
+                except ValueError:
+                    continue
+        
         if not valid_scores:
             return 0.0, 0
         return sum(valid_scores) / len(valid_scores), len(valid_scores)
@@ -43,12 +48,23 @@ def process_data_for_details(
             section = bench.get(section_name, {})
             for criterion, value in section.items():
                 if isinstance(value, dict):
+                    score_val = value.get("score")
+                    
+                    if score_val is not None:
+                        if str(score_val).lower() != 'n/a':
+                            try:
+                                score_val = float(score_val)
+                            except ValueError:
+                                score_val = None
+                        else:
+                            score_val = None
+                    
                     detailed_scores.append(
                         {
                             "benchmark": name,
                             "category": section_name.capitalize(),
                             "criterion": criterion,
-                            "score": value.get("score"),
+                            "score": score_val,
                         }
                     )
 
